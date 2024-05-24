@@ -3,12 +3,9 @@
 const data = {
     isOrderCompleted:true,
     isHoaCompleted:false,
-    
-    
-    
         "input_Order": {
             "order_Number": "St2-16624005510",
-            "completed_date": "",
+            "completed_date": "05-23-2024",
             "parcel_cad_property_id": "215766DEN",
             "seller_Name": "William Alan Maddox and Brenda Carline Maddox",
             "buyer_Name": "John Paul Cullinane and Brenna Cullinane",

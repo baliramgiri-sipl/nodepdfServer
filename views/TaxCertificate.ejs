@@ -7,6 +7,42 @@
 
 <body>
   <% 
+  //price format
+  function formatPrice(amount) {
+    if(!amount) return ""
+    // Check if the input is a string and contains the dollar symbol
+    let hasDollarSign = amount.toString().includes('$');
+    
+    // Convert the input to a number, removing any non-numeric characters (except . and -)
+    let numericAmount = parseFloat(amount.toString().replace(/[^0-9.-]+/g, ""));
+    
+    // Format the number with commas and two decimal places
+    let formattedAmount = numericAmount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    
+    // Add the dollar symbol if it was present in the original input
+    if (hasDollarSign) {
+        formattedAmount = '$' + formattedAmount;
+    }
+    
+    return formattedAmount;
+}
+
+
+function formatPhoneNumber(phoneNumber) {
+  if(!phoneNumber) return ""
+  // Check if the input is a valid phone number
+  if (!/^\+\d{11}$/.test(phoneNumber)) {
+    throw new Error('Invalid phone number format');
+  }
+
+  // Extract the area code, central office code, and line number
+  const areaCode = phoneNumber.slice(2, 5);
+  const centralOfficeCode = phoneNumber.slice(5, 8);
+  const lineNumber = phoneNumber.slice(8);
+
+  // Format the phone number
+  return `(${areaCode}) ${centralOfficeCode}-${lineNumber}`;
+}
     function changeHeadingBg(name, isSpecial) {
       if (isSpecial) {
           return "bg-special-color";  // The class for the special background color when true
@@ -71,10 +107,10 @@
       <div class="consumer-information-table1">
         <div class="table-1-header <%= changeHeadingBg(input_Order?.client_Name)%>">
           <p class="table1-p1 text-8">
-            Completed Date : <%=input_Order?.cert_Fee%>
+            Completed Date : <%=input_Order?.completed_date%>
           </p>
           <p class="table1-p2 text-8">
-            Certificate Fee : <%=input_Order?.completed_date%>
+            Certificate Fee : <%=formatPrice(input_Order?.cert_Fee)%>
           </p>
         </div>
 
@@ -367,7 +403,7 @@
                 <p class="mb-1">Acct #: <%= item?.account_number%></p>
 
                 <p class="mb-1"><%= item?.mail_To%></p>
-                <p class="mb-1">Ph: <%= item?.phone_No%></p>
+                <p class="mb-1">Ph: <%= formatPhoneNumber(item?.phone_No) %></p>
               </td>
               <!-- //tax year -->
               <td>
