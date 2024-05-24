@@ -1,0 +1,34 @@
+<div>
+    <% if (input_Order?.customer_is_private_label) { %>
+        <% if (input_Order?.private_label_display_name) { %>
+          <p>   <%= input_Order?.private_label_display_name %></p>
+          <% } %>
+    
+          <% if (input_Order?.private_label_address) { %>
+              <p>   <%= input_Order?.private_label_address %></p>
+              <% } %>
+    
+          <% if (input_Order?.private_label_csz) { %>
+              <p>   <%= input_Order?.private_label_csz %></p>
+              <% } %>
+    
+          <% if (input_Order?.private_label_phone) { %>
+              <p>   <%= input_Order?.private_label_phone %></p>
+              <% } %>
+    
+          <% if (input_Order?.private_label_email) { %>
+              <p>   <%= input_Order?.private_label_email %></p>
+              <% } %>
+    
+    <% } else { %>
+      <div>
+          <p>
+            CERTSIMPLE, INC <br />
+            P.O.BOX 340787 <br />
+            Austin, TX 78734
+          </p>
+          <p>(800) 806-3639</p>
+          <p>taxcerts@certsimpleusa.com</p>
+        </div>
+    <% } %>
+</div>

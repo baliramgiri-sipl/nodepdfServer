@@ -1,0 +1,11 @@
+<div class="<%= !input_Order?.comments ? "d-none" :"" %>">
+  <table class="border border-secondary table mt-3 text-7 table-borderless">
+    <tr class="<%= changeHeadingBg(input_Order?.client_Name)%>">
+      <th class="text-danger text-8">IMPORTANT CERTIFICATE COMMENTS</th>
+    </tr>
+    <tr>
+      <td class="pt-1">
+        <%-input_Order?.comments %>
+    </tr>
+  </table>
+</div>

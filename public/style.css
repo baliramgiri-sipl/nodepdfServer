@@ -1,0 +1,295 @@
+/* .bg-gray {
+    background: #B9B9B9;
+}
+
+
+.taxing_juri {
+    padding: 2px 5px;
+} */
+header{
+  background: red !important;
+}
+
+.page-break {
+  page-break-inside: avoid;
+  page-break-before: always;
+}
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  tr{
+    page-break-inside: avoid;
+  }
+  .main-outer-div{
+    padding: 0px 24px 0px 24px;
+  }
+  
+  /* Header-section */
+  
+  .nav-div{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
+  
+  .nav-logo{
+    width: 25%;
+    flex: display;
+    justify-content: center;
+    align-items: start;
+    padding-bottom: 20px;
+  }
+  
+  .nav-heading{
+    width: 50%;
+    text-align: center;
+  }
+  
+  .nav-heading .p1{
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .nav-heading .p2{
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .nav-page-number{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    /* border: 2px solid blue; */
+    font-weight: bold;
+    font-size: 8px;
+  
+  }
+  
+  /* Tables-section */
+  .row{
+    display: flex;
+    flex-wrap: wrap;
+    height:100%;
+    border: 1px solid #b8b8b8;
+    margin-top: 16px;
+  }
+  .col-6{
+    flex-basis: 50%;
+    height: 100%;
+  }
+  .table-border-none{
+    border:none !important;
+    margin-top: 0px;
+  }
+  table{
+    margin-top: 16px;
+    width: 100%;
+    border-collapse: collapse;
+    border:1px solid #b8b8b8;
+    height: 100%;
+  }
+  .parcel_information tr td:first-child{
+    width: 115px;
+
+  }
+  table td, th{
+    padding: 2px 4px;
+    text-align: start;
+  }
+  .fw-bold{
+    font-weight: bold;
+  }
+  .parcel-border-left{
+    border-left: 1px solid #b8b8b8;
+  }
+  p, h6{
+    margin-top: 2px;
+  }
+  .border-end{
+    border-right: 1px solid #b8b8b8;
+  }
+  
+  .text-danger{
+    color: red;
+  }
+  
+  .text-extra-padding th{
+    padding: 8px 4px;
+  }
+  
+  .pb-3{
+    padding-bottom: 8px;
+  }
+  .mt-2{
+    margin-top: 8px;
+  }
+  .m-3{
+    margin: 12px;
+  }
+  .table-td-top td{
+    vertical-align: top !important;
+  }
+  .px-3{
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .mb-2{
+    margin-bottom: 4px;
+  }
+  
+  .mt-4{
+    margin-top: 16px;
+  }
+  
+  .mt-0{
+    margin-top: 0px;
+  }
+  
+  .mt-4{
+    margin-top:16px;
+  }
+/*   
+  td{
+ font-weight: 300;
+  } */
+  
+  
+  /* 1-consumer-information-section */
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .table-1-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #b8b8b8 !important;
+  }
+  
+  .table-1-header .table1-p1{
+    font-size: 8px;
+    font-weight: bold;
+    padding: 4px;
+  }
+  
+  .table-1-header .table1-p2{
+    font-size: 8px;
+    font-weight: bold;
+    padding: 4px;
+  }
+  
+  .table1-outer{
+    display: flex;
+    margin-top: 8px;
+    gap: 20px;
+  }
+  
+  .table1-inner1{
+    width: 50%;
+    /* border: 1px solid black; */
+  }
+  
+  .table1-inner2 > p{
+    margin-top: 2px;
+  }
+  
+  
+  
+  /* Table-2-Parcel-1-of-2 */
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .text-7{
+    font-size: 12px !important;
+  }
+  
+  .text-8{
+    font-size: 12px !important;
+  }
+  
+  .text-9{
+    font-size: 16px !important;
+  }
+  
+  .pad-t-10{
+    padding-top: 10px;
+  }
+  
+  
+  .bg-color-gray-3{
+    background-color: #b8b8b8 !important;
+  }
+  
+  .bg-color-gray-2{
+    background-color: #cfd2cf;
+  }
+  
+  .bg-color-gray-1{
+    background-color: #f2f2f2;
+  }
+  
+  .table-striped>tbody>tr:nth-of-type(odd) {
+    /* --bs-table-accent-bg: var(--bs-table-striped-bg); */
+    /* color: var(--bs-table-striped-color); */
+    background: #f2f2f2;
+  }
+  .assement_data tr td{
+    text-align: right !important;
+  }
+  .assement_data tr td:first-child{
+    width: 100px;
+    text-align: left;
+  }
+  
+  .border-secondary{
+    border-color: #b8b8b8 !important;
+  }
+  
+  .bg-dark-blue{
+    background: #1a2c5f !important;
+    color: #fff !important;
+  }
+
+  .bg-dark{
+    background: #070F2B !important;
+    color: #fff !important;
+  }
+  
+  .d-none{
+    display: none !important;;
+  }
+  .hoa-certificate table td:first-child{
+    width: 120px;
+  }

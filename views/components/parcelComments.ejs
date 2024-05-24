@@ -1,0 +1,16 @@
+<div class="<%= checkCustomer(input_Order?.client_Name) || parcel_information_comments?.length===0 ? "d-none" :"" %>">
+    <% parcel_information_comments.forEach(function(item) { %>
+        <table class="border <%= !item?.parcel_comments || item?.parcel_comments=== " " ? "d-none" :"" %> border-secondary table table-borderless mt-3 text-7">
+            <tr class="<%= changeHeadingBg(input_Order?.client_Name)%>">
+              <th class="text-danger text-8">
+                IMPORTANT PROPERTY COMMENTS - <%= item?.parcel_cad_id %>
+              </th>
+            </tr>
+            <tr>
+              <td class="pt-1 pb-3">
+                <%- item?.parcel_comments %>
+              </td>
+            </tr>
+          </table>
+        <% }); %>
+</div>

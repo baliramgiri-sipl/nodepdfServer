@@ -1,0 +1,20 @@
+{
+  "name": "nodepdf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "pdf-lib": "^1.17.1",
+    "pdf-merger-js": "^4.1.2",
+    "puppeteer": "^22.6.5"
+  }
+}

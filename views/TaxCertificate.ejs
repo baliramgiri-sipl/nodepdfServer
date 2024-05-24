@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>html to pdf</title>
+</head>
+
+<body>
+  <% 
+    function changeHeadingBg(name, isSpecial) {
+      if (isSpecial) {
+          return "bg-special-color";  // The class for the special background color when true
+      }
+  
+      switch (name) {
+          case "SUPREME Title Company, LLC":
+              return "bg-dark-blue";
+          default:
+              return "bg-color-gray-3";
+      }
+  } 
+    //check customers 
+    function checkCustomer(name) {
+      switch (name) {
+          case "Riverway Title":
+              return true
+          default:
+              return false
+      }
+  }
+
+  //get customers name 
+  function getCustomerName(name) {
+    switch (name) {
+        case "River City National Title":
+            return 1
+        case "Texas Family Title":
+            return 2
+        case "TaxCertPros LLC":
+            return 3
+        case "The Title Company":
+            return 4
+        case "Independence Title":
+            return 5
+        default:
+            return 0
+    }
+  }
+
+  //display buyes
+  function disabledByer(name) {
+    switch (name) {
+        case "Texas National Title":
+            return false
+        case "DHI Title":
+            return false
+        case "Platinum Title":
+            return false
+        // case "Inspired Title":
+        //     return false
+        case "Allegiance Title":
+            return false
+        default:
+            return true
+    }
+}
+%>
+
+  <div class="main-outer-div">
+    <div>
+      <div class="consumer-information-table1">
+        <div class="table-1-header <%= changeHeadingBg(input_Order?.client_Name)%>">
+          <p class="table1-p1 text-8">
+            Completed Date : <%=input_Order?.cert_Fee%>
+          </p>
+          <p class="table1-p2 text-8">
+            Certificate Fee : <%=input_Order?.completed_date%>
+          </p>
+        </div>
+
+        <div class="table1-outer">
+          <div class="table1-inner1">
+            <!-- //customer dynamically created -->
+            <%- include('components/customerTable', {
+              input_Order,
+              getCustomerName,
+              customer:input_Order?.client_Name, 
+              gfNumber:input_Order?.file_Number,
+              buyers: input_Order?.buyer_Name,
+              owners: input_Order?.seller_Name,
+              propertyId:input_Order?.parcel_cad_property_id?.split(",")?.join(", ") || "",
+              situsAddress: input_Order?.property_Address, 
+              disabledByer
+            }) %>
+          </div>
+
+          <% if (getCustomerName(input_Order?.client_Name) !== 5 ) { %>
+              <!-- //Remit information  -->
+          <%- include('components/RemitContent', {
+            input_Order,
+            getCustomerName,
+            customer:input_Order?.client_Name
+          }) %>
+
+            <% } %>
+        
+        </div>
+      </div>
+      <!-- //total tax alingments changes-->
+      <% if (getCustomerName(input_Order?.client_Name) !== 5 && checkCustomer(input_Order?.client_Name)) { %>
+      <div>
+        <%- include('components/totalTaxBillSummry', {
+        changeHeadingBg:changeHeadingBg,
+        input_Order:input_Order,
+        total_tax_summary_bill_information:total_tax_summary_bill_information
+      }) %>
+      </div>
+      <% } %>
+      <!-- //order comments  order alingments changes-->
+      <% if (checkCustomer(input_Order?.client_Name)) { %>
+      <div>
+        <%- include('components/orderComments', {
+            changeHeadingBg:changeHeadingBg,
+            input_Order:input_Order,
+          }) %>
+      </div>
+      <% } %>
+      <!-- //parcel loops  -->
+
+      <% parcel_Information.forEach(function({parcel_id, parcel_comments, geographic_Id,
+        parcel_No,property_Address, owner, deed_Ref, subdivision, acreage,
+        assessed_Information, legal_Description, tax_Information, jurisdiction_info, bonds, exemption}, index,
+        selfArr) { %>
+      <div>
+        <% if (index>0 || checkCustomer(input_Order?.client_Name)) { %>
+        <div class="page-break"></div>
+        <% } %>
+        <!-- //parcel information  -->
+        <div class="row mx-auto mt-2 border border-secondary text-7">
+          <div class="col-6">
+            <table class="table-border-none table text-7 table-borderless">
+              <thead>
+                <tr>
+                  <th colspan="2" class="<%= changeHeadingBg(input_Order?.client_Name)%> text-8">
+                    Parcel <%=index+1 %> of <%=selfArr?.length %>
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody class="parcel_information">
+                <tr>
+                  <td>Geographic ID</td>
+                  <td>: <%=geographic_Id %></td>
+                </tr>
+
+                <tr>
+                  <td>Property ID</td>
+                  <td>: <%=parcel_No %></td>
+                </tr>
+
+                <tr>
+                  <td>Situs Address</td>
+                  <td>: <%=property_Address %></td>
+                </tr>
+
+                <tr>
+                  <td>Assessed Owner(s)</td>
+                  <td>
+                    : <% owner.forEach(function(item, index) { %>
+                    <span>
+                      <%= item.owner_Name %> (<%= item.percentage %>) <%=
+                        index < owner.length - 1 ? "," : "" %>
+                    </span>
+                    <% }); %>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>Mailing Address(es)</td>
+                  <td>
+                    : <% owner.forEach(function(item, index) { %>
+                    <span>
+                      <%= item.address %> <%= index < owner.length - 1 ? "," :
+                        "" %>
+                    </span>
+                    <% }); %>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>Deed Reference</td>
+                  <td>: <%= deed_Ref %></td>
+                </tr>
+
+                <tr>
+                  <td>Subdivision</td>
+                  <td>: <%= subdivision %></td>
+                </tr>
+
+                <tr>
+                  <td>Acreage</td>
+                  <td>: <%= acreage %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-6 parcel-border-left" style="height: auto">
+            <table class="table-border-none border-start border-secondary table text-7 mb-0 table-borderless assement_data">
+              <thead>
+                <tr>
+                  <th colspan="<%= assessed_Information?.length>1 ? 5 :4 %>" class="<%= changeHeadingBg(input_Order?.client_Name)%> text-8">
+                    Assessment Data
+                  </th>
+                </tr>
+
+                <tr class="bg-color-gray-2 text-8">
+                  <th></th>
+                  <th></th>
+                  <% assessed_Information.forEach(function(item, index) { %>
+                  <th style="text-align: right;">
+                    <%= item.assessment_Year %> <%= item.is_proposed ?
+                      "Proposed" : "VALUES" %>
+                  </th>
+                  <% if (assessed_Information?.length===1) { %>
+                    <th></th>
+                    <% } %>
+                <% }); %>
+                
+                </tr>
+              </thead>
+
+              <tbody >
+                <tr>
+                  <td>Land</td>
+                  <td>:</td>
+                  <% assessed_Information.forEach(function(item, index) { %>
+                  <td><%= item.land_Value %></td>
+                  <% }); %>
+                </tr>
+
+                <tr>
+                  <td>Improvement</td>
+                  <td>:</td>
+                  <% assessed_Information.forEach(function(item, index) { %>
+                  <td><%= item.improvement_Value %></td>
+                  <% }); %>
+                </tr>
+
+                <tr>
+                  <td>Agricultural</td>
+                  <td>:</td>
+                  <% assessed_Information.forEach(function(item, index) { %>
+                  <td><%= item.agricultural_Value %></td>
+                  <% }); %>
+                </tr>
+
+                <tr>
+                  <td>Appraised</td>
+                  <td>:</td>
+                  <% assessed_Information.forEach(function(item, index) { %>
+                  <td><%= item.appraised %></td>
+                  <% }); %>
+                </tr>
+
+                <tr>
+                  <td>10% Cap</td>
+                  <td>:</td>
+                  <% assessed_Information.forEach(function(item, index) { %>
+                  <td><%= item.capped_Value %></td>
+                  <% }); %>
+                </tr>
+
+                <tr>
+                  <td>Assessed</td>
+                  <td>:</td>
+                  <% assessed_Information.forEach(function(item, index) { %>
+                  <td><%= item.total_assessed %></td>
+                  <% }); %>
+                </tr>
+
+                <tr>
+                  <td>Est Taxes w/o Exemptions</td>
+                  <td>:</td>
+                  <% assessed_Information.forEach(function(item, index) { %>
+                  <td><%= item.est_tax_without_exemption %></td>
+                  <% }); %>
+                </tr>
+
+                <tr>
+                  <td>Exemptions</td>
+                  <td>:</td>
+                  <% assessed_Information.forEach(function(item, index) { %>
+                  <td><%= item.exemption_Amount %></td>
+                  <% }); %>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- //legal description  -->
+        <table class="border border-secondary text-7 table table-striped mt-3">
+          <tr>
+            <th class="bg-color-gray-3 text-8">Legal Description</th>
+          </tr>
+          <tr>
+            <td><%=legal_Description %></td>
+          </tr>
+        </table>
+        <!-- //parcel commets for Riverway titles -->
+        <% if (checkCustomer(input_Order?.client_Name) && parcel_comments) { %>
+        <table class="border border-secondary table table-borderless mt-3 text-7">
+          <tr class="<%= changeHeadingBg(input_Order?.client_Name)%>">
+            <th class="text-danger text-8">
+              IMPORTANT PROPERTY COMMENTS - <%= parcel_id %>
+            </th>
+          </tr>
+          <tr>
+            <td class="pt-1 pb-3">
+              <%= parcel_comments %>
+            </td>
+          </tr>
+        </table>
+        <% } %>
+
+
+        <!-- //tax information  -->
+        <% if (tax_Information?.collectorInfo?.length >0) { %>
+        <table class="border border-secondary table text-7 mb-0 table-borderless mt-3 table-td-top">
+          <thead>
+            <tr class="<%= changeHeadingBg(input_Order?.client_Name)%> text-8">
+              <th colspan="7">Tax Bill Summary: <%=parcel_No%></th>
+            </tr>
+
+            <tr class="bg-color-gray-2 text-8">
+              <th class="border-end">Collector</th>
+              <th>Tax Year</th>
+              <th>Base Tax</th>
+              <th>Base Due</th>
+              <th>
+                Due By <br />
+                <%= tax_Information?.due_by_date_one%>
+              </th>
+              <th>
+                Due By <br />
+                <%= tax_Information?.due_by_date_two%>
+              </th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% tax_Information?.collectorInfo?.forEach(function(item) { %>
+            <tr class="<%=   Number(
+                item?.basedue?.replace(
+                  /[|&;$%@"<>()+,]/g,
+                  ""
+                )
+              ) > 0 ? 'text-danger' : 'class2' %>">
+              <!-- //collector info  -->
+              <td style="width: 170px; color: black;" class="border-end">
+                <p class="mb-1 fw-bold"><%= item?.name%></p>
+                <% if (item?.payable_to) { %>
+                <p class="mb-1">Payble To: <%= item?.payable_to%></p>
+                <% } %>
+
+                <p class="mb-1">Acct #: <%= item?.account_number%></p>
+
+                <p class="mb-1"><%= item?.mail_To%></p>
+                <p class="mb-1">Ph: <%= item?.phone_No%></p>
+              </td>
+              <!-- //tax year -->
+              <td>
+                <% item?.bill_summary?.forEach(function(bill) { %>
+                <p class="text-7"><%= bill?.taxyear%></p>
+                <% }); %>
+              </td>
+
+              <!-- //base tax -->
+              <td>
+                <% item?.bill_summary?.forEach(function(bill) { %>
+                <p class="text-7"><%= bill?.basetax%></p>
+                <% }); %>
+              </td>
+
+              <!-- //base due -->
+              <td>
+                <% item?.bill_summary?.forEach(function(bill) { %>
+                <p class="text-7"><%= bill?.basedue%></p>
+                <% }); %>
+              </td>
+
+              <!-- //duedate1 -->
+              <td>
+                <% item?.bill_summary?.forEach(function(bill) { %>
+                <p class="text-7"><%= bill?.duedate1%></p>
+                <% }); %>
+              </td>
+              <!-- //duedate2 -->
+              <td>
+                <% item?.bill_summary?.forEach(function(bill) { %>
+                <p class="text-7"><%= bill?.duedate2%></p>
+                <% }); %>
+              </td>
+              <!-- //status -->
+              <td colspan="2">
+                <% item?.bill_summary?.forEach(function(bill) { %>
+                <p class="text-7"><%= bill?.status%></p>
+                <% }); %>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+
+          <tfoot>
+            <tr class="bg-color-gray-2 text-8">
+              <th class="border-end"></th>
+              <th>Total Taxes :</th>
+              <th><%= tax_Information?.totalAmt?.basetax %></th>
+              <th><%= tax_Information?.totalAmt?.basedue %></th>
+              <th><%= tax_Information?.totalAmt?.duedate1 %></th>
+              <th><%= tax_Information?.totalAmt?.duedate2 %></th>
+              <th></th>
+            </tr>
+          </tfoot>
+        </table>
+        <% } %>
+
+
+        <!-- //when tax information -->
+        <% if (jurisdiction_info?.total_taxrate) { %>
+        <!-- //heading  -->
+        <h6 class="text-danger text-7 mt-4 " style="font-style: italic; ">
+          This Section is for Information Purposes Only - Tax Bill
+          Payment Status is Not reflected Below
+        </h6>
+        <!-- //Taxing Jurisdictions  -->
+
+        <table class="border border-secondary text-7 table table-striped table-borderless">
+          <thead>
+            <tr class="<%= changeHeadingBg(input_Order?.client_Name)%>  text-8">
+              <th colspan="6">
+                Taxing Jurisdictions - Total Tax Rate:- <%=jurisdiction_info?.total_taxrate %>
+              </th>
+            </tr>
+            <tr class="bg-color-gray-2 text-8">
+              <th>Taxing Jurisdiction</th>
+              <th>Rate Year</th>
+              <th>Tax Rate</th>
+              <th>Est Taxes</th>
+              <th>Bill Year</th>
+              <th>Base Amount</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <!-- //jurisdiction_data  -->
+            <% jurisdiction_info?.juri_data?.forEach(function(item) { %>
+            <!-- //juri data  -->
+            <% item?.jurisdiction_data?.forEach(function(juri) { %>
+            <tr>
+              <td><%=juri?.name%></td>
+              <td><%=juri?.tax_year%></td>
+              <td><%=juri?.tax_rate%></td>
+              <td><%=juri?.estimated_tax_without_exemption%></td>
+              <td><%=juri?.billyear%></td>
+              <td><%=juri?.baseamount%></td>
+            </tr>
+            <% }); %>
+            <!-- //collector info  -->
+            <tr class="bg-color-gray-3">
+              <th colspan="2"><%=item?.collector_name%></th>
+              <th colspan="4"><%=item?.tax_rate%></th>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <% } %>
+
+
+        <!-- //display on certification Comments  -->
+        <% if (jurisdiction_info?.display_on_cert) { %>
+        <table class="border border-secondary table table-borderless mt-3 text-7">
+          <tr class="<%= changeHeadingBg(input_Order?.client_Name)%>">
+            <th class="text-8">
+              Taxing Jurisdiction Comments
+            </th>
+          </tr>
+          <tr>
+            <td class="pt-1 pb-3">
+              <%=jurisdiction_info?.display_on_cert%>
+            </td>
+          </tr>
+        </table>
+        <% } %>
+
+        <!-- //bonds information  -->
+        <% if (bonds?.length>0) { %>
+        <table class="border border-secondary text-7 table table-borderless">
+          <thead>
+            <tr class="text-8">
+              <th colspan="4" class="<%= changeHeadingBg(input_Order?.client_Name)%>">Bond Information</th>
+            </tr>
+            <tr class="bg-color-gray-2 text-8">
+              <th>Name</th>
+              <th>Bonds Approved</th>
+              <th>Bonds Issued</th>
+              <th>Standby Fees</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% bonds?.forEach(function(item) { %>
+            <tr>
+              <td><%= item.name %></td>
+              <td><%= item.approved %></td>
+              <td><%= item.issued %></td>
+              <td><%= item.standfees %></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <% } %>
+
+        <!-- //disable veterans -->
+        <table class="border border-secondary text-7 table table-striped table-borderless">
+          <thead>
+            <tr class="text-8 text-extra-padding">
+              <th colspan="4">Exemptions by Jurisdictions</th>
+              <th colspan="4" class="text-center <%= changeHeadingBg(input_Order?.client_Name)%>">
+                Disabled Veteran
+              </th>
+            </tr>
+            <tr class="bg-color-gray-2 text-8">
+              <th>Collector</th>
+              <th>HOM</th>
+              <th>OV65</th>
+              <th>DP</th>
+              <th>10-30%</th>
+              <th>31-50%</th>
+              <th>51-70%</th>
+              <th>71-100%</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <% exemption?.forEach(function(item) { %>
+            <tr>
+              <td><%= item?.name %></td>
+              <td><%= item?.hom %></td>
+              <td><%= item?.ov65 %></td>
+              <td><%= item?.dp %></td>
+              <td><%= item["10to30"] ||"5K"  %></td>
+              <td><%= item["31to50"] ||"7.5K"  %></td>
+              <td><%= item["51to70"] ||"10K"  %></td>
+              <td><%= item["71to100"] || "12K"  %></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+      <% }); %>
+      <!-- //parcel comments  -->
+      <%- include('components/parcelComments', {
+          checkCustomer:checkCustomer,
+          changeHeadingBg:changeHeadingBg,
+          input_Order:input_Order,
+          parcel_information_comments:parcel_information_comments,
+        }) %>
+
+      <!-- //order comments  -->
+      <% if (!checkCustomer(input_Order?.client_Name)) { %>
+      <div>
+        <%- include('components/orderComments', {
+            changeHeadingBg:changeHeadingBg,
+            input_Order:input_Order,
+          }) %>
+      </div>
+      <% } %>
+
+      <!-- //total tax information  -->
+      <% if (getCustomerName(input_Order?.client_Name) !== 5 && !checkCustomer(input_Order?.client_Name)) { %>
+      <div>
+        <%- include('components/totalTaxBillSummry', {
+        changeHeadingBg:changeHeadingBg,
+        input_Order:input_Order,
+        total_tax_summary_bill_information:total_tax_summary_bill_information
+      }) %>
+      </div>
+      <% } %>
+    
+
+      <table class="text-7 table table-border-none " style="margin-top: 100px;">
+        <tr>
+          <th class="text-8">
+            <p>Tax Certificate Disclaimer :</p>
+          </th>
+        </tr>
+        <tr>
+          <td>
+            All applicable ad valorem taxes on the above referenced property
+            have been checked and are found to have the status provided
+            except: Status does not cover any changes made to the tax records
+            of the agencies listed after the Order Completed date hereof. Does
+            not include and is not a certification of any mineral taxes,
+            personal property taxes( including mobile homes), or any other
+            non-ad valorem taxes. In the event a parcel or tract of real
+            property covered in a request had been previously re-subdivided,
+            split out, our deleted( killed), whereas previous tax account was
+            assigned, and/or is to be or was split, or was an undivided
+            interest account, or creating a new tax account, and specific
+            parcel or tract information is not readily available on the county
+            appraisal district records; the Property Tax Service shall only be
+            required to, and claims limited to, furnish Appraisal and Tax
+            Information for the parcel or tract as shown on the Current
+            Records of the Appraisal District. Proposed Values are strictly
+            preliminary and may change.Proposed Values are obtained directly
+            from the appraisal districts and are provided for information
+            purposes only. The Property Tax Service is not liable for any
+            pro-ration shortage or overage based on these Proposed Values.
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

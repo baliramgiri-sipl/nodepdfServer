@@ -1,0 +1,96 @@
+
+    <table class="<%= total_tax_summary_bill_information?.parcel_total_tax_summary?.length > 0 ? "" :"d-none" %> border border-secondary table text-7 mb-0 table-borderless mt-3 table-td-top">
+        <thead>
+          <tr class="<%= changeHeadingBg(input_Order?.client_Name)%> text-8">
+            <th colspan="7"> Total Taxes Summary for CAD Account(s): <%=total_tax_summary_bill_information?.parcelids
+              ?.split(",")
+              ?.join(", ") || " "%></th>
+          </tr>
+    
+          <tr class="bg-color-gray-2 text-8">
+            <th class="border-end">Collector</th>
+            <th>Tax Year</th>
+            <th>Base Tax</th>
+            <th>Base Due</th>
+            <th>
+              Due By <br />
+              <%= total_tax_summary_bill_information?.due_date_one%>
+            </th>
+            <th>
+              Due By <br />
+              <%= total_tax_summary_bill_information?.due_date_two%>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+    
+        <tbody>
+          <% total_tax_summary_bill_information?.parcel_total_tax_summary?.forEach(function(item) { %>
+          <tr >
+            <!-- //collector info  -->
+            <td style="width: 170px; color: black;" class="border-end">
+              <p class="mb-1 fw-bold"><%= item?.name%></p>
+              <% if (item?.payable_to) { %>
+              <p class="mb-1">Payble To: <%= item?.payable_to%></p>
+              <% } %>
+    
+              <p class="mb-1">Acct #: <%= item?.account_number%></p>
+    
+              <p class="mb-1"><%= item?.mail_To%></p>
+              <p class="mb-1">Ph: <%= item?.phone_No%></p>
+            </td>
+            <!-- //tax year -->
+            <td>
+              <% item?.total_bill_summary?.forEach(function(bill) { %>
+              <p class="text-7"><%= bill?.taxyear%></p>
+              <% }); %>
+            </td>
+    
+            <!-- //base tax -->
+            <td>
+              <% item?.total_bill_summary?.forEach(function(bill) { %>
+              <p class="text-7"><%= bill?.basetax%></p>
+              <% }); %>
+            </td>
+    
+            <!-- //base due -->
+            <td>
+              <% item?.total_bill_summary?.forEach(function(bill) { %>
+              <p class="text-7"><%= bill?.basedue%></p>
+              <% }); %>
+            </td>
+    
+            <!-- //duedate1 -->
+            <td>
+              <% item?.total_bill_summary?.forEach(function(bill) { %>
+              <p class="text-7"><%= bill?.duedate1%></p>
+              <% }); %>
+            </td>
+            <!-- //duedate2 -->
+            <td>
+              <% item?.total_bill_summary?.forEach(function(bill) { %>
+              <p class="text-7"><%= bill?.duedate2%></p>
+              <% }); %>
+            </td>
+            <!-- //status -->
+            <td colspan="2">
+              <% item?.total_bill_summary?.forEach(function(bill) { %>
+              <p class="text-7"><%= bill?.status%></p>
+              <% }); %>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+    
+        <tfoot>
+          <tr class="bg-color-gray-2 text-8">
+            <th class="border-end"></th>
+            <th><%= total_tax_summary_bill_information?.parcel_total_taxes_summary?.bill_name %></th>
+            <th><%= total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_tax_amount %></th>
+            <th><%= total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_due %></th>
+            <th><%= total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_balance %></th>
+            <th><%= total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_next_balance %></th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>html to pdf</title>
+</head>
+
+<body>
+  <div class="main-outer-div">
+
+    <div>
+      <% hoa_info.forEach(function(item, index){ %>
+        <% if (index>0) { %>
+          <div class="page-break"></div>
+          <% } %>
+      <div class="hoa-certificate mt-4">
+
+        <div class="text-8 mb-2 fw-bold">HOA Certificate</div>
+
+        <div class="text-8 mb-2">HOA Completed: 05-05-2024</div>
+
+        <table class="border border-secondary table text-7 mt-0">
+        
+            <tr>
+              <td class="text-7">Property Address:</td>
+              <td class="text-7"><%= item.property_address %></td>
+            </tr>
+            <tr>
+              <td class="text-7">Owner Name:</td>
+              <td class="text-7"><%= item.owner %></td>
+            </tr>
+            <tr>
+              <td class="text-7">Legal Description:</td>
+              <td class="text-7"><%= item.legal_description %></td>
+            </tr>
+            <tr>
+              <td class="text-7">Property ID:</td>
+              <td class="text-7"><%= item.parcel_id %></td>
+            </tr>
+            <tr>
+              <td class="text-7">Acreage:</td>
+              <td class="text-7"><%= item.acreage %></td>
+            </tr>
+            <tr>
+              <td class="text-7">Subcode:</td>
+              <td class="text-7"><%= item.subcode %></td>
+            </tr>
+        </table>
+
+        <div class="text-7 text-danger mt-4">
+          <i>IF INFORMATION IN THE HOA ADDENDUM, OWNER OR SELLERS AGENT, INDICATES THERE MAY BE AN ADDITIONAL MASTER OR SUB-ASSOCIATION FOR THIS SUBDIVISPLEASE CONTACT THE TAX SERVICE FOR REVIEW AND UPDATE</i>
+        </div>
+
+        <table class="border border-secondary table mt-3 table-borderless text-7">
+          <tr>
+            <td class="text-7">HOA:</td>
+            <td class="text-7"><%= item.hoa %></td>
+          </tr>
+          <tr>
+            <td class="text-7">Date Verified:</td>
+            <td class="text-7"><%= item.date_verified %></td>
+          </tr>
+          <tr>
+            <td class="text-7">Collection Cycle:</td>
+            <td class="text-7"><%= item.collection_cycle %></td>
+          </tr>
+          <tr>
+            <td class="text-7">Address:</td>
+            <td class="text-7"><%= item.hoa_address %></td>
+          </tr>
+          <tr>
+            <td class="text-7">Contact:</td>
+            <td class="text-7"><%= item.conatct %></td>
+          </tr>
+          <tr>
+            <td class="text-7">Phone:</td>
+            <td class="text-7"><%= item.hoa_phone %></td>
+          </tr>
+          <tr>
+            <td class="text-7">Email:</td>
+            <td class="text-7"><%= item.hoa_email %></td>
+          </tr>
+          <tr>
+            <td class="text-7">Website:</td>
+            <td class="text-7"><%= item.website %></td>
+          </tr>
+         
+          <tr>
+            <td>
+              <p class="text-7">HOA Notes:</p>
+            </td>
+            <td>
+              <p class="text-7"><%- item.hoa_notes %></p>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+      <% }) %>
+    </div>
+
+
+  </div>
+</body>
+
+</html>
