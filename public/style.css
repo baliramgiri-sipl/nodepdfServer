@@ -6,10 +6,41 @@
 .taxing_juri {
     padding: 2px 5px;
 } */
+
+/* @page {
+  margin: 2.2cm 0cm 0cm 0cm;
+} */
+
+@media print {
+  
+  thead {
+      display: table-row-group; /* Ensures headers appear on the first page */
+  }
+
+  .header {
+      display: none; /* Default to hiding headers */
+  }
+
+  .show-on-first-page {
+      display: table-row-group; /* Show headers only on the first page */
+  }
+
+
+}
 header{
   background: red !important;
 }
-
+.border{
+  border:1px solid #b8b8b8;
+}
+.border-none{
+  border:0px solid transparent;
+  margin: 0;
+  padding: 0;
+}
+.p-4{
+  padding:8px;
+}
 .page-break {
   page-break-inside: avoid;
   page-break-before: always;
@@ -265,7 +296,10 @@ header{
     /* color: var(--bs-table-striped-color); */
     background: #f2f2f2;
   }
-  .assement_data tr td{
+  .rightText{
+    text-align: right !important;
+  }
+  .assement_data .values tr td{
     text-align: right !important;
   }
   .assement_data tr td:first-child{

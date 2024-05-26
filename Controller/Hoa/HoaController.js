@@ -43,9 +43,9 @@ const hoacertificate = async (req, res, next) => {
                 const watermark = document.createElement('div');
                 watermark.innerHTML = renderedWatermark;
                 watermark.style.position = 'fixed';
-                watermark.style.top = '350px'; // Adjust as needed
-                watermark.style.left = '160px'; // Adjust as needed
-                watermark.style.transform = "rotate(-45deg)";
+                watermark.style.top = '330px'; // Adjust as needed
+                watermark.style.left = '90px'; // Adjust as needed
+                watermark.style.transform = "rotate(-35deg)";
                 watermark.style.fontSize = '16px'; // Adjust as needed
                 document.body.insertBefore(watermark, document.body.firstChild);
             }, renderedWatermark);

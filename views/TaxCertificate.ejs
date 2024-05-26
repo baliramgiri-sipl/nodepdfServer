@@ -175,7 +175,7 @@ function formatPhoneNumber(phoneNumber) {
         <div class="row mx-auto mt-2 border border-secondary text-7">
           <div class="col-6">
             <table class="table-border-none table text-7 table-borderless">
-              <thead>
+              <thead >
                 <tr>
                   <th colspan="2" class="<%= changeHeadingBg(input_Order?.client_Name)%> text-8">
                     Parcel <%=index+1 %> of <%=selfArr?.length %>
@@ -243,7 +243,7 @@ function formatPhoneNumber(phoneNumber) {
 
           <div class="col-6 parcel-border-left" style="height: auto">
             <table class="table-border-none border-start border-secondary table text-7 mb-0 table-borderless assement_data">
-              <thead>
+              <thead class="show-on-first-page">
                 <tr>
                   <th colspan="<%= assessed_Information?.length>1 ? 5 :4 %>" class="<%= changeHeadingBg(input_Order?.client_Name)%> text-8">
                     Assessment Data
@@ -254,7 +254,7 @@ function formatPhoneNumber(phoneNumber) {
                   <th></th>
                   <th></th>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <th style="text-align: right;">
+                  <th class="<% assessed_Information?.length>1 ? "rightText" : ""%>">
                     <%= item.assessment_Year %> <%= item.is_proposed ?
                       "Proposed" : "VALUES" %>
                   </th>
@@ -266,12 +266,12 @@ function formatPhoneNumber(phoneNumber) {
                 </tr>
               </thead>
 
-              <tbody >
+              <tbody  class="<% assessed_Information?.length>1 ? "values" : ""%>">
                 <tr>
                   <td>Land</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= item.land_Value %></td>
+                  <td><%= formatPrice(item.land_Value) %></td>
                   <% }); %>
                 </tr>
 
@@ -279,7 +279,7 @@ function formatPhoneNumber(phoneNumber) {
                   <td>Improvement</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= item.improvement_Value %></td>
+                  <td><%= formatPrice(item.improvement_Value) %></td>
                   <% }); %>
                 </tr>
 
@@ -287,7 +287,7 @@ function formatPhoneNumber(phoneNumber) {
                   <td>Agricultural</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= item.agricultural_Value %></td>
+                  <td><%= formatPrice(item.agricultural_Value) %></td>
                   <% }); %>
                 </tr>
 
@@ -295,7 +295,7 @@ function formatPhoneNumber(phoneNumber) {
                   <td>Appraised</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= item.appraised %></td>
+                  <td><%= formatPrice(item.appraised) %></td>
                   <% }); %>
                 </tr>
 
@@ -303,7 +303,7 @@ function formatPhoneNumber(phoneNumber) {
                   <td>10% Cap</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= item.capped_Value %></td>
+                  <td><%= formatPrice(item.capped_Value) %></td>
                   <% }); %>
                 </tr>
 
@@ -311,7 +311,7 @@ function formatPhoneNumber(phoneNumber) {
                   <td>Assessed</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= item.total_assessed %></td>
+                  <td><%= formatPrice(item.total_assessed) %></td>
                   <% }); %>
                 </tr>
 
@@ -319,7 +319,7 @@ function formatPhoneNumber(phoneNumber) {
                   <td>Est Taxes w/o Exemptions</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= item.est_tax_without_exemption %></td>
+                  <td><%= formatPrice(item.est_tax_without_exemption) %></td>
                   <% }); %>
                 </tr>
 
@@ -327,7 +327,7 @@ function formatPhoneNumber(phoneNumber) {
                   <td>Exemptions</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= item.exemption_Amount %></td>
+                  <td><%= formatPrice(item.exemption_Amount) %></td>
                   <% }); %>
                 </tr>
               </tbody>
@@ -363,7 +363,7 @@ function formatPhoneNumber(phoneNumber) {
         <!-- //tax information  -->
         <% if (tax_Information?.collectorInfo?.length >0) { %>
         <table class="border border-secondary table text-7 mb-0 table-borderless mt-3 table-td-top">
-          <thead>
+          <thead  class="show-on-first-page">
             <tr class="<%= changeHeadingBg(input_Order?.client_Name)%> text-8">
               <th colspan="7">Tax Bill Summary: <%=parcel_No%></th>
             </tr>
@@ -415,27 +415,27 @@ function formatPhoneNumber(phoneNumber) {
               <!-- //base tax -->
               <td>
                 <% item?.bill_summary?.forEach(function(bill) { %>
-                <p class="text-7"><%= bill?.basetax%></p>
+                <p class="text-7"><%= formatPrice(bill?.basetax)%></p>
                 <% }); %>
               </td>
 
               <!-- //base due -->
               <td>
                 <% item?.bill_summary?.forEach(function(bill) { %>
-                <p class="text-7"><%= bill?.basedue%></p>
+                <p class="text-7"><%= formatPrice(bill?.basedue)%></p>
                 <% }); %>
               </td>
 
               <!-- //duedate1 -->
               <td>
                 <% item?.bill_summary?.forEach(function(bill) { %>
-                <p class="text-7"><%= bill?.duedate1%></p>
+                <p class="text-7"><%= formatPrice(bill?.duedate1)%></p>
                 <% }); %>
               </td>
               <!-- //duedate2 -->
               <td>
                 <% item?.bill_summary?.forEach(function(bill) { %>
-                <p class="text-7"><%= bill?.duedate2%></p>
+                <p class="text-7"><%= formatPrice(bill?.duedate2)%></p>
                 <% }); %>
               </td>
               <!-- //status -->
@@ -452,10 +452,10 @@ function formatPhoneNumber(phoneNumber) {
             <tr class="bg-color-gray-2 text-8">
               <th class="border-end"></th>
               <th>Total Taxes :</th>
-              <th><%= tax_Information?.totalAmt?.basetax %></th>
-              <th><%= tax_Information?.totalAmt?.basedue %></th>
-              <th><%= tax_Information?.totalAmt?.duedate1 %></th>
-              <th><%= tax_Information?.totalAmt?.duedate2 %></th>
+              <th><%= formatPrice(tax_Information?.totalAmt?.basetax) %></th>
+              <th><%= formatPrice(tax_Information?.totalAmt?.basedue) %></th>
+              <th><%= formatPrice(tax_Information?.totalAmt?.duedate1) %></th>
+              <th><%= formatPrice(tax_Information?.totalAmt?.duedate2) %></th>
               <th></th>
             </tr>
           </tfoot>
@@ -473,7 +473,7 @@ function formatPhoneNumber(phoneNumber) {
         <!-- //Taxing Jurisdictions  -->
 
         <table class="border border-secondary text-7 table table-striped table-borderless">
-          <thead>
+          <thead class="show-on-first-page">
             <tr class="<%= changeHeadingBg(input_Order?.client_Name)%>  text-8">
               <th colspan="6">
                 Taxing Jurisdictions - Total Tax Rate:- <%=jurisdiction_info?.total_taxrate %>
@@ -498,9 +498,9 @@ function formatPhoneNumber(phoneNumber) {
               <td><%=juri?.name%></td>
               <td><%=juri?.tax_year%></td>
               <td><%=juri?.tax_rate%></td>
-              <td><%=juri?.estimated_tax_without_exemption%></td>
+              <td><%=formatPrice(juri?.estimated_tax_without_exemption)%></td>
               <td><%=juri?.billyear%></td>
-              <td><%=juri?.baseamount%></td>
+              <td><%=formatPrice(juri?.baseamount)%></td>
             </tr>
             <% }); %>
             <!-- //collector info  -->
@@ -533,7 +533,7 @@ function formatPhoneNumber(phoneNumber) {
         <!-- //bonds information  -->
         <% if (bonds?.length>0) { %>
         <table class="border border-secondary text-7 table table-borderless">
-          <thead>
+          <thead class="show-on-first-page">
             <tr class="text-8">
               <th colspan="4" class="<%= changeHeadingBg(input_Order?.client_Name)%>">Bond Information</th>
             </tr>
@@ -548,9 +548,9 @@ function formatPhoneNumber(phoneNumber) {
             <% bonds?.forEach(function(item) { %>
             <tr>
               <td><%= item.name %></td>
-              <td><%= item.approved %></td>
-              <td><%= item.issued %></td>
-              <td><%= item.standfees %></td>
+              <td><%= formatPrice(item.approved) %></td>
+              <td><%= formatPrice(item.issued) %></td>
+              <td><%= formatPrice(item.standfees) %></td>
             </tr>
             <% }); %>
           </tbody>
@@ -559,7 +559,7 @@ function formatPhoneNumber(phoneNumber) {
 
         <!-- //disable veterans -->
         <table class="border border-secondary text-7 table table-striped table-borderless">
-          <thead>
+          <thead class="show-on-first-page">
             <tr class="text-8 text-extra-padding">
               <th colspan="4">Exemptions by Jurisdictions</th>
               <th colspan="4" class="text-center <%= changeHeadingBg(input_Order?.client_Name)%>">

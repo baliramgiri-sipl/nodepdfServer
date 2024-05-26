@@ -6,6 +6,65 @@
 </head>
 
 <body>
+
+  <% 
+  //price format
+  function formatPrice(amount) {
+    if(!amount) return ""
+    // Check if the input is a string and contains the dollar symbol
+    let hasDollarSign = amount.toString().includes('$');
+    
+    // Convert the input to a number, removing any non-numeric characters (except . and -)
+    let numericAmount = parseFloat(amount.toString().replace(/[^0-9.-]+/g, ""));
+    
+    // Format the number with commas and two decimal places
+    let formattedAmount = numericAmount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    
+    // Add the dollar symbol if it was present in the original input
+    if (hasDollarSign) {
+        formattedAmount = '$' + formattedAmount;
+    }
+    
+    return formattedAmount;
+}
+
+
+function formatPhoneNumber(phoneNumber) {
+  if(!phoneNumber) return ""
+  // Check if the input is a valid phone number
+  if (!/^\+\d{11}$/.test(phoneNumber)) {
+    throw new Error('Invalid phone number format');
+  }
+
+  // Extract the area code, central office code, and line number
+  const areaCode = phoneNumber.slice(2, 5);
+  const centralOfficeCode = phoneNumber.slice(5, 8);
+  const lineNumber = phoneNumber.slice(8);
+
+  // Format the phone number
+  return `(${areaCode}) ${centralOfficeCode}-${lineNumber}`;
+}
+
+
+  //display buyes
+  function disabledByer(name) {
+    switch (name) {
+        case "Texas National Title":
+            return false
+        case "DHI Title":
+            return false
+        case "Platinum Title":
+            return false
+        // case "Inspired Title":
+        //     return false
+        case "Allegiance Title":
+            return false
+        default:
+            return true
+    }
+}
+%>
+  
   <div class="main-outer-div">
 
     <div>
@@ -96,9 +155,93 @@
         </table>
 
       </div>
-      <% }) %>
+
+       <!-- Hoa management fees section -->
+       <% if(item.collector_mgmt) {%>
+       <div class="hoa-mgmt-table mt-4">
+        <table class="border border-secondary table text-7 mt-0">
+        
+          <tr>
+            <td class="text-7">Collector/Management Company:</td>
+            <td class="text-7"><%= item?.collector_mgmt || ""  %></td>
+          </tr>
+          <tr>
+            <td class="text-7">Address:</td>
+            <td class="text-7"><%= item.collector_mgmt_address || "" %></td>
+          </tr>
+          <tr>
+            <td class="text-7">Contact:</td>
+            <td class="text-7"><%= item?.contact || "" %></td>
+          </tr>
+          <tr>
+            <td class="text-7">Phone:</td>
+            <td class="text-7"><%= formatPhoneNumber(item?.hoa_collector_phone) || "" %></td>
+          </tr>
+          <tr>
+            <td class="text-7">Email:</td>
+            <td class="text-7"><%= item?.hoa_collector_email || "" %></td>
+          </tr>
+          <tr>
+            <td class="text-7">Website:</td>
+            <td class="text-7"><%= item?.hoa_collector_website || "" %></td>
+          </tr>
+          <tr>
+            <td class="text-7" style="vertical-align:top">General Management Company Notes:</td>
+            <td class="text-7"><%- item?.mgmt_notes || "" %></td>
+          </tr>
+      </table>
+       </div>
+       <%} else ""%>
+
+       <%if(item?.hoa_mgmt_fees.length>0) {%>
+       <div class="hoa-mgmt border mt-4 p-4">
+        <table class="text-7 border-none">
+          <thead class="show-on-first-page">
+            <tr>
+              <th colspan="4" class=" text-7">Statement Fees</th>
+            </tr>
+            <tr class="text-8 bg-color-gray-2">
+              <th>Bill Period</th>
+              <th>Fee Description</th>
+              <th>Amount</th>
+              <th>Due</th>
+            </tr>
+          </thead>
+          <tbody >
+          
+           <% item?.hoa_mgmt_fees.map(function(fee, index){ %>
+            <%if(index<item.hoa_mgmt_fees.length-1){%>
+            <tr class="text-7 ">
+              <td><%= fee.hoa_fees_type %></td>
+              <td><%=fee.fees_description %></td>
+              <td><%= formatPrice(fee.amount) %></td>
+              <td class="text-danger"><%= formatPrice(fee.amount_due) %></td>
+            </tr>
+            <%}%>
+          </tbody>
+          <% if(index+1 === item.hoa_mgmt_fees.length){%>
+            <tfoot>
+            <tr class="bg-color-gray-1">
+              <th colspan="2"><%= fee.hoa_fees_type %></th>
+              <th><%= formatPrice(fee.total_amount_value) %></th>
+              <th class="text-danger"><%= formatPrice(fee.amount_due) %></th>
+            </tr>
+          </tfoot>
+          <%}%>
+          <%})%>
+        </table>
+      </div>
+      <% } }) %>
     </div>
 
+    <div class="hoa-disclaimer" style="margin-top: 100px;">
+      <p class="text-8"><b>HOA Certificate Disclaimer :</b></p>
+      <p class="text-7" style="margin-top: 10px;">HOA Assessments being reported are good for 30 days OR through the end of HOA Billing Cycle. Please Request an Update Prior to Closing. Please Review All Comments
+        and Statements furnished on this Certificate.
+        Research is conducted through various resources such as Deed Restrictions, online information, etc.. however, Information Not Readily Available to the Property Tax Service,
+        such as Sales Contract HOA addendums, may need to be forwarded to the Property Tax Service for further review
+        </p>
+    </div>
 
   </div>
 </body>
