@@ -16,13 +16,14 @@ const PDFMerger = require("pdf-merger-js");
 
 const hoacertificate = async (req, res, next) => {
     try {
-
+        const data = req.body
+        
         const merger = new PDFMerger();
         await merger.add(decodeBase64(req.taxCertificateData));
 
         //if hoad data is available
         if (data?.hoa_info?.length > 0) {
-            const browser = await puppeteer.launch({ headless: true });
+            const browser = await puppeteer.launch(process.env.SERVER === "DEV" ? { headless: true } : { args: ['--no-sandbox', '--disable-setuid-sandbox'] })
             const page = await browser.newPage();
             // Wait for the canvas element to be visible
 
@@ -81,14 +82,14 @@ const hoacertificate = async (req, res, next) => {
         const mergedBuffer = await merger.saveAsBuffer();
         const mergedBase64 = mergedBuffer.toString('base64');
 
-        if(mergedBase64){
+        if (mergedBase64) {
             req.certificate = mergedBase64
-            
+
             next()
-        }else{
-            return res.status(500).json({message:"Invalid base64"})
+        } else {
+            return res.status(500).json({ message: "Invalid base64" })
         }
-        
+
 
     } catch (error) {
         console.log(error);
