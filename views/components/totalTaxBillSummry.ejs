@@ -1,4 +1,25 @@
 
+<% 
+//price format
+function formatPrice(amount) {
+  if(!amount) return ""
+  // Check if the input is a string and contains the dollar symbol
+  let hasDollarSign = amount.toString().includes('$');
+  
+  // Convert the input to a number, removing any non-numeric characters (except . and -)
+  let numericAmount = parseFloat(amount.toString().replace(/[^0-9.-]+/g, ""));
+  
+  // Format the number with commas and two decimal places
+  let formattedAmount = numericAmount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  
+  // Add the dollar symbol if it was present in the original input
+  if (hasDollarSign) {
+      formattedAmount = '$' + formattedAmount;
+  }
+  
+  return formattedAmount;
+}
+%>
     <table class="<%= total_tax_summary_bill_information?.parcel_total_tax_summary?.length > 0 ? "" :"d-none" %> border border-secondary table text-7 mb-0 table-borderless mt-3 table-td-top">
         <thead>
           <tr class="<%= changeHeadingBg(input_Order?.client_Name)%> text-8">
@@ -86,10 +107,10 @@
           <tr class="bg-color-gray-2 text-8">
             <th class="border-end"></th>
             <th><%= total_tax_summary_bill_information?.parcel_total_taxes_summary?.bill_name %></th>
-            <th><%= total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_tax_amount %></th>
-            <th><%= total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_due %></th>
-            <th><%= total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_balance %></th>
-            <th><%= total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_next_balance %></th>
+            <th><%= formatPrice(total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_tax_amount) %></th>
+            <th><%= formatPrice(total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_due) %></th>
+            <th><%= formatPrice(total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_balance) %></th>
+            <th><%= formatPrice(total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_next_balance) %></th>
             <th></th>
           </tr>
         </tfoot>

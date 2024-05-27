@@ -59,21 +59,6 @@ const data = {
                         "is_proposed": false,
                         "est_tax_without_exemption": "$7207",
                         "net_Taxable": "$577779"
-                    },
-                    {
-                        "parcel_id": 85751,
-                        "parcel_assessed_year": "",
-                        "assessment_Year": 2021,
-                        "appraised": "$757",
-                        "land_Value": "$534,536",
-                        "agricultural_Value": "$6,464",
-                        "improvement_Value": "$43,243",
-                        "capped_Value": "$6,565",
-                        "exemption_Amount": "",
-                        "total_assessed": "$46,546",
-                        "is_proposed": false,
-                        "est_tax_without_exemption": "$7207",
-                        "net_Taxable": "$577779"
                     }
                 ],
                 "tax_Information": {
@@ -307,7 +292,26 @@ const data = {
                 "hoa_collector_website": "",
                 "hoa_collector_email": "1009taulbeeln@gmail.com",
                 "contact": "",
-                "hoa_mgmt_fees": [],
+                "hoa_mgmt_fees": [
+                    {
+                        "fees_description": "test",
+                        "amount_due": "$6",
+                        "amount": "$4",
+                        "hoa_fees_type": "test"
+                    },
+                    {
+                        "fees_description": "f",
+                        "amount_due": "$56",
+                        "amount": "$4",
+                        "hoa_fees_type": "test2"
+                    },
+                    {
+                        "fees_description": "",
+                        "amount_due": "$62",
+                        "total_amount_value": "$8",
+                        "hoa_fees_type": "Total Amount"
+                    }
+                ],
                 "hoa_order_fees_list": [
                     {
                         "fees_description": "test",
