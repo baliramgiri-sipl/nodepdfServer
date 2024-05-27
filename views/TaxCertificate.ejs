@@ -271,7 +271,7 @@ function formatPhoneNumber(phoneNumber) {
                   <td>Land</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= item.land_Value %></td>
+                  <td><%=  formatPrice(item.land_Value) %></td>
                   <% }); %>
                 </tr>
 
