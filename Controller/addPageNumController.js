@@ -1,5 +1,6 @@
 const { decodeBase64, getCustomerName } = require("../lib/utils");
-const { PDFDocument, rgb } = require('pdf-lib'); 
+const { PDFDocument, rgb } = require('pdf-lib');
+const {encode, decode} = require('uint8-to-base64') 
 
 async function addPageNumbersToPDF(req, res) {
 
@@ -28,13 +29,16 @@ async function addPageNumbersToPDF(req, res) {
     
        const pdfBytes = await pdfDoc.save();
    
-      res.set({
-          'Content-Type': 'application/pdf',
-          'Content-Disposition': 'inline; filename="output.pdf"',
-          'Content-Length': pdfBytes.length
-      });
+    //   res.set({
+    //       'Content-Type': 'application/pdf',
+    //       'Content-Disposition': 'inline; filename="output.pdf"',
+    //       'Content-Length': pdfBytes.length
+    //   });
    
-      return res.send(Buffer.from(pdfBytes));
+    //   return res.send(Buffer.from(pdfBytes));
+    
+
+    return res.json({base64:encode(pdfBytes)});
     } catch (error) {
         console.log(error);
         return res.status(500).json(error?.message)
