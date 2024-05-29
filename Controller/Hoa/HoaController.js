@@ -39,7 +39,7 @@ const hoacertificate = async (req, res, next) => {
             const watermarkPath = path.join(__dirname, '../../views/Hoa/hoawatermark.ejs');
             const watermarkTemplate = fs.readFileSync(watermarkPath, 'utf8');
             // Render the EJS template with data
-            const renderedWatermark = ejs.render(watermarkTemplate, { watermark: data?.isHoaCompleted ? "" : 'HOA PRELIMINARY' })
+            const renderedWatermark = ejs.render(watermarkTemplate, { watermark: !data?.isHoaCompleted ? "" : 'HOA PRELIMINARY' })
             await page.evaluate((renderedWatermark) => {
                 const watermark = document.createElement('div');
                 watermark.innerHTML = renderedWatermark;
@@ -55,7 +55,7 @@ const hoacertificate = async (req, res, next) => {
             const headerTemplate = fs.readFileSync(headerPath, 'utf8');
             // Render the EJS template with data
             // console.log(data?.input_Order?.private_label_logo)
-            const renderedHeader = ejs.render(headerTemplate, { headerType: data?.input_Order.customer_is_private_label, isCompleted: data?.isHoaCompleted, logo: data?.input_Order?.private_label_logo, customer: data?.input_Order.client_Name })
+            const renderedHeader = ejs.render(headerTemplate, { headerType: data?.input_Order.customer_is_private_label, isWaterMark: data?.isHoaCompleted, logo: data?.input_Order?.private_label_logo, customer: data?.input_Order.client_Name })
 
             const pdf = await page.pdf({
                 format: 'A4',
