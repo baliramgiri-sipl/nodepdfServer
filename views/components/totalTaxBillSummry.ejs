@@ -31,13 +31,13 @@ function formatPrice(amount) {
           <tr class="bg-color-gray-2 text-8">
             <th class="border-end">Collector</th>
             <th>Tax Year</th>
-            <th>Base Tax</th>
-            <th>Base Due</th>
-            <th>
+            <th class="td-right">Base Tax</th>
+            <th class="td-right">Base Due</th>
+            <th class="td-right">
               Due By <br />
               <%= total_tax_summary_bill_information?.due_date_one%>
             </th>
-            <th>
+            <th class="td-right">
               Due By <br />
               <%= total_tax_summary_bill_information?.due_date_two%>
             </th>
@@ -68,33 +68,33 @@ function formatPrice(amount) {
             </td>
     
             <!-- //base tax -->
-            <td>
+            <td class="td-right">
               <% item?.total_bill_summary?.forEach(function(bill) { %>
               <p class="text-7"><%= bill?.basetax%></p>
               <% }); %>
             </td>
     
             <!-- //base due -->
-            <td>
+            <td class="td-right">
               <% item?.total_bill_summary?.forEach(function(bill) { %>
               <p class="text-7"><%= bill?.basedue%></p>
               <% }); %>
             </td>
     
             <!-- //duedate1 -->
-            <td>
+            <td class="td-right">
               <% item?.total_bill_summary?.forEach(function(bill) { %>
               <p class="text-7"><%= bill?.duedate1%></p>
               <% }); %>
             </td>
             <!-- //duedate2 -->
-            <td>
+            <td class="td-right">
               <% item?.total_bill_summary?.forEach(function(bill) { %>
               <p class="text-7"><%= bill?.duedate2%></p>
               <% }); %>
             </td>
             <!-- //status -->
-            <td colspan="2">
+            <td class="td-right" colspan="2">
               <% item?.total_bill_summary?.forEach(function(bill) { %>
               <p class="text-7"><%= bill?.status%></p>
               <% }); %>
@@ -107,11 +107,11 @@ function formatPrice(amount) {
           <tr class="bg-color-gray-2 text-8">
             <th class="border-end"></th>
             <th><%= total_tax_summary_bill_information?.parcel_total_taxes_summary?.bill_name %></th>
-            <th><%= formatPrice(total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_tax_amount) %></th>
-            <th><%= formatPrice(total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_due) %></th>
-            <th><%= formatPrice(total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_balance) %></th>
-            <th><%= formatPrice(total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_next_balance) %></th>
-            <th></th>
+            <th class="td-right"><%= formatPrice(total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_tax_amount) %></th>
+            <th class="td-right"><%= formatPrice(total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_due) %></th>
+            <th class="td-right"><%= formatPrice(total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_balance) %></th>
+            <th class="td-right"><%= formatPrice(total_tax_summary_bill_information?.parcel_total_taxes_summary?.total_summary_total_next_balance) %></th>
+            <th class="td-right"></th>
           </tr>
         </tfoot>
       </table>

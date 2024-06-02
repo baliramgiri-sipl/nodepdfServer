@@ -131,9 +131,29 @@ header{
     width: 115px;
 
   }
-  table td, th{
+  .text-indent{
+    text-indent:-8px; 
+    padding-left: 12px;
+  }
+  table td{
+    padding:2px 4px;
+  }
+  table th{
     padding: 2px 4px;
     text-align: start;
+  }
+  
+  .td-left{
+    padding: 2px 4px;
+    text-align:left !important;
+  }
+  .td-right{
+    padding: 2px 4px;
+    text-align: right !important;
+  }
+  .td-center{
+    padding: 2px 4px;
+    text-align: center !important;
   }
   .fw-bold{
     font-weight: bold;
