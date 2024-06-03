@@ -2,19 +2,19 @@
 <table class="table <%= getCustomerName(input_Order?.client_Name)===5 ? "" :"d-none" %> text-7 table-border-none">
  
 <tr>
-  <td>GF # </td>
-  <td>: <%= gfNumber %></td>
+  <td class="table-td-left">GF # </td>
+  <td class="table-td-left">: <%= gfNumber %></td>
 </tr>
 <!-- //show buyer name conditionally  -->
 <% if (disabledByer(input_Order?.client_Name)) { %>
 <tr>
-  <td>Buyer(s)</td>
-  <td>: <%= buyers %></td>
+  <td class="table-td-left">Buyer(s)</td>
+  <td class="table-td-left">: <%= buyers %></td>
 </tr>
 <% } %>
 <tr>
-  <td>Owner(s) / Seller(s)</td>
-  <td style="text-indent: -8px; padding-left: 12px;">: <%= owners %></td>
+  <td class="table-td-left">Owner(s) / Seller(s)</td>
+  <td class="text-indent">: <%= owners %></td>
 </tr>
 </table>
 
@@ -23,38 +23,38 @@
     <!-- //show customer name conditionally  -->
   <% if (customer) { %>
   <tr>
-    <td>Customer</td>
-    <td>: <%= customer %></td>
+    <td >Customer</td>
+    <td class="text-indent">: <%= customer %></td>
   </tr>
   <% } %>
     <!-- //show closer name conditionally  -->
   <% if (input_Order?.closer_name) { %>
   <tr>
-    <td>Closer</td>
-    <td>: <%= input_Order?.closer_name %></td>
+    <td class="table-td-left">Closer</td>
+    <td class="text-indent">: <%= input_Order?.closer_name %></td>
   </tr>
   <% } %>
   <tr>
-    <td>GF # </td>
-    <td>: <%= gfNumber %></td>
+    <td class="table-td-left">GF # </td>
+    <td class="text-indent">: <%= gfNumber %></td>
   </tr>
   <!-- //show buyer name conditionally  -->
   <% if (disabledByer(input_Order?.client_Name)) { %>
   <tr>
-    <td>Buyer(s)</td>
-    <td>: <%= buyers %></td>
+    <td class="table-td-left">Buyer(s)</td>
+    <td class="text-indent">: <%= buyers %></td>
   </tr>
   <% } %>
   <tr>
-    <td>Owner(s) / Seller(s)</td>
-    <td style="text-indent: -8px; padding-left: 12px;">: <%= owners %></td>
+    <td class="table-td-left">Owner(s) / Seller(s)</td>
+    <td class="text-indent"> : <%= owners %></td>
   </tr>
   <tr>
-    <td>Property ID</td>
-    <td>: <%= propertyId %></td>
+    <td class="table-td-left">Property ID</td>
+    <td class="text-indent">: <%= propertyId %></td>
   </tr>
   <tr>
-    <td>Situs Address </td>
-    <td style="text-indent: -8px; padding-left: 12px;">: <%= situsAddress %></td>
+    <td class="table-td-left">Situs Address </td>
+    <td class="text-indent">: <%= situsAddress %></td>
   </tr>
 </table>
