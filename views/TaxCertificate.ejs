@@ -8,7 +8,7 @@
 <body>
   <% 
   //price format
-  function formatPrice(amount) {
+  function formatPrice(amount, isFixed=2) {
     if(!amount) return ""
     // Check if the input is a string and contains the dollar symbol
     let hasDollarSign = amount.toString().includes('$');
@@ -17,7 +17,13 @@
     let numericAmount = parseFloat(amount.toString().replace(/[^0-9.-]+/g, ""));
     
     // Format the number with commas and two decimal places
-    let formattedAmount = numericAmount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    let formattedAmount = 0
+    if(isFixed){
+      formattedAmount = numericAmount.toFixed(isFixed).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    }else{
+      formattedAmount = numericAmount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    }
+
     
     // Add the dollar symbol if it was present in the original input
     if (hasDollarSign) {
@@ -100,6 +106,7 @@ function formatPhoneNumber(phoneNumber) {
             return true
     }
 }
+
 %>
 
   <div class="main-outer-div">
@@ -131,15 +138,15 @@ function formatPhoneNumber(phoneNumber) {
           </div>
 
           <% if (getCustomerName(input_Order?.client_Name) !== 5 ) { %>
-              <!-- //Remit information  -->
+          <!-- //Remit information  -->
           <%- include('components/RemitContent', {
             input_Order,
             getCustomerName,
             customer:input_Order?.client_Name
           }) %>
 
-            <% } %>
-        
+          <% } %>
+
         </div>
       </div>
       <!-- //total tax alingments changes-->
@@ -175,9 +182,9 @@ function formatPhoneNumber(phoneNumber) {
         <div class="row mx-auto mt-2 border border-secondary text-7">
           <div class="col-6">
             <table class="table-border-none table text-7 table-borderless">
-              <thead >
+              <thead>
                 <tr>
-                  <th colspan="2" class="<%= changeHeadingBg(input_Order?.client_Name)%> text-8">
+                  <th colspan="2" class="td-left <%= changeHeadingBg(input_Order?.client_Name)%> text-8">
                     Parcel <%=index+1 %> of <%=selfArr?.length %>
                   </th>
                 </tr>
@@ -241,37 +248,43 @@ function formatPhoneNumber(phoneNumber) {
             </table>
           </div>
 
-          <div class="col-6 parcel-border-left" style="height: auto">
+          <div class="col-6 parcel-border-left">
             <table class="table-border-none border-start border-secondary table text-7 mb-0 table-borderless assement_data">
-              <thead class="show-on-first-page">
+              <thead class="show-on-first-page mx-2">
                 <tr>
-                  <th colspan="<%= assessed_Information?.length>1 ? 5 :4 %>" class="<%= changeHeadingBg(input_Order?.client_Name)%> text-8">
+                  <th colspan="<%= assessed_Information?.length>1 ? 5 :4 %>" class="td-left <%= changeHeadingBg(input_Order?.client_Name)%> text-8">
                     Assessment Data
                   </th>
                 </tr>
-
-                <tr class="bg-color-gray-2 text-8">
-                  <th></th>
-                  <th></th>
+              </thead>
+              <table style="height: auto; width: 97%; margin:0 auto; border:0px solid transparent">
+              <thead class="show-on-first-page">
+                <tr class="text-8">
+                  <th class="bg-color-gray-2"></th>
+                  <th class="bg-color-gray-2"></th>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <th class="<% assessed_Information?.length>1 ? "rightText" : "text-left"%>">
+                  <th class="bg-color-gray-2 rightText">
+                  <!-- <th class="bg-color-gray-2 rightText <% assessed_Information?.length>1 ? "rightText" : "text-left"%>"> -->
                     <%= item.assessment_Year %> <%= item.is_proposed ?
                       "Proposed" : "VALUES" %>
                   </th>
                   <% if (assessed_Information?.length===1) { %>
-                    <th></th>
-                    <% } %>
-                <% }); %>
-                
+                  <th class="bg-color-gray-2"></th>
+                  <% } %>
+                  <% }); %>
+
                 </tr>
               </thead>
 
-              <tbody  class="<% assessed_Information?.length>1 ? "values" : ""%>">
+              <tbody class="<% assessed_Information?.length>1 ? "values" : ""%>">
                 <tr>
                   <td>Land</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= formatPrice(item.land_Value) %></td>
+                  <td class="td-right"><%= formatPrice(item.land_Value, 0) %></td>
+                  <%- include('components/assessmentLayout', {
+              assessed_Information
+            }) %>
                   <% }); %>
                 </tr>
 
@@ -279,7 +292,10 @@ function formatPhoneNumber(phoneNumber) {
                   <td>Improvement</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= formatPrice(item.improvement_Value) %></td>
+                  <td class="td-right"><%= formatPrice(item.improvement_Value, 0) %></td>
+                  <%- include('components/assessmentLayout', {
+              assessed_Information
+            }) %>
                   <% }); %>
                 </tr>
 
@@ -287,7 +303,10 @@ function formatPhoneNumber(phoneNumber) {
                   <td>Agricultural</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= formatPrice(item.agricultural_Value) %></td>
+                  <td class="td-right"><%= formatPrice(item.agricultural_Value, 0) %></td>
+                  <%- include('components/assessmentLayout', {
+              assessed_Information
+            }) %>
                   <% }); %>
                 </tr>
 
@@ -295,7 +314,10 @@ function formatPhoneNumber(phoneNumber) {
                   <td>Appraised</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= formatPrice(item.appraised) %></td>
+                  <td class="td-right"><%= formatPrice(item.appraised, 0) %></td>
+                  <%- include('components/assessmentLayout', {
+              assessed_Information
+            }) %>
                   <% }); %>
                 </tr>
 
@@ -303,7 +325,10 @@ function formatPhoneNumber(phoneNumber) {
                   <td>10% Cap</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= formatPrice(item.capped_Value) %></td>
+                  <td class="td-right"><%= formatPrice(item.capped_Value, 0) %></td>
+                  <%- include('components/assessmentLayout', {
+              assessed_Information
+            }) %>
                   <% }); %>
                 </tr>
 
@@ -311,15 +336,21 @@ function formatPhoneNumber(phoneNumber) {
                   <td>Assessed</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= formatPrice(item.total_assessed) %></td>
+                  <td class="td-right"><%= formatPrice(item.total_assessed, 0) %></td>
+                  <%- include('components/assessmentLayout', {
+              assessed_Information
+            }) %>
                   <% }); %>
                 </tr>
 
                 <tr>
-                  <td>Est Taxes w/o Exemptions</td>
+                  <td>Est&nbsp;Taxes&nbsp;w/o&nbsp;Exemptions</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= formatPrice(item.est_tax_without_exemption) %></td>
+                  <td class="td-right"><%= formatPrice(item.est_tax_without_exemption, 0) %></td>
+                  <%- include('components/assessmentLayout', {
+              assessed_Information
+            }) %>
                   <% }); %>
                 </tr>
 
@@ -327,19 +358,25 @@ function formatPhoneNumber(phoneNumber) {
                   <td>Exemptions</td>
                   <td>:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td><%= formatPrice(item.exemption_Amount) %></td>
+                  <td class="td-right"><%= (item.exemption_Amount) %></td>
+                  <%- include('components/assessmentLayout', {
+              assessed_Information
+            }) %>
                   <% }); %>
                 </tr>
               </tbody>
+            </table>
             </table>
           </div>
         </div>
 
         <!-- //legal description  -->
         <table class="border border-secondary text-7 table table-striped mt-3">
-          <tr>
-            <th class="bg-color-gray-3 text-8">Legal Description</th>
-          </tr>
+          <thead class="show-on-first-page">
+            <tr>
+              <th class="bg-color-gray-3 text-8 ">Legal Description</th>
+            </tr>
+          </thead>
           <tr>
             <td><%=legal_Description %></td>
           </tr>
@@ -365,14 +402,14 @@ function formatPhoneNumber(phoneNumber) {
         <!-- //tax information  -->
         <% if (tax_Information?.collectorInfo?.length >0) { %>
         <table class="border border-secondary table text-7 mb-0 table-borderless mt-3 table-td-top">
-          <thead  class="show-on-first-page">
+          <thead class="show-on-first-page">
             <tr class="<%= changeHeadingBg(input_Order?.client_Name)%> text-8">
               <th colspan="7">Tax Bill Summary: <%=parcel_No%></th>
             </tr>
 
             <tr class="bg-color-gray-2 text-8">
               <th class="border-end td-left">Collector</th>
-              <th >Tax Year</th>
+              <th>Tax Year</th>
               <th class="td-right">Base Tax</th>
               <th class="td-right">Base Due</th>
               <th class="td-right">
@@ -399,7 +436,9 @@ function formatPhoneNumber(phoneNumber) {
               <td style="width: 170px; color: black;" class="border-end">
                 <p class="mb-1 fw-bold"><%= item?.name%></p>
                 <% if (item?.payable_to) { %>
-                <p class="mb-1">Payble To: <%= item?.payable_to%></p>
+                <p class="mb-1">
+                  <!-- Payble To:  --><%= item?.payable_to%>
+                </p>
                 <% } %>
 
                 <p class="mb-1">Acct #: <%= item?.account_number%></p>
@@ -500,7 +539,7 @@ function formatPhoneNumber(phoneNumber) {
               <td><%=juri?.name%></td>
               <td><%=juri?.tax_year%></td>
               <td class="td-right"><%=juri?.tax_rate%></td>
-              <td class="td-right"><%=formatPrice(juri?.estimated_tax_without_exemption)%></td>
+              <td class="td-right"><%=formatPrice(juri?.estimated_tax_without_exemption, 0)%></td>
               <td class="td-right"><%=juri?.billyear%></td>
               <td class="td-right"><%=formatPrice(juri?.baseamount)%></td>
             </tr>
@@ -627,7 +666,7 @@ function formatPhoneNumber(phoneNumber) {
       }) %>
       </div>
       <% } %>
-    
+
 
       <table class="text-7 table table-border-none " style="margin-top: 100px;">
         <tr>
@@ -643,7 +682,7 @@ function formatPhoneNumber(phoneNumber) {
             of the agencies listed after the Order Completed date hereof. Does
             not include and is not a certification of any mineral taxes,
             personal property taxes( including mobile homes), or any other
-            non-ad valorem taxes. In the event a parcel or tract of real
+            non-ad valorem taxes. <br> In the event a parcel or tract of real
             property covered in a request had been previously re-subdivided,
             split out, our deleted( killed), whereas previous tax account was
             assigned, and/or is to be or was split, or was an undivided
@@ -652,7 +691,7 @@ function formatPhoneNumber(phoneNumber) {
             appraisal district records; the Property Tax Service shall only be
             required to, and claims limited to, furnish Appraisal and Tax
             Information for the parcel or tract as shown on the Current
-            Records of the Appraisal District. Proposed Values are strictly
+            Records of the Appraisal District. <br> Proposed Values are strictly
             preliminary and may change.Proposed Values are obtained directly
             from the appraisal districts and are provided for information
             purposes only. The Property Tax Service is not liable for any
