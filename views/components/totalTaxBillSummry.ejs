@@ -58,7 +58,7 @@ function formatPrice(amount) {
               <p class="mb-1">Acct #: <%= item?.account_number%></p>
     
               <p class="mb-1"><%= item?.mail_To%></p>
-              <p class="mb-1">Ph: <%= item?.phone_No%></p>
+              <p class="mb-1">Ph: <%= formatPhoneNumber(item?.phone_No)%></p>
             </td>
             <!-- //tax year -->
             <td>
