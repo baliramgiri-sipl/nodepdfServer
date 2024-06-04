@@ -67,7 +67,7 @@ function formatPhoneNumber(phoneNumber) {
   
   <div class="main-outer-div">
 
-    <div>
+    <div class="hoa-certificate-tables-td">
       <% hoa_info.forEach(function(item, index){ %>
         <% if (index>0) { %>
           <div class="page-break"></div>
@@ -155,14 +155,14 @@ function formatPhoneNumber(phoneNumber) {
         </table>
 
       </div>
-
+    
        <!-- Hoa management fees section -->
        <% if(item.collector_mgmt) {%>
        <div class="hoa-mgmt-table mt-4">
         <table class="border border-secondary table text-7 mt-0">
         
           <tr>
-            <td class="text-7">Collector/Management Company:</td>
+            <td class="text-7 hoa-certificate-tables-td">Collector/Management Company:</td>
             <td class="text-7"><%= item?.collector_mgmt || ""  %></td>
           </tr>
           <tr>
@@ -237,7 +237,7 @@ function formatPhoneNumber(phoneNumber) {
     <div class="hoa-disclaimer" style="margin-top: 100px;">
       <p class="text-8"><b>HOA Certificate Disclaimer :</b></p>
       <p class="text-7" style="margin-top: 10px;">HOA Assessments being reported are good for 30 days OR through the end of HOA Billing Cycle. Please Request an Update Prior to Closing. Please Review All Comments
-        and Statements furnished on this Certificate.
+        and Statements furnished on this Certificate.<br>
         Research is conducted through various resources such as Deed Restrictions, online information, etc.. however, Information Not Readily Available to the Property Tax Service,
         such as Sales Contract HOA addendums, may need to be forwarded to the Property Tax Service for further review
         </p>

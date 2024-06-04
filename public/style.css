@@ -16,6 +16,9 @@
   thead {
       display: table-row-group; /* Ensures headers appear on the first page */
   }
+  tfoot {
+    display: table-row-group; 
+  }
 
   .header {
       display: none; /* Default to hiding headers */
@@ -38,6 +41,14 @@ header{
   margin: 0;
   padding: 0;
 }
+.assement_data td:nth-child(3) , .assement_data td:nth-child(4), .assement_data th:nth-child(3) , .assement_data th:nth-child(4){
+  width: 150px !important;
+
+}
+.hoa-certificate-tables-td td:first-child{
+   width: 180px !important;
+}
+
 .p-4{
   padding:8px;
 }
@@ -139,7 +150,7 @@ header{
     padding:2px 4px;
   }
   table th{
-    padding: 2px 4px;
+    padding: 4px 4px;
     text-align: start;
   }
   
@@ -283,24 +294,30 @@ header{
   
   
   .text-7{
-    font-size: 12px !important;
+    font-size: 10px !important;
   }
   
   .text-8{
-    font-size: 12px !important;
+    font-size: 11px !important;
   }
   
   .text-9{
-    font-size: 16px !important;
+    font-size: 14px !important;
   }
   
   .pad-t-10{
     padding-top: 10px;
   }
   
-  
+  .mx-2{
+    margin: 0px 4px;
+  }
+  .px-2{
+    padding: 0px 4px !important;
+  }
   .bg-color-gray-3{
     background-color: #b8b8b8 !important;
+    padding:4px 4px;
   }
   
   .bg-color-gray-2{
