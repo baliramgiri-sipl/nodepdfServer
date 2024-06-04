@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
+require("dotenv").config()
 
-app.use(express.json())
+const port = process.env.PORT || 4000
+app.use(express.json({ limit: "50mb" }))
+
 app.use("/api", require("./Route/taxCertRoute"))
-app.listen(4000, () => console.log('listening on 4000 port'));
+app.listen(port, () => console.log(`listening on ${port} `));

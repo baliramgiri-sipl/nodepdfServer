@@ -16,13 +16,14 @@ const PDFMerger = require("pdf-merger-js");
 
 const hoacertificate = async (req, res, next) => {
     try {
-
+        const data = req.body
+        
         const merger = new PDFMerger();
         await merger.add(decodeBase64(req.taxCertificateData));
 
         //if hoad data is available
         if (data?.hoa_info?.length > 0) {
-            const browser = await puppeteer.launch({ headless: true });
+            const browser = await puppeteer.launch(process.env.SERVER === "DEV" ? { headless: true } : { args: ['--no-sandbox', '--disable-setuid-sandbox'] })
             const page = await browser.newPage();
             // Wait for the canvas element to be visible
 
@@ -38,7 +39,7 @@ const hoacertificate = async (req, res, next) => {
             const watermarkPath = path.join(__dirname, '../../views/Hoa/hoawatermark.ejs');
             const watermarkTemplate = fs.readFileSync(watermarkPath, 'utf8');
             // Render the EJS template with data
-            const renderedWatermark = ejs.render(watermarkTemplate, { watermark: data?.isHoaCompleted ? "" : 'HOA PRELIMINARY' })
+            const renderedWatermark = ejs.render(watermarkTemplate, { watermark: !data?.isHoaCompleted ? "" : 'HOA PRELIMINARY' })
             await page.evaluate((renderedWatermark) => {
                 const watermark = document.createElement('div');
                 watermark.innerHTML = renderedWatermark;
@@ -54,7 +55,7 @@ const hoacertificate = async (req, res, next) => {
             const headerTemplate = fs.readFileSync(headerPath, 'utf8');
             // Render the EJS template with data
             // console.log(data?.input_Order?.private_label_logo)
-            const renderedHeader = ejs.render(headerTemplate, { headerType: data?.input_Order.customer_is_private_label, isCompleted: data?.isHoaCompleted, logo: data?.input_Order?.private_label_logo, customer: data?.input_Order.client_Name })
+            const renderedHeader = ejs.render(headerTemplate, { headerType: data?.input_Order.customer_is_private_label, isWaterMark: data?.isHoaCompleted, logo: data?.input_Order?.private_label_logo, customer: data?.input_Order.client_Name })
 
             const pdf = await page.pdf({
                 format: 'A4',
@@ -81,14 +82,14 @@ const hoacertificate = async (req, res, next) => {
         const mergedBuffer = await merger.saveAsBuffer();
         const mergedBase64 = mergedBuffer.toString('base64');
 
-        if(mergedBase64){
+        if (mergedBase64) {
             req.certificate = mergedBase64
-            
+
             next()
-        }else{
-            return res.status(500).json({message:"Invalid base64"})
+        } else {
+            return res.status(500).json({ message: "Invalid base64" })
         }
-        
+
 
     } catch (error) {
         console.log(error);

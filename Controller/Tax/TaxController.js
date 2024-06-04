@@ -12,14 +12,16 @@ router.set('views', path.join(__dirname, '../../views'));
 router.set('view engine', 'ejs');
 
 
-const taxCertificate =async (req, res, next) => {
+const taxCertificate = async (req, res, next) => {
     try {
-        const browser = await puppeteer.launch({ headless: true });
+        const data = req.body
+        const browser = await puppeteer.launch(process.env.SERVER === "DEV" ? { headless: true } : { args: ['--no-sandbox', '--disable-setuid-sandbox'] })
+        // console.log(process.env)
         const page = await browser.newPage();
         // Wait for the canvas element to be visible
 
         await page.goto(`data:text/html;charset=UTF-8,${encodeURIComponent(
-            await renderTemplate(router,'TaxCertificate', data)
+            await renderTemplate(router, 'TaxCertificate', data)
         )}`, { waitUntil: 'networkidle2' });
 
 
@@ -29,7 +31,7 @@ const taxCertificate =async (req, res, next) => {
         const watermarkPath = path.join(__dirname, '../../views/watermark.ejs');
         const watermarkTemplate = fs.readFileSync(watermarkPath, 'utf8');
         // Render the EJS template with data
-        const renderedWatermark = ejs.render(watermarkTemplate, { watermark: data?.isOrderCompleted ? "" : 'PRELIMINARY' })
+        const renderedWatermark = ejs.render(watermarkTemplate, { watermark: !data?.isOrderCompleted ? "" : 'PRELIMINARY' })
         await page.evaluate((renderedWatermark) => {
             const watermark = document.createElement('div');
             watermark.innerHTML = renderedWatermark;
@@ -45,7 +47,7 @@ const taxCertificate =async (req, res, next) => {
         const headerTemplate = fs.readFileSync(headerPath, 'utf8');
         // Render the EJS template with data
         // console.log(data?.input_Order?.private_label_logo)
-        const renderedHeader = ejs.render(headerTemplate, { headerType: data?.input_Order.customer_is_private_label, isCompleted: data?.isOrderCompleted, logo: data?.input_Order?.private_label_logo, customer: data?.input_Order.client_Name })
+        const renderedHeader = ejs.render(headerTemplate, { headerType: data?.input_Order.customer_is_private_label, isWaterMark: data?.isOrderCompleted, logo: data?.input_Order?.private_label_logo, customer: data?.input_Order.client_Name })
 
         const pdf = await page.pdf({
             format: 'A4',
@@ -63,7 +65,7 @@ const taxCertificate =async (req, res, next) => {
         });
         await browser.close();
 
-        
+
         // return res.send(pdf)
         // Convert PDF buffer to Base64 string
         // const pdfBase64 = pdf.toString('base64');
@@ -75,17 +77,17 @@ const taxCertificate =async (req, res, next) => {
         //     'Content-Disposition': 'inline; filename="output.pdf"',
         //     'Content-Length': pdf.length
         // });
-        if(pdf){
+        if (pdf) {
             const pdfBase64 = pdf.toString('base64');
             req.taxCertificateData = pdfBase64
             req.data = data
             next();
-        }else{
-            return res.status(400).json({message: 'Invalid PDF'})
+        } else {
+            return res.status(400).json({ message: 'Invalid PDF' })
         }
         // res.send(pdf);
     } catch (error) {
         return res.json(error?.message)
     }
 }
-module.exports = {taxCertificate}
+module.exports = { taxCertificate }
