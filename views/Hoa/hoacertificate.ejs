@@ -129,11 +129,11 @@ function formatPhoneNumber(phoneNumber) {
           </tr>
           <tr>
             <td class="text-7">Contact:</td>
-            <td class="text-7"><%= item.conatct %></td>
+            <td class="text-7"><%= formatPhoneNumber(item.conatct) %></td>
           </tr>
           <tr>
             <td class="text-7">Phone:</td>
-            <td class="text-7"><%= item.hoa_phone %></td>
+            <td class="text-7"><%= formatPhoneNumber(item.hoa_phone) %></td>
           </tr>
           <tr>
             <td class="text-7">Email:</td>
@@ -171,11 +171,11 @@ function formatPhoneNumber(phoneNumber) {
           </tr>
           <tr>
             <td class="text-7">Contact:</td>
-            <td class="text-7"><%= item?.contact || "" %></td>
+            <td class="text-7"><%= formatPhoneNumber(item?.contact) %></td>
           </tr>
           <tr>
             <td class="text-7">Phone:</td>
-            <td class="text-7"><%= formatPhoneNumber(item?.hoa_collector_phone) || "" %></td>
+            <td class="text-7"><%= formatPhoneNumber(item?.hoa_collector_phone)  %></td>
           </tr>
           <tr>
             <td class="text-7">Email:</td>
