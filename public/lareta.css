@@ -1,0 +1,503 @@
+*{
+    font-family: Helvetica, sans-serif;
+    font-weight: 500;
+}
+.page-break{
+  page-break-after: always;
+}
+
+ul{
+    margin: 0;
+    padding:0;
+}
+table th{
+    font-weight: 600;
+}
+/* page printing styles here */
+@media print {
+  
+    thead {
+        display: table-row-group; /* Ensures headers appear on the first page */
+    }
+    tfoot {
+      display: table-row-group; 
+    }
+  
+    .header {
+        display: none; /* Default to hiding headers */
+    }
+  
+    .show-on-first-page {
+        display: table-row-group; /* Show headers only on the first page */
+    }
+  
+  
+  }
+
+table{
+    margin-top:10px;
+}
+table td, th{
+    text-align: start;
+    padding: 3px 4px;
+}
+table tr{
+    padding: 0;
+    margin: 0;
+}
+p{
+    margin: 0;
+}
+table{
+    border:none;
+    border-collapse: collapse;
+    width: 100%;
+}
+/* tailwind css type classes for pdf */
+
+.text-7{
+    font-size: 13px !important;
+  }
+  
+  .text-8{
+    font-size: 15px !important;
+  }
+  
+  .text-9{
+    font-size: 18px !important;
+  }
+  /* text alignments */
+  .text-center{
+    text-align: center;
+  }
+  .text-start{
+    text-align: start;
+  }
+  .text-end{
+    text-align: end;
+  }
+
+  .pdf-text-black{
+     color:#000000 !important
+  }
+  .text-white{
+    color:white !important;
+  }
+  /* Background colors */
+  .bg-gray-200{
+    background-color: #f1f1f1 ;
+  }
+  .bg-gray-400{
+    background-color: #c3c3c3;
+  }
+  .bg-gray-500{
+    background-color: #808080 ;
+  }
+  .bg-blue-400{
+    background-color: #deeaf6 ;
+  }
+ .bg-white{
+  background-color: white ;
+ }
+
+/* Table border color */
+ .border-light{
+  border: 2px solid #d0d0d0;
+ }
+  .table-border{
+    border: 1px solid #000000;
+  }
+  .no-border{
+    border:0px solid transparent ;
+  }
+  .border-top{
+    border-top: 1px solid white !important;
+  }
+  .border-bottom{
+    border-bottom: 1px solid white !important;
+  }
+  .border-start{
+    border-left: 1px solid;
+  }
+  .border-end{
+    border-right: 1px solid;
+  }
+  .border-dark{
+    border-color: #000000 !important;
+  }
+  .border-bottom-dark{
+    border-bottom: 1px solid;
+  }
+  .border-top-dark{
+    border-top: 1px solid;
+  }
+  /* Font weights */
+  .font-normal{
+    font-weight: 400;
+  }
+  .font-semibold{ 
+    font-weight: 500;
+  
+  }
+  .font-bold{
+    font-weight: 600;
+  }
+  .font-extrabold{
+    font-weight: 700;
+  }
+
+  /* Padding stylings start */
+   /* all side paddings */
+    .p-0{
+      padding:0;
+    }
+    .p-1{
+      padding:2px;
+    }
+    .p-2{
+      padding:4px;
+    }
+    .p-3{
+      padding:6px;
+    }
+    .p-4{
+      padding:8px;
+    }
+    .p-5{
+      padding:10px;
+    }
+
+    /* padding top stylings */
+    .pt-0{
+      padding-top:0;
+    }
+    .pt-1{
+      padding-top:2px;
+    }
+    .pt-2{
+      padding-top:4px;
+    }
+    .pt-3{
+      padding-top:6px;
+    }
+    .pt-4{
+      padding-top:8px;
+    }
+    .pt-5{
+      padding-top:10px;
+    }
+
+    /* padding bottom stylings */
+    .pb-0{
+      padding-bottom:0;
+    }
+    .pb-1{
+      padding-bottom:2px;
+    }
+    .pb-2{
+      padding-bottom:4px;
+    }
+    .pb-3{
+      padding-bottom:6px;
+    }
+    .pb-4{
+      padding-bottom:8px;
+    }
+    .pb-5{
+      padding-bottom:10px;
+    }
+   
+    /* padding left or padding start stylings */
+    .pl-0, .ps-0{
+      padding-left:0;
+    }
+    .pl-1, .ps-1{
+      padding-left:2px;
+    }
+    .pl-2, .ps-2{
+      padding-left:4px;
+    }
+    .pl-3, .ps-3{
+      padding-left:6px;
+    }
+    .pl-4, .ps-4{
+      padding-left:8px;
+    }
+    .pl-5, .ps-5{
+      padding-left:10px;
+    }
+
+    /* padding left or padding start stylings */
+    .pe-0, .pr-0{
+      padding-right:0;
+    }
+    .pe-1, .pr-1{
+      padding-right:2px;
+    }
+    .pe-2, .pr-2{
+      padding-right:4px;
+    }
+    .pe-3, .pr-3{
+      padding-right:6px;
+    }
+    .pe-4, .pr-4{
+      padding-right:8px;
+    }
+    .pe-5, .pr-5{
+      padding-right:10px;
+    }
+
+     /* padding left or padding start stylings */
+     .px-0{
+      padding-right:0;
+      padding-left: 0;
+    }
+    .px-1{
+      padding-right:2px;
+      padding-left: 2px;
+    }
+    .px-2{
+      padding-right:4px;
+      padding-left: 4px;
+    }
+    .px-3{
+      padding-right:6px;
+      padding-left: 6px;
+    }
+    .px-4{
+      padding-right:8px;
+      padding-left: 8px;
+    }
+    .px-5{
+      padding-right:10px;
+      padding-left: 10px;
+    }
+
+     /* padding left or padding start stylings */
+     .py-0{
+      padding-top:0;
+      padding-bottom: 0;
+    }
+    .py-1{
+      padding-top:2px;
+      padding-bottom: 2px;
+    }
+    .py-2{
+      padding-top:4px;
+      padding-bottom: 4px;
+    }
+    .py-3{
+      padding-top:6px;
+      padding-bottom: 6px;
+    }
+    .py-4{
+      padding-top:8px;
+      padding-bottom: 8px;
+    }
+    .py-5{
+      padding-top:10px;
+      padding-bottom: 10px;
+    }
+  /* Padding styleing ends */
+
+  /* Margin stylings start */
+   /* all side margin */
+   .m-0{
+    margin:0;
+  }
+  .m-1{
+    margin:2px;
+  }
+  .m-2{
+    margin:4px;
+  }
+  .m-3{
+    margin:6px;
+  }
+  .m-4{
+    margin:8px;
+  }
+  .m-5{
+    margin:10px;
+  }
+
+  /* margin top stylings */
+  .mt-0{
+    margin-top:0;
+  }
+  .mt-1{
+    margin-top:2px;
+  }
+  .mt-2{
+    margin-top:4px;
+  }
+  .mt-3{
+    margin-top:6px;
+  }
+  .mt-4{
+    margin-top:8px;
+  }
+  .mt-5{
+    margin-top:10px;
+  }
+
+  /* margin bottom stylings */
+  .mb-0{
+    margin-bottom:0;
+  }
+  .mb-1{
+    margin-bottom:2px;
+  }
+  .mb-2{
+    margin-bottom:4px;
+  }
+  .mb-3{
+    margin-bottom:6px;
+  }
+  .mb-4{
+    margin-bottom:8px;
+  }
+  .mb-5{
+    margin-bottom:10px;
+  }
+ 
+  /* margin left or margin start stylings */
+  .ml-0, .ms-0{
+    margin-left:0;
+  }
+  .ml-1, .ms-1{
+    margin-left:2px;
+  }
+  .ml-2, .ms-2{
+    margin-left:4px;
+  }
+  .ml-3, .ms-3{
+    margin-left:6px;
+  }
+  .ml-4, .ms-4{
+    margin-left:8px;
+  }
+  .ml-5, .ms-5{
+    margin-left:10px;
+  }
+
+  /* margin left or margin start stylings */
+  .me-0, .mr-0{
+    margin-right:0;
+  }
+  .me-1, .mr-1{
+    margin-right:2px;
+  }
+  .me-2, .mr-2{
+    margin-right:4px;
+  }
+  .me-3, .mr-3{
+    margin-right:6px;
+  }
+  .me-4, .mr-4{
+    margin-right:8px;
+  }
+  .me-5, .mr-5{
+    margin-right:10px;
+  }
+
+   /* margin left right or margin start end stylings */
+   .mx-0{
+    margin-right:0;
+    margin-left: 0;
+  }
+  .mx-1{
+    margin-right:2px;
+    margin-left: 2px;
+  }
+  .mx-2{
+    margin-right:4px;
+    margin-left: 4px;
+  }
+  .mx-3{
+    margin-right:6px;
+    margin-left: 6px;
+  }
+  .mx-4{
+    margin-right:8px;
+    margin-left: 8px;
+  }
+  .mx-5{
+    margin-right:10px;
+    margin-left: 10px;
+  }
+
+   /* margin left right or margin start end stylings */
+   .my-0{
+    margin-top:0;
+    margin-bottom: 0;
+  }
+  .my-1{
+    margin-top:2px;
+    margin-bottom: 2px;
+  }
+  .my-2{
+    margin-top:4px;
+    margin-bottom: 4px;
+  }
+  .my-3{
+    margin-top:6px;
+    margin-bottom: 6px;
+  }
+  .my-4{
+    margin-top:8px;
+    margin-bottom: 8px;
+  }
+  .my-5{
+    margin-top:10px;
+    margin-bottom: 10px;
+  }
+/* Margin styleing ends */
+
+/* Width and height styling starts */
+.w-full{
+  width: 100%;
+}
+.auto{
+  width: auto;
+}
+
+.h-full{
+  height: 100%;
+}
+.h-auto{
+  height: auto;
+}
+.h-6{
+  height: 12px !important;
+}
+.content-start{
+  align-content: start !important;
+}
+/* flex box styling starts */
+
+.flex{
+  display: flex;
+}
+.flex-grow{
+  flex-grow: 1;
+}
+.flex-shrink-0{
+  flex-shrink: 0;
+}
+.basis-50{
+  flex-basis: 50%;
+}
+.items-center{
+  align-items: center !important;
+}
+.justify-center{
+  justify-content: center !important;
+}
+.justify-between{
+  justify-content: space-between !important;
+}
+.a_helvetica_bold{
+  font-family: Helvetica, sans-serif !important;
+  font-weight: 600 !important;
+}

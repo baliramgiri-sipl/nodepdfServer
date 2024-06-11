@@ -1,5 +1,4 @@
 
-
 const data = {
     isOrderCompleted: true,
     isHoaCompleted: false,
@@ -2583,4 +2582,658 @@ const data = {
     ]
 }
 
-module.exports = { data }
+const laretaJosn ={
+    "input_order": {
+        "cert_fees": "$10",
+        "order_no": "TEST0017",
+        "cert_date": "",
+        "account_id": "20373718"
+    },
+    "order_comment": [
+       
+    ],
+    "parcel": {
+        "parcel_total": {
+            "base_tax_total": "$124",
+            "due_1_total": "$0",
+            "due_2_total": "$0"
+        },
+        "parcel_lists": [
+            {
+                "enity": "Junior College",
+                "year": "2023",
+                "base_tax": "$15",
+                "due_1": "$0",
+                "due_2": "$0"
+            },
+            {
+                "enity": "Navigation District",
+                "year": "2023",
+                "base_tax": "$2",
+                "due_1": "$0",
+                "due_2": "$0"
+            },
+            {
+                "enity": "Victoria Co Road & Bridge",
+                "year": "2023",
+                "base_tax": "$5",
+                "due_1": "$0",
+                "due_2": "$0"
+            },
+            {
+                "enity": "Victoria CAD",
+                "year": "2023",
+                "base_tax": "$0",
+                "due_1": "$0",
+                "due_2": "$0"
+            },
+            {
+                "enity": "Victoria County",
+                "year": "2023",
+                "base_tax": "$29",
+                "due_1": "$0",
+                "due_2": "$0"
+            },
+            {
+                "enity": "Victoria Co Ground Water District",
+                "year": "2023",
+                "base_tax": "$0",
+                "due_1": "$0",
+                "due_2": "$0"
+            },
+            {
+                "enity": "Victoria ISD",
+                "year": "2023",
+                "base_tax": "$73",
+                "due_1": "$0",
+                "due_2": "$0"
+            }
+        ]
+    },
+    "parcels": {
+        "property_info": [
+            {
+                "account_id": "20373718",
+                "situs": "DONALDSON RD Texas",
+                "owner": "VULCAN MATERIALS COMPANY PROPERTY TAX DEPARTMENT",
+                "mailing": "1200 URBAN CENTER DR,BIRMINGHAM,AL,35242-2545",
+                "parcel_comment": [
+                    "<b>Improvement Only Tax Account requires the&nbsp; \ncorresponding Land Account in order to provide Complete Assessment Information of\n the Parcel.</b><br>"
+                ],
+                "legal_info": {
+                    "description": "BUILDING @ DONALDSON RD ON P DE LA GARZA ABST 51 ACRES 154.06",
+                    "deed": "",
+                    "acrerage": ""
+                },
+                "AssessmentData": [
+                    {
+                        "assessment": "mpr Market (+)",
+                        "year_amt1": "$9110",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "Land Market (+)",
+                        "year_amt1": "$0",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "Homestead Cap (-)",
+                        "year_amt1": "$0",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "Market Total (=)",
+                        "year_amt1": "$9110",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "Assessed Total (=)",
+                        "year_amt1": "$9110",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "Certified",
+                        "year_amt1": "Yes",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "Exemptions",
+                        "year_amt1": "Not Available",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "2023 W/O Exemptions Estimate:",
+                        "year_amt1": "$127"
+                    }
+                ],
+                "SummaryAcctTale": {
+                    "summaryData": [
+                        {
+                            "entity": "Victoria County Tax Assessor/Collector",
+                            "year": "2023",
+                            "base_tax": "$127.52",
+                            "due_1": "$0.00",
+                            "due_2": "$0.00"
+                        }
+                    ],
+                    "summary_total": {
+                        "base_tax": "$127.52",
+                        "due_1": "$0",
+                        "due_2": "$0"
+                    }
+                },
+                "CheckDueTableData": {
+                    "check_due_total": {
+                        "tax_rate": "$1.39969",
+                        "base_tax": "$127.52",
+                        "due_1": "$0",
+                        "due_2": "$0"
+                    },
+                    "dueData": [
+                        {
+                            "entity": {
+                                "name": "Victoria County Tax Assessor/Collector",
+                                "phone": "+13615763671",
+                                "acctno": "",
+                                "payable_to": "",
+                                "address": "205 N Bridge Street, Suite 101,Victoria,Texas,77901",
+                                "entity_total": {
+                                    "tax_rate": "$1.399690",
+                                    "base_tax": "$127.52",
+                                    "due_1": "$0.00",
+                                    "due_2": "$0.00"
+                                }
+                            },
+                            "year": "2023",
+                            "tax_rate": "$1.399690",
+                            "base_tax": "$127.52",
+                            "due_1": "$0.00",
+                            "due_2": "$0.00",
+                            "status": "Paid"
+                        }
+                       
+                    ]
+                },
+                "collectedByData": [
+                    {
+                        "tablename": "Junior College",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.1722",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$15.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$15.69",
+                        "due_1": "$0",
+                        "due_2": "$0",
+                        "subtotal_base_tax": "$15.69",
+                        "subtotal_due_1": "$0",
+                        "subtotal_due_2": "$0"
+                    },
+                    {
+                        "tablename": "Navigation District",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.0267",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$2.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$2.43",
+                        "due_1": "$0",
+                        "due_2": "$0",
+                        "subtotal_base_tax": "$2.43",
+                        "subtotal_due_1": "$0",
+                        "subtotal_due_2": "$0"
+                    },
+                    {
+                        "tablename": "Victoria Co Road & Bridge",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.0605",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$5.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$5.51",
+                        "due_1": "$0",
+                        "due_2": "$0",
+                        "subtotal_base_tax": "$5.51",
+                        "subtotal_due_1": "$0",
+                        "subtotal_due_2": "$0"
+                    },
+                    {
+                        "tablename": "Victoria CAD",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.00",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$0.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$0.00",
+                        "due_1": "$0.00",
+                        "due_2": "$0.00",
+                        "subtotal_base_tax": "$0.00",
+                        "subtotal_due_1": "$0.00",
+                        "subtotal_due_2": "$0.00"
+                    },
+                    {
+                        "tablename": "Victoria County",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.3275",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$29.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$29.84",
+                        "due_1": "$0",
+                        "due_2": "$0",
+                        "subtotal_base_tax": "$29.84",
+                        "subtotal_due_1": "$0",
+                        "subtotal_due_2": "$0"
+                    },
+                    {
+                        "tablename": "Victoria Co Ground Water District",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.00699",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$0.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$0.64",
+                        "due_1": "$0",
+                        "due_2": "$0",
+                        "subtotal_base_tax": "$0.64",
+                        "subtotal_due_1": "$0",
+                        "subtotal_due_2": "$0"
+                    },
+                    {
+                        "tablename": "Victoria ISD",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.8058",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$73.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$73.41",
+                        "due_1": "$0",
+                        "due_2": "$0",
+                        "subtotal_base_tax": "$73.41",
+                        "subtotal_due_1": "$0",
+                        "subtotal_due_2": "$0"
+                    }
+                ],
+                "ExemptionInfromatonData": [
+                    {
+                        "entity": "Junior College",
+                        "hom": "0",
+                        "ov65": "$20000",
+                        "dp": "0",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    },
+                    {
+                        "entity": "Navigation District",
+                        "hom": "",
+                        "ov65": "",
+                        "dp": "",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    },
+                    {
+                        "entity": "Victoria Co Road & Bridge",
+                        "hom": "3000",
+                        "ov65": "6000",
+                        "dp": "0.00",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    },
+                    {
+                        "entity": "Victoria CAD",
+                        "hom": "",
+                        "ov65": "",
+                        "dp": "",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    },
+                    {
+                        "entity": "Victoria County",
+                        "hom": "0",
+                        "ov65": "6000",
+                        "dp": "",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    },
+                    {
+                        "entity": "Victoria Co Ground Water District",
+                        "hom": "",
+                        "ov65": "",
+                        "dp": "",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    },
+                    {
+                        "entity": "Victoria ISD",
+                        "hom": "$100,000",
+                        "ov65": "$10,000",
+                        "dp": "$10,000",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    }
+                ]
+            }
+        ],
+        "property_info": [
+            {
+                "account_id": "20373718",
+                "situs": "DONALDSON RD Texas",
+                "owner": "VULCAN MATERIALS COMPANY PROPERTY TAX DEPARTMENT",
+                "mailing": "1200 URBAN CENTER DR,BIRMINGHAM,AL,35242-2545",
+                "parcel_comment": [
+                    "<b>Improvement Only Tax Account requires the&nbsp; \ncorresponding Land Account in order to provide Complete Assessment Information of\n the Parcel.</b><br>"
+                ],
+                "legal_info": {
+                    "description": "BUILDING @ DONALDSON RD ON P DE LA GARZA ABST 51 ACRES 154.06",
+                    "deed": "",
+                    "acrerage": ""
+                },
+                "AssessmentData": [
+                    {
+                        "assessment": "mpr Market (+)",
+                        "year_amt1": "$9110",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "Land Market (+)",
+                        "year_amt1": "$0",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "Homestead Cap (-)",
+                        "year_amt1": "$0",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "Market Total (=)",
+                        "year_amt1": "$9110",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "Assessed Total (=)",
+                        "year_amt1": "$9110",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "Certified",
+                        "year_amt1": "Yes",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "Exemptions",
+                        "year_amt1": "Not Available",
+                        "year_amt2": "Not Available"
+                    },
+                    {
+                        "assessment": "2023 W/O Exemptions Estimate:",
+                        "year_amt1": "$127"
+                    }
+                ],
+                "SummaryAcctTale": {
+                    "summaryData": [
+                        {
+                            "entity": "Victoria County Tax Assessor/Collector",
+                            "year": "2023",
+                            "base_tax": "$127.52",
+                            "due_1": "$0.00",
+                            "due_2": "$0.00"
+                        }
+                    ],
+                    "summary_total": {
+                        "base_tax": "$127.52",
+                        "due_1": "$0",
+                        "due_2": "$0"
+                    }
+                },
+                "CheckDueTableData": {
+                    "check_due_total": {
+                        "tax_rate": "$1.39969",
+                        "base_tax": "$127.52",
+                        "due_1": "$0",
+                        "due_2": "$0"
+                    },
+                    "dueData": [
+                        {
+                            "entity": {
+                                "name": "Victoria County Tax Assessor/Collector",
+                                "phone": "+13615763671",
+                                "acctno": "",
+                                "payable_to": "",
+                                "address": "205 N Bridge Street, Suite 101,Victoria,Texas,77901",
+                                "entity_total": {
+                                    "tax_rate": "$1.399690",
+                                    "base_tax": "$127.52",
+                                    "due_1": "$0.00",
+                                    "due_2": "$0.00"
+                                }
+                            },
+                            "year": "2023",
+                            "tax_rate": "$1.399690",
+                            "base_tax": "$127.52",
+                            "due_1": "$0.00",
+                            "due_2": "$0.00",
+                            "status": "Paid"
+                        }
+                       
+                    ]
+                },
+                "collectedByData": [
+                    {
+                        "tablename": "Junior College",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.1722",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$15.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$15.69",
+                        "due_1": "$0",
+                        "due_2": "$0",
+                        "subtotal_base_tax": "$15.69",
+                        "subtotal_due_1": "$0",
+                        "subtotal_due_2": "$0"
+                    },
+                    {
+                        "tablename": "Navigation District",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.0267",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$2.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$2.43",
+                        "due_1": "$0",
+                        "due_2": "$0",
+                        "subtotal_base_tax": "$2.43",
+                        "subtotal_due_1": "$0",
+                        "subtotal_due_2": "$0"
+                    },
+                    {
+                        "tablename": "Victoria Co Road & Bridge",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.0605",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$5.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$5.51",
+                        "due_1": "$0",
+                        "due_2": "$0",
+                        "subtotal_base_tax": "$5.51",
+                        "subtotal_due_1": "$0",
+                        "subtotal_due_2": "$0"
+                    },
+                    {
+                        "tablename": "Victoria CAD",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.00",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$0.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$0.00",
+                        "due_1": "$0.00",
+                        "due_2": "$0.00",
+                        "subtotal_base_tax": "$0.00",
+                        "subtotal_due_1": "$0.00",
+                        "subtotal_due_2": "$0.00"
+                    },
+                    {
+                        "tablename": "Victoria County",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.3275",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$29.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$29.84",
+                        "due_1": "$0",
+                        "due_2": "$0",
+                        "subtotal_base_tax": "$29.84",
+                        "subtotal_due_1": "$0",
+                        "subtotal_due_2": "$0"
+                    },
+                    {
+                        "tablename": "Victoria Co Ground Water District",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.00699",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$0.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$0.64",
+                        "due_1": "$0",
+                        "due_2": "$0",
+                        "subtotal_base_tax": "$0.64",
+                        "subtotal_due_1": "$0",
+                        "subtotal_due_2": "$0"
+                    },
+                    {
+                        "tablename": "Victoria ISD",
+                        "acct_no": "",
+                        "collected_by": "Victoria County Tax Assessor/Collector",
+                        "tax_rate_1": "Not Available",
+                        "tax_rate_2": "$0.8058",
+                        "exemption_1": "$0.00",
+                        "exemption_2": "$73.00",
+                        "exemption_name": "",
+                        "tax_year": "2023",
+                        "base_tax": "$73.41",
+                        "due_1": "$0",
+                        "due_2": "$0",
+                        "subtotal_base_tax": "$73.41",
+                        "subtotal_due_1": "$0",
+                        "subtotal_due_2": "$0"
+                    }
+                ],
+                "ExemptionInfromatonData": [
+                    {
+                        "entity": "Junior College",
+                        "hom": "0",
+                        "ov65": "$20000",
+                        "dp": "0",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    },
+                    {
+                        "entity": "Navigation District",
+                        "hom": "",
+                        "ov65": "",
+                        "dp": "",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    },
+                    {
+                        "entity": "Victoria Co Road & Bridge",
+                        "hom": "3000",
+                        "ov65": "6000",
+                        "dp": "0.00",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    },
+                    {
+                        "entity": "Victoria CAD",
+                        "hom": "",
+                        "ov65": "",
+                        "dp": "",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    },
+                    {
+                        "entity": "Victoria County",
+                        "hom": "0",
+                        "ov65": "6000",
+                        "dp": "",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    },
+                    {
+                        "entity": "Victoria Co Ground Water District",
+                        "hom": "",
+                        "ov65": "",
+                        "dp": "",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    },
+                    {
+                        "entity": "Victoria ISD",
+                        "hom": "$100,000",
+                        "ov65": "$10,000",
+                        "dp": "$10,000",
+                        "thirtyOne": "Not Available",
+                        "fiftyOne": "Not Available",
+                        "seventyOne": "Not Available"
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+module.exports = { data, laretaJosn }

@@ -1,9 +1,14 @@
 const express = require('express');
 const app = express();
-require("dotenv").config()
+require("dotenv").config();
 
-const port = process.env.PORT || 4000
-app.use(express.json({ limit: "50mb" }))
+const port = process.env.PORT || 4000;
+app.use(express.json({ limit: "50mb" }));
 
-app.use("/api", require("./Route/taxCertRoute"))
+
+app.use("/api", require("./Route/taxCertRoute"));
+
+//lareta html to pdf conversion router
+app.use("/lareta-api",require("./Route/laretaCertRoute"));
+
 app.listen(port, () => console.log(`listening on ${port} `));

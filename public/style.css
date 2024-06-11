@@ -364,3 +364,8 @@ header{
   .hoa-certificate table td:first-child{
     width: 120px;
   }
+
+  .list-style-disc{
+    list-style-type: disc !important;
+  }
+  
