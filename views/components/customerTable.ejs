@@ -1,5 +1,5 @@
 <!-- views/partials/customerTable.ejs -->
-<table class="table <%= getCustomerName(input_Order?.client_Name)===5 ? "" :"d-none" %> text-7 table-border-none">
+<table class="table <%= getCustomerName(input_Order?.client_Name)===5 ? "" :"d-none" %> text-7 table-border-none customer_tbl">
  
 <tr>
   <td class="table-td-left">GF # </td>
@@ -19,7 +19,7 @@
 </table>
 
 
-<table class="table <%= getCustomerName(input_Order?.client_Name)===5 ? "d-none" :"" %> text-7 table-border-none">
+<table class="table <%= getCustomerName(input_Order?.client_Name)===5 ? "d-none" :"" %> text-7 table-border-none customer_tbl">
     <!-- //show customer name conditionally  -->
   <% if (customer) { %>
   <tr>

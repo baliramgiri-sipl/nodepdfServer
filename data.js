@@ -2,7 +2,7 @@
 
 const data = {
     isOrderCompleted: true,
-    isHoaCompleted: false,
+    isHoaCompleted: true,
 
     "input_Order": {
         "order_Number": "CBL Issue",

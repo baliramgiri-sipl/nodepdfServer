@@ -1,60 +1,60 @@
-<div   style="width: 50%;">
+<div style="width: 50%">
   <!-- //"Texas Family Title": -->
-  <% if (getCustomerName(input_Order.client_Name)===2 && input_Order?.customer_is_private_label) { %>
+  <% if (getCustomerName(input_Order.client_Name)===2 &&
+  input_Order?.customer_is_private_label) { %>
   <div class="table1-inner2 text-7">
     <p>Remit Certificate Fee To :</p>
-    <div style="display: flex; gap: 20px; margin-top: 5px">
-      <div style="flex: 1; height: 70px">
-        <img
-          width="100%"
-          height="100%"
-          class="<%=input_Order?.private_label_logo ? "" :"d-none" %>"
-          style="object-fit: contain"
-          src="<%=atob(input_Order?.private_label_logo) %>"
-          alt="logo"
-        />
+    <div style="display: flex; gap: 20px; margin-top: 15px;">
+      <div style=" height: 70px">
+        <img width="100%" height="100%"
+        class="<%=input_Order?.private_label_logo ? "" :"d-none" %>"
+        style="object-fit: contain"
+        src="<%=atob(input_Order?.private_label_logo) %>" alt="logo" />
       </div>
       <!-- //address  -->
       <%- include('RemitAddress', { input_Order }) %>
     </div>
   </div>
   <!-- //"TaxCertPros LLC": -->
-  <% } else if (getCustomerName(input_Order.client_Name)===3  && input_Order?.customer_is_private_label) { %>
-  <div class="table1-inner2 text-7  ">
+  <% } else if (getCustomerName(input_Order.client_Name)===3 &&
+  input_Order?.customer_is_private_label) { %>
+  <div class="table1-inner2 text-7">
     <p>Remit Certificate Fee To :</p>
-    <div style="display: flex; gap: 40px; margin-top: 5px; ">
-          <!-- //address  -->
-       <%- include('RemitAddress', { input_Order }) %>
-      <div style="flex: 1; height: 70px">
-        <img
-          width="100%"
-          height="100%"
-          style="object-fit: contain"
-          class="<%=input_Order?.private_label_logo ? "" :"d-none" %>"
-          src="<%=atob(input_Order?.private_label_logo) %>"
-          alt="logo"
-        />
+    <% if (input_Order?.private_label_display_name ||  input_Order?.private_label_address || input_Order?.private_label_csz || input_Order?.private_label_phone || input_Order?.private_label_email) { %>     
+      <div style="display: flex; margin-top: 10px;gap:40px;"> <% }
+       else { %>  <div style="display: flex;"><% } %>
+
+      <!-- //address  -->
+      <%- include('RemitAddress', { input_Order }) %>
+      <div style="height: 70px">
+        <img width="100%" height="100%" style="object-fit: contain"
+        class="<%=input_Order?.private_label_logo ? "" :"d-none" %>"
+        src="<%=atob(input_Order?.private_label_logo) %>" alt="logo" />
       </div>
-     
     </div>
   </div>
-  <!-- //The Title Company -->
-  <% }else if (getCustomerName(input_Order.client_Name)===4  && input_Order?.customer_is_private_label) { %>
-  <div class="table1-inner2 text-7"  style="width: 100%;">
+  <!-- //The Title Company --> 
+  <% }else if ((getCustomerName(input_Order.client_Name)===4 ||
+  getCustomerName(input_Order.client_Name)===1) &&
+  input_Order?.customer_is_private_label) { %>
+  <div class="table1-inner2 text-7" style="width: 100%">
     <p>Remit Certificate Fee To :</p>
-    <div style="display: flex; justify-content: space-between; margin-top: 5px;width: 100%;">
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        width: 100%;
+      "
+    >
       <!-- //address  -->
       <%- include('RemitAddress', { input_Order, }) %>
 
-      <div style=" height: 70px">
-        <img
-          width="100%"
-          height="100%"
-          class="<%=input_Order?.private_label_logo ? "" :"d-none" %>"
-          style="object-fit: contain"
-          src="<%=atob(input_Order?.private_label_logo) %>"
-          alt="logo"
-        />
+      <div style="height: 70px">
+        <img width="100%" height="100%"
+        class="<%=input_Order?.private_label_logo ? "" :"d-none" %>"
+        style="object-fit: contain"
+        src="<%=atob(input_Order?.private_label_logo) %>" alt="logo" />
       </div>
     </div>
   </div>

@@ -35,16 +35,52 @@
           TAX INFORMATION ONLY <% } %></h6>  
   </div>
   <% } else { %> 
-    <div  style="
+    <!-- "River City National Title" -->
+    <% if (getCustomerName(customer)===1) { %> <div  style="
+    width: 90.8vw;
+    margin-left: 36px;
+    background: #1a2c5f;
+    color: white;
+    padding:7px 0px;
+    margin-top: -15px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  "> <% }  else if (getCustomerName(customer)===4) { %>
+
+  <div  style="
+  width: 90.8vw;
+  margin-left: 36px;
+  background: #14212e;
+  color: white;
+  padding:7px 0px;
+  margin-top: -15px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+">
+<% } else { %> <div  style="
       width: 90.8vw;
       margin-left: 36px;
       background: white;
       height: 60px;
       margin-top: -15px;
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 1px;
       display: flex;
       align-items: center;
       gap: 5px;
-    ">
+    "><% } %>
+    
     <!-- //certsimpleusa header  -->
     <% if (!headerType) { %>
     <div style="width: 180px; height: 100%" >
@@ -62,10 +98,10 @@
     <% }else { %>
     <div style="width: 200px; height: 100%">
       <% if (getCustomerName(customer)===2 || !logo) { %> 
-          <h6 style="font-size: 15px;">
+          <h6 style="font-size: 15px; display: flex; align-items: center; height: 100%; margin: 0;">
             <%= customer %>
           </h6>
-        <% }  else if( getCustomerName(customer) !==3 && getCustomerName(customer) !==4 ) { %> <img width="100%" height="100%" style="object-fit: contain" src="<%=atob(logo)%>" alt="logo" /><% } %>
+        <% }  else if( getCustomerName(customer) !==3 && getCustomerName(customer) !==4 && getCustomerName(customer) !==1 ) { %> <img width="100%" height="100%" style="object-fit: contain" src="<%=atob(logo)%>" alt="logo" /><% } %>
       
     </div>
     <div style="

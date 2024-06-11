@@ -69,7 +69,7 @@ const hoacertificate = async (req, res, next) => {
                 </style>
                 ${renderedHeader}
             `,
-                margin: { top: (data?.isHoaCompleted || (getCustomerName(data?.input_Order.client_Name) === 5)) ? 70 : 90, bottom: 10, left: 15, right: 15 },
+                margin: { top: (data?.isHoaCompleted || (getCustomerName(data?.input_Order.client_Name) === 5)) ? 70 : ((getCustomerName(data?.input_Order.client_Name) === 1 || getCustomerName(data?.input_Order.client_Name) === 2 || getCustomerName(data?.input_Order.client_Name) === 3 || getCustomerName(data?.input_Order.client_Name) === 4) && !data?.isHoaCompleted) ? 45 : 80, bottom: 10, left: 15, right: 15 },
             });
             await browser.close();
 
