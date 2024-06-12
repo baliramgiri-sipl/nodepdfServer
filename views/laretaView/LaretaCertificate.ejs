@@ -31,7 +31,15 @@
         formattedAmount = '$' + formattedAmount;
     }
     
-    return formattedAmount;
+    if(formattedAmount === "NaN"){
+      if(amount){
+        return amount
+      }else{
+        return "Not Available"
+      }
+    }else{
+     return formattedAmount;
+    }
 }
 
 
@@ -181,7 +189,7 @@ function formatPhoneNumber(phoneNumber) {
               <!-- <p>(+)</p> -->
             </td>
             <td class="text-center"><%= formatPrice(object.year_amt1) %></td>
-            <td class="text-center"><%= object.year_amt2 %></td>
+            <td class="text-center"><%= formatPrice(object.year_amt2) %></td>
           </tr>
           <%} else{%>
           <tr class="bg-white">
@@ -190,7 +198,7 @@ function formatPhoneNumber(phoneNumber) {
               <!-- <p>(+)</p> -->
             </td>
             <td class="text-center"><%= formatPrice(object.year_amt1) %></td>
-            <td class="text-center"><%= object.year_amt2 %></td>
+            <td class="text-center"><%= formatPrice(object.year_amt2) %></td>
           </tr>
           <%}%>
           <%} else if(index < 5){%>
@@ -200,7 +208,7 @@ function formatPhoneNumber(phoneNumber) {
                 <!-- <p>(+)</p> -->
               </td>
               <td class="text-center bg-blue-400"><%= formatPrice(object.year_amt1) %></td>
-              <td class="text-center bg-blue-400"><%= object.year_amt2 %></td>
+              <td class="text-center bg-blue-400"><%= formatPrice(formatPrice(object.year_amt2)) %></td>
             </tr>
           
             <%} else if(index<7){%>
@@ -208,13 +216,13 @@ function formatPhoneNumber(phoneNumber) {
               <tr class="bg-white border-top">
                 <td class="text-center"><%= object.assessment %></td>
                 <td class="text-center bg-gray-200"><%= formatPrice(object.year_amt1) %></td>
-                <td class="text-center bg-gray-200"><%= object.year_amt2 %></td>
+                <td class="text-center bg-gray-200"><%= formatPrice(object.year_amt2) %></td>
               </tr>
               <%} else {%>
                 <tr class="bg-white">
                   <td class="text-center"><%= object.assessment %></td>
                   <td class="text-center bg-gray-200"><%= formatPrice(object.year_amt1) %></td>
-                  <td class="text-center bg-gray-200"><%= object.year_amt2 %></td>
+                  <td class="text-center bg-gray-200"><%= formatPrice(object.year_amt2) %></td>
                 </tr>
                 <%}%>
               <%}else{%>
