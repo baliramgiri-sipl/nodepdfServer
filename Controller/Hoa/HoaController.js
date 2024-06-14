@@ -16,7 +16,7 @@ const PDFMerger = require("pdf-merger-js");
 
 const hoacertificate = async (req, res, next) => {
     try {
-        // const data = req.body
+        const data = req.body
         
         const merger = new PDFMerger();
         await merger.add(decodeBase64(req.taxCertificateData));

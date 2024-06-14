@@ -30,6 +30,9 @@
         formattedAmount = '$' + formattedAmount;
     }
     
+    if(formattedAmount === "NaN"){
+      return amount;
+    }
     return formattedAmount;
 }
 
@@ -289,7 +292,7 @@ function formatPhoneNumber(phoneNumber) {
                 </tr>
               </thead>
 
-              <tbody class="<% assessed_Information?.length>1 ? "values" : ""%>">
+              <tbody  class="<% assessed_Information?.length>1 ? "values" : ""%> ">
                 <tr>
                   <td>Land</td>
                   <td>:</td>
@@ -368,10 +371,10 @@ function formatPhoneNumber(phoneNumber) {
                 </tr>
 
                 <tr>
-                  <td>Exemptions</td>
-                  <td>:</td>
+                  <td class="pb-3">Exemptions</td>
+                  <td class="pb-3">:</td>
                   <% assessed_Information.forEach(function(item, index) { %>
-                  <td class="td-right"><%= (item.exemption_Amount) %></td>
+                  <td class="td-right pb-3"><%= (item?.exemption_Amount) || "No Exemptions" %></td>
                   <%- include('components/assessmentLayout', {
               assessed_Information
             }) %>
@@ -634,8 +637,8 @@ function formatPhoneNumber(phoneNumber) {
             <tr>
               <td><%= item?.name %></td>
               <td><%= item?.hom %></td>
-              <td class="td-center"><%= item?.ov65 %></td>
-              <td class="td-center"><%= item?.dp %></td>
+              <td class="td-center"><%= formatPrice(item?.ov65,0) %></td>
+              <td class="td-center"><%= formatPrice(item?.dp,0) %></td>
               <td class="td-right"><%= item["10to30"] ||"5K"  %></td>
               <td class="td-right"><%= item["31to50"] ||"7.5K"  %></td>
               <td class="td-right"><%= item["51to70"] ||"10K"  %></td>

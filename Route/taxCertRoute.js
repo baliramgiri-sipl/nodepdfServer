@@ -6,6 +6,6 @@ const Router = require("express").Router()
 
 
 
-Router.get("/tax-certificate/pdf",  taxCertificate, hoacertificate, addPageNumbersToPDF)
+Router.post("/tax-certificate/pdf",  taxCertificate, hoacertificate, addPageNumbersToPDF)
 
 module.exports = Router
