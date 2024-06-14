@@ -108,7 +108,7 @@ const data = {
                             {
                                 "taxyear": "2023",
                                 "basetax": "$230.91",
-                                "basedue": "$2.15",
+                                "basedue": "$0",
                                 "duedate1": "$2.43",
                                 "duedate2": "$2.48",
                                 "status": "Due"

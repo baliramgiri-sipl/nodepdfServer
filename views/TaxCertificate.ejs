@@ -61,6 +61,18 @@ function formatPhoneNumber(phoneNumber) {
               return "bg-color-gray-3";
       }
   } 
+  function baseDueStyle(value){
+     if(Number(
+      value?.replace(
+        /[|&;$%@"<>()+,]/g,
+        ""
+      )
+    ) > 0){
+      return "text-danger"
+    }else{
+      return "text-dark"
+    }
+  }
     //check customers 
     function checkCustomer(name) {
       switch (name) {
@@ -427,12 +439,7 @@ function formatPhoneNumber(phoneNumber) {
 
           <tbody>
             <% tax_Information?.collectorInfo?.forEach(function(item) { %>
-            <tr class="<%=   Number(
-                item?.basedue?.replace(
-                  /[|&;$%@"<>()+,]/g,
-                  ""
-                )
-              ) > 0 ? 'text-danger' : 'class2' %>">
+            <tr >
               <!-- //collector info  -->
               <td style="width: 170px; color: black;" class="border-end">
                 <p class="mb-1 fw-bold"><%= item?.name%></p>
@@ -450,40 +457,40 @@ function formatPhoneNumber(phoneNumber) {
               <!-- //tax year -->
               <td>
                 <% item?.bill_summary?.forEach(function(bill) { %>
-                <p class="text-7"><%= bill?.taxyear%></p>
+                <p class="text-7 <%=baseDueStyle(bill?.basedue) %>"><%= bill?.taxyear%></p>
                 <% }); %>
               </td>
 
               <!-- //base tax -->
               <td class="td-right">
                 <% item?.bill_summary?.forEach(function(bill) { %>
-                <p class="text-7"><%= formatPrice(bill?.basetax)%></p>
+                <p class="text-7 <%=baseDueStyle(bill?.basedue) %>"><%= formatPrice(bill?.basetax)%></p>
                 <% }); %>
               </td>
 
               <!-- //base due -->
               <td class="td-right">
                 <% item?.bill_summary?.forEach(function(bill) { %>
-                <p class="text-7"><%= formatPrice(bill?.basedue)%></p>
+                <p class="text-7 <%=baseDueStyle(bill?.basedue) %>"><%= formatPrice(bill?.basedue)%></p>
                 <% }); %>
               </td>
 
               <!-- //duedate1 -->
               <td class="td-right">
                 <% item?.bill_summary?.forEach(function(bill) { %>
-                <p class="text-7"><%= formatPrice(bill?.duedate1)%></p>
+                <p class="text-7 <%=baseDueStyle(bill?.basedue) %>"><%= formatPrice(bill?.duedate1)%></p>
                 <% }); %>
               </td>
               <!-- //duedate2 -->
               <td class="td-right">
                 <% item?.bill_summary?.forEach(function(bill) { %>
-                <p class="text-7"><%= formatPrice(bill?.duedate2)%></p>
+                <p class="text-7 <%=baseDueStyle(bill?.basedue) %>"><%= formatPrice(bill?.duedate2)%></p>
                 <% }); %>
               </td>
               <!-- //status -->
               <td class="td-right" colspan="2">
                 <% item?.bill_summary?.forEach(function(bill) { %>
-                <p class="text-7"><%= bill?.status%></p>
+                <p class="text-7 <%=baseDueStyle(bill?.basedue) %>"><%= bill?.status%></p>
                 <% }); %>
               </td>
             </tr>
@@ -663,6 +670,7 @@ function formatPhoneNumber(phoneNumber) {
         <%- include('components/totalTaxBillSummry', {
         changeHeadingBg:changeHeadingBg,
         formatPhoneNumber,
+        baseDueStyle,
         input_Order:input_Order,
         total_tax_summary_bill_information:total_tax_summary_bill_information
       }) %>

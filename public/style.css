@@ -209,7 +209,11 @@ h6 {
 }
 
 .text-danger {
-  color: red;
+  color: red !important;
+}
+
+.text-dark {
+  color: black !important;
 }
 
 .text-extra-padding th {
@@ -418,6 +422,7 @@ h6 {
   width: 120px;
 }
 
-.customer_tbl td:first-child, .parcel_information td:first-child {
+.customer_tbl td:first-child,
+.parcel_information td:first-child {
   width: 96px !important;
 }

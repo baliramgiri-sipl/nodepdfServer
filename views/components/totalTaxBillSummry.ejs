@@ -20,6 +20,7 @@ function formatPrice(amount) {
   return formattedAmount;
 }
 %>
+
     <table class="<%= total_tax_summary_bill_information?.parcel_total_tax_summary?.length > 0 ? "" :"d-none" %> border border-secondary table text-7 mb-0 table-borderless mt-3 table-td-top">
         <thead>
           <tr class="<%= changeHeadingBg(input_Order?.client_Name)%> text-8">
@@ -63,40 +64,40 @@ function formatPrice(amount) {
             <!-- //tax year -->
             <td>
               <% item?.total_bill_summary?.forEach(function(bill) { %>
-              <p class="text-7"><%= bill?.taxyear%></p>
+              <p class="text-7 <%=baseDueStyle(bill?.basedue) %>"><%= bill?.taxyear%></p>
               <% }); %>
             </td>
     
             <!-- //base tax -->
             <td class="td-right">
               <% item?.total_bill_summary?.forEach(function(bill) { %>
-              <p class="text-7"><%= bill?.basetax%></p>
+              <p class="text-7 <%=baseDueStyle(bill?.basedue) %>"><%= bill?.basetax%></p>
               <% }); %>
             </td>
     
             <!-- //base due -->
             <td class="td-right">
               <% item?.total_bill_summary?.forEach(function(bill) { %>
-              <p class="text-7"><%= bill?.basedue%></p>
+              <p class="text-7 <%=baseDueStyle(bill?.basedue) %>"><%= bill?.basedue%></p>
               <% }); %>
             </td>
     
             <!-- //duedate1 -->
             <td class="td-right">
               <% item?.total_bill_summary?.forEach(function(bill) { %>
-              <p class="text-7"><%= bill?.duedate1%></p>
+              <p class="text-7 <%=baseDueStyle(bill?.basedue) %>"><%= bill?.duedate1%></p>
               <% }); %>
             </td>
             <!-- //duedate2 -->
             <td class="td-right">
               <% item?.total_bill_summary?.forEach(function(bill) { %>
-              <p class="text-7"><%= bill?.duedate2%></p>
+              <p class="text-7 <%=baseDueStyle(bill?.basedue) %>"><%= bill?.duedate2%></p>
               <% }); %>
             </td>
             <!-- //status -->
             <td class="td-right" colspan="2">
               <% item?.total_bill_summary?.forEach(function(bill) { %>
-              <p class="text-7"><%= bill?.status%></p>
+              <p class="text-7 <%=baseDueStyle(bill?.basedue) %>"><%= bill?.status%></p>
               <% }); %>
             </td>
           </tr>
