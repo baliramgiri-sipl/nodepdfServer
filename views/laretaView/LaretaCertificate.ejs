@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Lareta pdf</title>
+  <!-- <link rel="stylesheet" type="text/css" href="/public/lareta.css" /> -->
+</head>
+
+<body>
+  <% 
+  //price format
+  function formatPrice(amount, isFixed=2) {
+    if(!amount) return ""
+    // Check if the input is a string and contains the dollar symbol
+    let hasDollarSign = amount.toString().includes('$');
+    
+    // Convert the input to a number, removing any non-numeric characters (except . and -)
+    let numericAmount = parseFloat(amount.toString().replace(/[^0-9.-]+/g, ""));
+
+    // Format the number with commas and two decimal places
+    let formattedAmount = 0
+    if(isFixed){
+      formattedAmount = numericAmount.toFixed(isFixed).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    }else{
+      formattedAmount = numericAmount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    }
+
+    
+    // Add the dollar symbol if it was present in the original input
+    if (hasDollarSign) {
+        formattedAmount = '$' + formattedAmount;
+    }
+    
+    if(formattedAmount === "NaN"){
+      if(amount){
+        return amount
+      }else{
+        return "Not Available"
+      }
+    }else{
+     return formattedAmount;
+    }
+}
+
+
+function formatPhoneNumber(phoneNumber) {
+  if(!phoneNumber) return ""
+  // Check if the input is a valid phone number
+  if (!/^\+\d{11}$/.test(phoneNumber)) {
+    throw new Error('Invalid phone number format');
+  }
+
+  // Extract the area code, central office code, and line number
+  const areaCode = phoneNumber.slice(2, 5);
+  const centralOfficeCode = phoneNumber.slice(5, 8);
+  const lineNumber = phoneNumber.slice(8);
+
+  // Format the phone number
+  return `(${areaCode}) ${centralOfficeCode}-${lineNumber}`;
+}
+%>
+
+  <div class="name-tax-wrapper px-5">
+
+    <!-- Header Section -->
+    <div class="name-certificate-info text-8">
+      <div class="flex items-center pb-1">
+        <p>CAD Account #'s(1):</p>
+        <p class="py-2 ms-5 bg-gray-200 ps-5 flex-grow a_helvetica_bold"><%= input_order.account_id %></p>
+      </div>
+    </div>
+
+    <!-- Order notes table -->
+    <% if(order_comment.length>0){%>
+    <div class="name-order-notes">
+      <table class="border-none mt-4 text-7 pdf-text-black">
+        <thead class="bg-gray-500 border table-border text-8">
+          <tr>
+            <th class="text-white">Order Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="py-3">
+              <ul class="font-bold list-style-disc ms-5">
+                <% order_comment.forEach(function (order){ %>
+                <li class="pt-2">
+                  <% order %>
+                </li>
+                <% })%>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+   <%}%>
+
+   <% parcels?.property_info?.forEach(function({account_id, situs, owner, mailing, legal_info, AssessmentData, SummaryAcctTale, CheckDueTableData, collectedByData, ExemptionInfromatonData}){ %>
+    
+    <!-- Property Information table -->
+    <div class="name-property-information">
+      <table class="text-7 pdf-text-black border-none mt-5">
+        <thead class="table-border bg-gray-500 text-8 text-white">
+          <tr>
+            <th>Property Information</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="py-3 font-semibold">Property ID/CAD #: <%= account_id %></td class="py-3">
+            <td class="py-3">Assessor Account #: 1204860010022</td>
+          </tr>
+          <tr>
+          <tr>
+            <td aria-colspan="2" colspan="2" class="pe-0">
+              <div class="flex w-full items-center">
+                <p class="me-5">Situs Address:</p>
+                <p class="bg-gray-200 flex-grow ms-5 py-2 ps-5 font-bold" style="margin-left: 21px;">  <%= situs %></p>
+              </div>
+            </td>
+          </tr>
+          <td aria-colspan="2" colspan="2" class="pe-0">
+            <div class="flex w-full items-center">
+              <p class="me-5">Owner(s):</p>
+              <p class="flex-grow ms-5 py-2 ps-5 font-bold" style="margin-left: 36px;">  <%= owner %></p>
+            </div>
+          </td>
+          </tr>
+          <tr>
+            <td aria-colspan="2" colspan="2" class="pe-0">
+              <div class="flex w-full items-center">
+                <p class="me-5">Mailing Address:</p>
+                <p class="bg-gray-200 flex-grow ms-5 py-2 ps-5"> <%= mailing %></p>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Legal Description and assessment table -->
+    <div class="name-legal-description-and-assessment flex">
+      <table class="table-border text-7 pdf-text-black me-1 h-auto">
+        <thead class="bg-gray-500 text-white text-8 h-6">
+          <tr class="">
+            <th colspan="2">
+              Legal Description
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-blue-400 h-auto">
+          <tr class="content-start">
+            <td colspan="2" class="content-start"> <%= legal_info?.description %></td>
+          </tr>
+          <tr class="h-6">
+            <td class="table-border" style="width: 27%;">Deed:</td>
+            <td class="font-bold table-border"><%= legal_info?.deed %></td>
+          </tr>
+          <tr class="bg-white h-6">
+            <td class="table-border" style="width: 27%;">Assessed As:</td>
+            <td class="font-bold table-border"><%= legal_info?.acrerage %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class=" text-7 pdf-text-black no-border ms-1">
+        <thead class="font-normal text-8">
+          <tr>
+            <th class="font-normal text-center" style="width: 45%;">
+              Assessment
+            </th>
+            <th class="font-normal text-center">
+              2023
+            </th>
+            <th class="font-normal text-center">
+              2024
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+         <% AssessmentData?.forEach(function(object, index){%>
+        <% if(index<3){ %>   
+        <% if(index%2===0){ %>
+          <tr class="bg-gray-200">
+            <td class="flex justify-between">
+              <p><%= object.assessment %></p>
+              <!-- <p>(+)</p> -->
+            </td>
+            <td class="text-center"><%= formatPrice(object.year_amt1) %></td>
+            <td class="text-center"><%= formatPrice(object.year_amt2) %></td>
+          </tr>
+          <%} else{%>
+          <tr class="bg-white">
+            <td class="flex justify-between">
+              <p><%= object.assessment %></p>
+              <!-- <p>(+)</p> -->
+            </td>
+            <td class="text-center"><%= formatPrice(object.year_amt1) %></td>
+            <td class="text-center"><%= formatPrice(object.year_amt2) %></td>
+          </tr>
+          <%}%>
+          <%} else if(index < 5){%>
+            <tr class="bg-white">
+              <td class="flex justify-between">
+                <p><%= object.assessment %></p>
+                <!-- <p>(+)</p> -->
+              </td>
+              <td class="text-center bg-blue-400"><%= formatPrice(object.year_amt1) %></td>
+              <td class="text-center bg-blue-400"><%= formatPrice(formatPrice(object.year_amt2)) %></td>
+            </tr>
+          
+            <%} else if(index<7){%>
+              <%if(index<6){%> 
+              <tr class="bg-white border-top">
+                <td class="text-center"><%= object.assessment %></td>
+                <td class="text-center bg-gray-200"><%= formatPrice(object.year_amt1) %></td>
+                <td class="text-center bg-gray-200"><%= formatPrice(object.year_amt2) %></td>
+              </tr>
+              <%} else {%>
+                <tr class="bg-white">
+                  <td class="text-center"><%= object.assessment %></td>
+                  <td class="text-center bg-gray-200"><%= formatPrice(object.year_amt1) %></td>
+                  <td class="text-center bg-gray-200"><%= formatPrice(object.year_amt2) %></td>
+                </tr>
+                <%}%>
+              <%}else{%>
+                <tr class="bg-white border-top">
+                  <td class="text-center"><%= object.assessment %></td>
+                  <td colspan="2" class="text-center bg-gray-200"><%= formatPrice(object.year_amt1) %></td>
+                </tr>
+                <%}%>
+          <% }) %>  
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Account Comments table -->
+    <div class="name-account-comments">
+      <table class="text-7 no-border pdf-text-black">
+        <thead class="bg-gray-500 text-white table-border text-8 text-white">
+          <tr>
+            <th>Account Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <ul class="ms-5 font-bold">
+                <li> Harris County MUD 196: Bonds Approved: $92,000,000.00, Bonds Issued: $43,405,000.00, Bond Tax Rate:
+                  0.55000000/$100 of assessed valuation, Stand-by Fee: $0.00
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Summary For Account table-->
+    <div class="name-summary-for-account">
+      <table class="no-border pdf-text-black text-7">
+        <thead class="text-8">
+          <tr>
+            <th colspan="5">
+              <div class="flex items-center">
+                <p class="font-bold">Summary for Account #:</p>
+                <p class="bg-blue-400 flex-grow ms-3 ps-3 py-2"> <%=account_id%></p>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <thead class="table-border bg-gray-500 text-8 text-white">
+          <tr>
+            <th class="text-center border-end border-dark">Entity</th>
+            <th class="text-center border-end border-dark">Year</th>
+            <th class="text-center border-end border-dark">Base Tax</th>
+            <th class="text-center border-end border-dark">Due 2/2024</th>
+            <th class="text-center">Due 3/2024</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% SummaryAcctTale?.summaryData?.forEach(function({entity, year, base_tax, due_1, due_2}, index){%>
+            <%if(index%2===0){%>
+          <tr>
+            <td><%=entity%></td>
+            <td class="text-end"><%= year %></td>
+            <td class="text-end"><%=formatPrice(base_tax) %></td>
+            <td class="text-end"><%=formatPrice(due_1) %></td>
+            <td class="text-end"><%=formatPrice(due_2) %></td>
+          </tr>
+          <%} else{%>
+            <tr class="bg-gray-200">
+              <td><%=entity%></td>
+              <td class="text-end"><%= year %></td>
+              <td class="text-end"><%=formatPrice(base_tax) %></td>
+              <td class="text-end"><%=formatPrice(due_1) %></td>
+              <td class="text-end"><%=formatPrice(due_2) %></td>
+            </tr>
+          <%}%>
+          <%})%>
+        <tfoot class="font-bold">
+          <tr>
+            <td colspan="2" class="text-end">Totals</td>
+            <td class="text-end bg-blue-400"><%= formatPrice(SummaryAcctTale?.summary_total?.base_tax) %></td>
+            <td class="text-end bg-blue-400"><%= formatPrice(SummaryAcctTale?.summary_total?.due_1) %></td>
+            <td class="text-end bg-blue-400"><%= formatPrice(SummaryAcctTale?.summary_total?.due_2) %></td>
+          </tr>
+        </tfoot>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Check Due table -->
+    <div class="name-check-due">
+      <table class="pdf-text-black text-7 no-border">
+        <thead class="text-8">
+          <tr>
+            <th colspan="7">Checks Due</th>
+          </tr>
+        </thead>
+        <tbody>
+          <table class="border-none text-7 my-0">
+            <thead class="bg-gray-500 text-white text-8 table-border">
+              <tr>
+                <th class="border-end border-dark text-center" style="width: 35%;">Entity</th>
+                <th class="border-end border-dark text-center">Year</th>
+                <th class="border-end border-dark text-center">Tax Rate</th>
+                <th class="border-end border-dark text-center">Base Tax</th>
+                <th class="border-end border-dark text-center">Due 2/2024 </th>
+                <th class="border-end border-dark text-center">Due 3/2024 </th>
+                <th class="text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody class="border-light">
+              <% CheckDueTableData?.dueData?.forEach(function({entity, year, tax_rate, base_tax, due_1, due_2, status}, index){%> 
+                <% if(index%2==0){%> 
+                <tr>
+                  <td class="p-0 border-end border-light">
+                    <p class="font-bold px-2 py-1"><%= entity?.name %></p>
+                    <p class="px-2 py-1">Phone: +<%= formatPhoneNumber(entity?.phone) %></p>
+                    <p class="px-2 py-1 bg-blue-400 border-light">Account #: <span class="font-bold"><%= entity?.acctno %></span></p>
+                    <p class="px-2 py-1">Payable To: <span class="font-bold"><%= entity?.payable_to %></span></p>
+                    <p class="px-2 py-1"><%= entity?.address %></p>
+                  </td>
+                  <td class="text-center border-end border-light"><%= year %></td>
+                  <td class="text-center border-end border-light"><%= tax_rate %></td>
+                  <td class="text-center border-end border-light"><%= formatPrice (base_tax) %></td>
+                  <td class="text-center border-end border-light"><%= formatPrice (due_1) %></td>
+                  <td class="text-center border-end border-light"><%= formatPrice (due_2) %></td>
+                  <td class="text-center font-bold border-light"><%= (status) %></td>
+                </tr>
+                <tr class="border-light">
+                  <td colspan="2" class="text-end font-bold border-end border-light">Entity Total</td>
+                  <td class="text-center font-bold border-end border-light"> <%= entity?.entity_total?.tax_rate %></td>
+                  <td class="text-center font-bold border-end border-light"><%= formatPrice( entity?.entity_total?.base_tax) %></td>
+                  <td class="text-center font-bold border-end border-light"><%= formatPrice( entity?.entity_total?.due_1) %></td>
+                  <td class="text-center font-bold border-end border-light"><%= formatPrice( entity?.entity_total?.due_2) %></td>
+                  <td class="text-center font-bold border-end border-light"></td>
+                </tr>
+                <%} else {%>
+                  <tr class="bg-gray-200">
+                    <td class="p-0 border-end border-light">
+                      <p class="font-bold px-2 py-1"><%= entity?.name %></p>
+                      <p class="px-2 py-1">Phone: <%= entity?.phone %></p>
+                      <p class="px-2 py-1 bg-blue-400 table-border">Account #: <span class="font-bold"><%= entity?.acctno %></span></p>
+                      <p class="px-2 py-1">Payable To: <span class="font-bold"><%= entity?.payable_to %></span></p>
+                      <p class="px-2 py-1"><%= entity?.address %></p>
+                    </td>
+                    <td class="text-center border-end border-light"><%= year %></td>
+                    <td class="text-center border-end border-light"><%= tax_rate %></td>
+                    <td class="text-center border-end border-light"><%= formatPrice (base_tax) %></td>
+                    <td class="text-center border-end border-light"><%= formatPrice (due_1) %></td>
+                    <td class="text-center border-end border-light"><%= formatPrice (due_2) %></td>
+                    <td class="text-center font-bold border-light"><%=  (status) %></td>
+                  </tr>
+                    <tr class="table-border bg-gray-200">
+                    <td colspan="2" class="text-end font-bold border-end border-light">Entity Total</td>
+                    <td class="text-center font-bold border-end border-light"> <%= entity?.entity_total?.tax_rate %></td>
+                    <td class="text-center font-bold border-end border-light"><%= formatPrice( entity?.entity_total?.base_tax) %></td>
+                    <td class="text-center font-bold border-end border-light"><%= formatPrice( entity?.entity_total?.due_1) %></td>
+                    <td class="text-center font-bold border-end border-light"><%= formatPrice( entity?.entity_total?.due_2) %></td>
+                    <td class="text-center font-bold border-end border-light"></td>
+                  </tr>
+                <%}%>  
+              <%}) %>
+              
+             
+            </tbody>
+            <tfoot class="text-center">
+              <tr>
+                <td class="border-end"></td>
+                <td class="border-end border-light font-bold">Totals</td>
+                <td class="text-center bg-blue-400 border-end border-light font-bold"><%= CheckDueTableData?.check_due_total?.tax_rate %></td>
+                <td class="text-center bg-blue-400 border-end border-light font-bold"><%= formatPrice( CheckDueTableData?.check_due_total?.base_tax )%></td>
+                <td class="text-center bg-blue-400 border-end border-light font-bold"><%= formatPrice( CheckDueTableData?.check_due_total?.due_1 )%></td>
+                <td class="text-center bg-blue-400 border-end border-light font-bold"><%= formatPrice( CheckDueTableData?.check_due_total?.due_2 )%></td>
+                <td class="text-center bg-blue-400 border-light"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Counties Section table -->
+    <div class="name-county">
+      <% collectedByData?.forEach(function({tablename, acct_no, collected_by, tax_rate_1, tax_rate_2, exemption_1, exemption_2, exemption_name, tax_year, base_tax, due_1, due_2, subtotal_base_tax, subtotal_due_1, subtotal_due_2}){ %>
+      <table class="text-7 no-border pdf-text-black">
+        <thead class="text-8">
+          <tr>
+            <th style="width: 50%;"><%= tablename %></th>
+            <th>
+              <div class="flex items-center">
+                <p>Account #:</p>
+                <p class="flex-grow text-start bg-blue-400 ms-3 font-normal p-2"> <%= account_id %></p>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <table class="no-border my-0 text-7">
+            <thead>
+              <tr>
+                <th colspan="2" class="table-border">
+                  <p>Collected By</p>
+                  <p class="font-bold"><%= collected_by %></p>
+                </th>
+                <th class="text-center font-normal">
+                  <p>Year</p>
+                  <p>Tax Rate</p>
+                  <p>W/O Exemption</p>
+                </th>
+                <th class="text-center font-normal">
+                  <p>2022</p>
+                  <p><%= tax_rate_1 %></p>
+                  <p><%= exemption_1 %> </p>
+                </th>
+                <th class="text-center font-normal">
+                  <p>2023</p>
+                  <p><%= tax_rate_2 %></p>
+                  <p><%= exemption_2 %> </p>
+                </th>
+
+              </tr>
+            </thead>
+            <thead class="bg-gray-500 text-white table-border text-8">
+              <tr>
+                <th class="text-center border-end border-dark">Tax Year</th>
+                <th class="text-center border-end border-dark">Exemptions</th>
+                <th class="text-center border-end border-dark">Base Tax</th>
+                <th class="text-center border-end border-dark">Due 2/2024 </th>
+                <th class="text-center">Due 3/2024</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center">
+                <td class="text-center border-start border-bottom-dark border-dark"><%= tax_year %></td>
+                <td class="border-end border-dark border-bottom-dark border-dark"><%= exemption_name %></td>
+                <td class="text-center"><%= formatPrice(base_tax) %></td>
+                <td class="text-center"><%= formatPrice(due_1) %></td>
+                <td class="text-center border-end border-dark"><%= formatPrice(due_2) %></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2" class="text-end font-bold border-end border-dark">Subtotals</td>
+                <td class="text-center bg-blue-400 border-bottom-dark font-bold"><%= formatPrice(subtotal_base_tax) %></td>
+                <td class="text-center bg-blue-400 border-bottom-dark font-bold"><%= formatPrice(subtotal_due_1) %></td>
+                <td class="text-center bg-blue-400 border-bottom-dark font-bold border-end border-dark"><%= formatPrice(subtotal_due_2) %></td>
+              </tr>
+            </tfoot>
+          </table>
+        </tbody>
+      </table>
+      <%})%>
+    </div>
+
+    <!-- Exemption Information table -->
+    <div class="name-exemption-information pt-5">
+      <table class="text-7 no-border">
+        <thead class="text-8">
+          <tr>
+            <th colspan="4 " class="border-bottom-dark border-dark" style="width: 40%;">Exemption Information</th>
+            <th colspan="4" class="bg-gray-400 border-top-dark border-start border-end text-center">Disabled Veteran</th>
+          </tr>
+          <tr>
+            <th class="bg-gray-500 border-start border-bottom-dark border-dark">
+              <p class="text-white">Entity</p>
+            </th>
+            <th class="bg-gray-500 text-center border-bottom-dark border-dark">
+              <p class="text-white">HOM</p>
+            </th>
+            <th class="bg-gray-500 text-center border-bottom-dark border-dark">
+              <p class="text-white">OV65</p>
+            </th>
+            <th class="bg-gray-500 text-center border-bottom-dark border-dark">
+              <p class="text-white">DP</p>
+            </th>
+            <th class="bg-gray-400 text-center border-bottom-dark border-dark">10-30%</th>
+            <th class="bg-gray-400 text-center border-bottom-dark border-dark">31-50% </th>
+            <th class="bg-gray-400 text-center border-bottom-dark border-dark">51-70% </th>
+            <th class="bg-gray-400 text-center border-bottom-dark border-dark border-end">71-100%</th>
+          </tr>
+        </thead>
+        <tbody class="table-border">
+          <% ExemptionInfromatonData?.forEach(function({entity, hom, ov65, dp, thirtyOne, fiftyOne, seventyOne}, index){ %>
+          <%if(index%2===0){%>
+            <tr >
+            <td class="border-end border-dark"><%= entity %></td>
+            <td class="border-end border-dark text-center"><%= hom %></td>
+            <td class="border-end border-dark text-center"><%= ov65 %></td>
+            <td class="border-end border-dark text-center"><%= dp %></td>
+            <td class="text-center"> </td>
+            <td class="text-center"><%= thirtyOne %></td>
+            <td class="text-center"><%= fiftyOne %></td>
+            <td class="text-center"><%= seventyOne %></td>
+          </tr>
+          <%} else{%>
+            <tr class="bg-gray-200">
+              <td class="border-end border-dark"><%= entity %></td>
+              <td class="border-end border-dark text-center"><%= hom %></td>
+              <td class="border-end border-dark text-center"><%= ov65 %></td>
+              <td class="border-end border-dark text-center"><%= dp %></td>
+              <td class="text-center"> </td>
+              <td class="text-center"><%= thirtyOne %></td>
+              <td class="text-center"><%= fiftyOne %></td>
+              <td class="text-center"><%= seventyOne %></td>
+            </tr>
+          <%}%>
+          <%})%>
+        </tbody>
+      </table>
+    </div>
+
+   <%})%>
+
+    <!-- CONDITIONS AND DISCLAIMERS table -->
+    <div class="name-condition-and-disclaimers">
+
+      <table class="no-border text-7">
+        <thead>
+          <tr>
+            <th class="font-normal">CONDITIONS AND DISCLAIMERS</th>
+          </tr>
+        </thead>
+        <tbody class="table-border">
+          <tr>
+            <td>THIS REPORT IS PROVIDED SUBJECT TO THE LIMITATIONS AND EXCLUSIONS CONTAINED WITHIN THE AMERICAN PROPERTY GUARD SUPPLIER AGREEMENT, AS MODIFIED
+              FROM TIME TO TIME. IT IS EXPRESSLY UNDERSTOOD THAT THIS REPORT DOES NOT CONSTITUTE OR PROVIDE A REPORT ON: (i) THE STATUS OF TITLE, (ii) LIENS, (iii)
+              MINERAL (WHETHER WORKING OR ROYALTY) INTERESTS, TAXES OR LEASES, (iv) PERSONAL PROPERTY TAXES, OR (v) OTHER FORMS OF NON-AD VALOREM TAXES WHICH
+              MAY BE, OR HAVE BEEN, ASSESSED (E.G. PAVING ASSESSMENTS AND/OR LIENS, HOMEOWNER ASSESSMENTS, MAINTENANCE ASSESSMENT) ON THE SUBJECT
+              PROPERTY. AND NO REPRESENTATION OR WARRANTY IS PROVIDED WITH REGARD TO ANY OF SUCH MATTERS. ANY INFORMATION CONTAINED WITHIN ANY REPORT
+              PROVIDED BY LERETA REGARDING ANY OF FOREGOING IS PROVIDED FOR INFORMATIONAL PURPOSES ONLY AND MAY NOT BE COMPLETE, ACCURATE OR RELIED UPON
+              BY ANY PARTY</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

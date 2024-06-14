@@ -14,7 +14,7 @@ router.set('view engine', 'ejs');
 
 const taxCertificate = async (req, res, next) => {
     try {
-        const data = req.body
+        // const data = req.body
         const browser = await puppeteer.launch(process.env.SERVER === "DEV" ? { headless: true } : { args: ['--no-sandbox', '--disable-setuid-sandbox'] })
         // console.log(process.env)
         const page = await browser.newPage();
