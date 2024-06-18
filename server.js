@@ -9,6 +9,6 @@ app.use(express.json({ limit: "50mb" }));
 app.use("/api", require("./Route/taxCertRoute"));
 
 //lareta html to pdf conversion router
-app.use("/lareta-api",require("./Route/laretaCertRoute"));
+app.use("/api",require("./Route/laretaCertRoute"));
 
 app.listen(port, () => console.log(`listening on ${port} `));

@@ -20,7 +20,7 @@ async function LeratTaxController(req, res, next){
     // Wait for the canvas element to be visible
 
     await page.goto(`data:text/html;charset=UTF-8,${encodeURIComponent(
-        await renderTemplate(router, 'LaretaCertificate', laretaJosn)
+        await renderTemplate(router, 'LaretaCertificate', data)
     )}`, { waitUntil: 'networkidle2' });
   
     await page.addStyleTag({ path: './public/lareta.css' });
@@ -30,7 +30,7 @@ async function LeratTaxController(req, res, next){
     const headerTemplate = fs.readFileSync(headerPath, 'utf8');
     // Render the EJS template with data
     // console.log(data?.input_Order?.private_label_logo)
-    const renderedHeader = ejs.render(headerTemplate, { headerType: laretaJosn?.input_order });
+    const renderedHeader = ejs.render(headerTemplate, { headerType: data?.input_order });
 
     const renderFooter = ejs.render(fs.readFileSync(footerPath, 'utf8'))
 
@@ -62,7 +62,7 @@ async function LeratTaxController(req, res, next){
       const pdfBase64 = pdf.toString('base64');
         // return res.status(200).json(pdfBase64)
             req.certificate = pdfBase64
-            // req.data = laretaJosn
+            // req.data = data
             next();
         } else {
             return res.status(400).json({ message: 'Invalid PDF' })
