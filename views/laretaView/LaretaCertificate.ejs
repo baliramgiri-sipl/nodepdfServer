@@ -127,9 +127,9 @@ function formatPhoneNumber(phoneNumber) {
              <%})%>
              <tr >
               <td colspan="2" class="font-bold text-end">Subtotals</td>
-              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.base_tax) %></td>
-              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.due_1) %></td>
-              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.due_2) %></td>
+              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.base_tax_total) %></td>
+              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.due_1_total) %></td>
+              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.due_2_total) %></td>
              </tr>
              <%})%>
         </tbody>
@@ -221,24 +221,26 @@ function formatPhoneNumber(phoneNumber) {
           </tr>
         </tbody>
       </table>
-      <table class=" text-7 pdf-text-black no-border ms-1">
+      
+      <!-- Assessment Table -->
+      <table class=" text-6 pdf-text-black no-border ms-1">
         <thead class="font-normal text-8">
           <tr>
             <th class="font-normal text-center" style="width: 45%;">
-              Assessment
+              <%= AssessmentData[0].assessment %>
             </th>
             <th class="font-normal text-center">
-              2023
+              <%= AssessmentData[0].year_amt2 %>
             </th>
             <th class="font-normal text-center">
-              2024
+              <%= AssessmentData[0].year_amt1 %>
             </th>
           </tr>
         </thead>
         <tbody>
          <% AssessmentData?.forEach(function(object, index){%>
-        <% if(index<3){ %>   
-        <% if(index%2===0){ %>
+        <% if(index>0 && index<4){ %>   
+        <% if(index%2!==0){ %>
           <tr class="bg-gray-200">
             <td class="flex justify-between">
               <p><%= object.assessment %></p>
@@ -257,7 +259,7 @@ function formatPhoneNumber(phoneNumber) {
             <td class="text-center"><%= formatPrice(object.year_amt2) %></td>
           </tr>
           <%}%>
-          <%} else if(index < 5){%>
+          <%} else if(index>0 && index< 6){%>
             <tr class="bg-white">
               <td class="flex justify-between">
                 <p><%= object.assessment %></p>
@@ -267,7 +269,7 @@ function formatPhoneNumber(phoneNumber) {
               <td class="text-center bg-blue-400"><%= formatPrice(formatPrice(object.year_amt2)) %></td>
             </tr>
           
-            <%} else if(index<7){%>
+            <%} else if(index>0 && index<8){%>
               <%if(index<6){%> 
               <tr class="bg-white border-top">
                 <td class="text-center"><%= object.assessment %></td>
@@ -281,7 +283,7 @@ function formatPhoneNumber(phoneNumber) {
                   <td class="text-center bg-gray-200"><%= formatPrice(object.year_amt2) %></td>
                 </tr>
                 <%}%>
-              <%}else{%>
+              <%}else if(index>0 && index<AssessmentData.length) {%>
                 <tr class="bg-white border-top">
                   <td class="text-center"><%= object.assessment %></td>
                   <td colspan="2" class="text-center bg-gray-200"><%= formatPrice(object.year_amt1) %></td>
@@ -590,14 +592,14 @@ function formatPhoneNumber(phoneNumber) {
           </tr>
         </thead>
         <tbody class="table-border">
-          <% exemption_information?.forEach(function({entity, hom, ov65, dp, thirtyOne, fiftyOne, seventyOne}, index){ %>
+          <% exemption_information?.forEach(function({entity, hom, ov65, dp, ten, thirtyOne, fiftyOne, seventyOne}, index){ %>
           <%if(index%2===0){%>
             <tr >
             <td class="border-end border-light-only"><%= entity %></td>
             <td class="border-end border-light-only text-center"><%= hom %></td>
             <td class="border-end border-light-only text-center"><%= ov65 %></td>
             <td class="border-end border-light-only text-center"><%= dp %></td>
-            <td class="text-center"> </td>
+            <td class="text-center"><%= ten %></td>
             <td class="text-center"><%= thirtyOne %></td>
             <td class="text-center"><%= fiftyOne %></td>
             <td class="text-center"><%= seventyOne %></td>
@@ -608,7 +610,7 @@ function formatPhoneNumber(phoneNumber) {
               <td class="border-end border-light-only text-center"><%= hom %></td>
               <td class="border-end border-light-only text-center"><%= ov65 %></td>
               <td class="border-end border-light-only text-center"><%= dp %></td>
-              <td class="text-center"> </td>
+              <td class="text-center"><%=ten %> </td>
               <td class="text-center"><%= thirtyOne %></td>
               <td class="text-center"><%= fiftyOne %></td>
               <td class="text-center"><%= seventyOne %></td>

@@ -55,6 +55,9 @@ table{
 }
 /* tailwind css type classes for pdf */
 
+.text-6{
+  font-size: 12px !important;
+}
 .text-7{
     font-size: 13px !important;
   }
