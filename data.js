@@ -2590,8 +2590,118 @@ const laretaJosn ={
         "account_id": "20373718"
     },
     "order_comment": [
-       
+       "<b>some comment will be here</b>",
+       "<b>some comment will be here</b>"
     ],
+    "parcel_all_summary": {
+
+        "total_summary": {
+
+            "base_tax": "$15",
+
+            "due_1": "$0",
+
+            "due_2": "$0"
+
+        },
+
+        "summary_list": [
+
+            {
+
+                "sub_total": {
+
+                    "base_tax": "$15",
+
+                    "due_1": "$0",
+
+                    "due_2": "$0"
+
+                },
+
+                "jurisdiction_list": [
+
+                    {
+
+                        "enity": "Junior College",
+
+                        "year": "2023",
+
+                        "base_tax": "$15",
+
+                        "due_1": "$0",
+
+                        "due_2": "$0"
+
+                    },
+
+                    {
+
+                        "enity": "Navigation District",
+
+                        "year": "2023",
+
+                        "base_tax": "$2",
+
+                        "due_1": "$0",
+
+                        "due_2": "$0"
+
+                    }
+
+                ]
+
+            },
+
+            {
+
+                "sub_total": {
+
+                    "base_tax": "$15",
+
+                    "due_1": "$0",
+
+                    "due_2": "$0"
+
+                },
+
+                "jurisdiction_list": [
+
+                    {
+
+                        "enity": "Junior College",
+
+                        "year": "2023",
+
+                        "base_tax": "$15",
+
+                        "due_1": "$0",
+
+                        "due_2": "$0"
+
+                    },
+
+                    {
+
+                        "enity": "Navigation District",
+
+                        "year": "2023",
+
+                        "base_tax": "$2",
+
+                        "due_1": "$0",
+
+                        "due_2": "$0"
+
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
     "parcel": {
         "parcel_total": {
             "base_tax_total": "$124",
@@ -2945,4 +3055,1576 @@ const laretaJosn ={
     }
 }
 
-module.exports = { data, laretaJosn }
+const newLaretaJson={
+
+    "input_order": {
+
+        "cert_fees": "$10",
+
+        "order_no": "TEST0017",
+
+        "cert_date": "",
+
+        "account_id": "20373718"
+
+    },
+
+    "order_comment": [],
+
+    "parcel_all_summary": {
+
+        "total_summary": {
+
+            "base_tax": "$15",
+
+            "due_1": "$0",
+
+            "due_2": "$0"
+
+        },
+
+        "summary_list": [
+
+            {
+
+                "sub_total": {
+
+                    "base_tax": "$15",
+
+                    "due_1": "$0",
+
+                    "due_2": "$0"
+
+                },
+
+                "jurisdiction_list": [
+
+                    {
+
+                        "enity": "Junior College",
+
+                        "year": "2023",
+
+                        "base_tax": "$15",
+
+                        "due_1": "$0",
+
+                        "due_2": "$0"
+
+                    },
+
+                    {
+
+                        "enity": "Navigation District",
+
+                        "year": "2023",
+
+                        "base_tax": "$2",
+
+                        "due_1": "$0",
+
+                        "due_2": "$0"
+
+                    }
+
+                ]
+
+            },
+
+            {
+
+                "sub_total": {
+
+                    "base_tax": "$15",
+
+                    "due_1": "$0",
+
+                    "due_2": "$0"
+
+                },
+
+                "jurisdiction_list": [
+
+                    {
+
+                        "enity": "Junior College",
+
+                        "year": "2023",
+
+                        "base_tax": "$15",
+
+                        "due_1": "$0",
+
+                        "due_2": "$0"
+
+                    },
+
+                    {
+
+                        "enity": "Navigation District",
+
+                        "year": "2023",
+
+                        "base_tax": "$2",
+
+                        "due_1": "$0",
+
+                        "due_2": "$0"
+
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
+
+    "parcels": [
+
+        {
+
+            "property_info": {
+
+                "account_id": "20373718",
+
+                "assessor_account_no": "",
+
+                "geographic_id": "20373718",
+
+                "situs": "DONALDSON RD Texas",
+
+                "owner": "VULCAN MATERIALS COMPANY PROPERTY TAX DEPARTMENT",
+
+                "mailing": "1200 URBAN CENTER DR,BIRMINGHAM,AL,35242-2545"
+
+            },
+
+            "parcel_comment": [
+
+                "<b>Improvement Only Tax Account requires the&nbsp; \ncorresponding Land Account in order to provide Complete Assessment Information of\n the Parcel.</b><br>"
+
+            ],
+
+            "legal_info": {
+
+                "description": "BUILDING @ DONALDSON RD ON P DE LA GARZA ABST 51 ACRES 154.06",
+
+                "deed": "",
+
+                "acrerage": ""
+
+            },
+
+            "AssessmentData": [
+
+                {
+
+                    "assessment": "Assessment",
+
+                    "year_amt1": "year1",
+
+                    "year_amt2": "year2"
+
+                },
+
+                {
+
+                    "assessment": "mpr Market (+)",
+
+                    "year_amt1": "$9110",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "Land Market (+)",
+
+                    "year_amt1": "$0",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "Homestead Cap (-)",
+
+                    "year_amt1": "$0",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "Market Total (=)",
+
+                    "year_amt1": "$9110",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "Assessed Total (=)",
+
+                    "year_amt1": "$9110",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "Certified",
+
+                    "year_amt1": "Yes",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "Exemptions",
+
+                    "year_amt1": "Not Available",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "2023 W/O Exemptions Estimate:",
+
+                    "year_amt1": "$127"
+
+                }
+
+            ],
+
+            "parcel_all_summary": {
+
+                "total_summary": {
+
+                    "base_tax": "$15",
+
+                    "due_1": "$0",
+
+                    "due_2": "$0"
+
+                },
+
+                "summary_list": [
+
+                    {
+
+                        "sub_total": {
+
+                            "base_tax": "$15",
+
+                            "due_1": "$0",
+
+                            "due_2": "$0"
+
+                        },
+
+                        "jurisdiction_list": [
+
+                            {
+
+                                "enity": "Junior College",
+
+                                "year": "2023",
+
+                                "base_tax": "$15",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0"
+
+                            },
+
+                            {
+
+                                "enity": "Navigation District",
+
+                                "year": "2023",
+
+                                "base_tax": "$2",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0"
+
+                            }
+
+                        ]
+
+                    },
+
+                    {
+
+                        "sub_total": {
+
+                            "base_tax": "$15",
+
+                            "due_1": "$0",
+
+                            "due_2": "$0"
+
+                        },
+
+                        "jurisdiction_list": [
+
+                            {
+
+                                "enity": "Junior College",
+
+                                "year": "2022",
+
+                                "base_tax": "$15",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0"
+
+                            },
+
+                            {
+
+                                "enity": "Navigation District",
+
+                                "year": "2022",
+
+                                "base_tax": "$2",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0"
+
+                            }
+
+                        ]
+
+                    }
+
+                ]
+
+            },
+
+            "CheckDueTableData": {
+
+                "check_due_total": {
+
+                    "tax_rate": "$1.39969",
+
+                    "base_tax": "$127.52",
+
+                    "due_1": "$0",
+
+                    "due_2": "$0"
+
+                },
+                 "due_date_1":"2/2023",
+                 "due_date_2":"3/2024",
+                 "dueData": [
+                    {
+
+                        "tax_collectors": {
+
+                            "name": "Victoria County Tax Assessor/Collector",
+
+                            "phone": "+13615763671",
+
+                            "acctno": "",
+
+                            "payable_to": "",
+
+                            "address": "205 N Bridge Street, Suite 101,Victoria,Texas,77901",
+
+                            "entity_total": {
+
+                                "tax_rate": "$1.399690",
+
+                                "base_tax": "$127.52",
+
+                                "due_1": "$0.00",
+
+                                "due_2": "$0.00"
+
+                            }
+
+                        },
+
+                        "entity_values": [
+
+
+                            {
+
+                                "year": "Prior",
+
+                                "tax_rate": "",
+
+                                "base_tax": "$127.52",
+
+                                "due_1": "$0.00",
+
+                                "due_2": "$0.00",
+
+                                "status": "Paid"
+
+                            }
+
+                        ],
+
+                        "jurisdictions": [
+
+                            {
+
+                                "tablename": "Junior College",
+
+                                "acct_no": "",
+
+                                "collected_by": "Victoria County Tax Assessor/Collector",
+
+                                "tax_rate_1": "Not Available",
+
+                                "tax_rate_2": "$0.1722",
+
+                                "exemption_1": "$0.00",
+
+                                "exemption_2": "$15.00",
+
+                                "exemption_name": "",
+
+                                "tax_year_1": "2022",
+
+                                "tax_year_2": "2023",
+
+                                "base_tax": "$15.69",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0",
+
+                                "prior_due": "$0",
+
+                                "prior_due_1": "$0",
+
+                                "prior_due_2": "$0",
+
+                                "subtotal_base_tax": "$15.69",
+
+                                "subtotal_due_1": "$0",
+
+                                "subtotal_due_2": "$0"
+
+                            },
+
+                            {
+
+                                "tablename": "Navigation District",
+
+                                "acct_no": "",
+
+                                "collected_by": "Victoria County Tax Assessor/Collector",
+
+                                "tax_rate_1": "Not Available",
+
+                                "tax_rate_2": "$0.0267",
+
+                                "exemption_1": "$0.00",
+
+                                "exemption_2": "$2.00",
+
+                                "exemption_name": "",
+
+                                "tax_year_1": "2022",
+
+                                "tax_year_2": "2023",
+
+                                "base_tax": "$2.43",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0",
+
+                                "prior_due": "$0",
+
+                                "prior_due_1": "$0",
+
+                                "prior_due_2": "$0",
+
+                                "subtotal_base_tax": "$2.43",
+
+                                "subtotal_due_1": "$0",
+
+                                "subtotal_due_2": "$0"
+
+                            }
+
+                        ]
+
+                    },
+                    {
+
+                        "tax_collectors": {
+
+                            "name": "Victoria County Tax Assessor/Collector",
+
+                            "phone": "+13615763671",
+
+                            "acctno": "",
+
+                            "payable_to": "",
+
+                            "address": "205 N Bridge Street, Suite 101,Victoria,Texas,77901",
+
+                            "entity_total": {
+
+                                "tax_rate": "$1.399690",
+
+                                "base_tax": "$127.52",
+
+                                "due_1": "$0.00",
+
+                                "due_2": "$0.00"
+
+                            }
+
+                        },
+
+                        "entity_values": [
+
+                            {
+
+                                "year": "2023",
+
+                                "tax_rate": "$1.399690",
+
+                                "base_tax": "$127.52",
+
+                                "due_1": "$0.00",
+
+                                "due_2": "$0.00",
+
+                                "status": "Paid"
+
+                            },
+
+                            {
+
+                                "year": "Prior",
+
+                                "tax_rate": "",
+
+                                "base_tax": "$127.52",
+
+                                "due_1": "$0.00",
+
+                                "due_2": "$0.00",
+
+                                "status": "Paid"
+
+                            }
+
+                        ],
+
+                        "jurisdictions": [
+
+                            {
+
+                                "tablename": "Junior College",
+
+                                "acct_no": "",
+
+                                "collected_by": "Victoria County Tax Assessor/Collector",
+
+                                "tax_rate_1": "Not Available",
+
+                                "tax_rate_2": "$0.1722",
+
+                                "exemption_1": "$0.00",
+
+                                "exemption_2": "$15.00",
+
+                                "exemption_name": "",
+
+                                "tax_year_1": "2022",
+
+                                "tax_year_2": "2023",
+
+                                "base_tax": "$15.69",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0",
+
+                                "prior_due": "$0",
+
+                                "prior_due_1": "$0",
+
+                                "prior_due_2": "$0",
+
+                                "subtotal_base_tax": "$15.69",
+
+                                "subtotal_due_1": "$0",
+
+                                "subtotal_due_2": "$0"
+
+                            },
+
+                            {
+
+                                "tablename": "Navigation District",
+
+                                "acct_no": "",
+
+                                "collected_by": "Victoria County Tax Assessor/Collector",
+
+                                "tax_rate_1": "Not Available",
+
+                                "tax_rate_2": "$0.0267",
+
+                                "exemption_1": "$0.00",
+
+                                "exemption_2": "$2.00",
+
+                                "exemption_name": "",
+
+                                "tax_year_1": "2022",
+
+                                "tax_year_2": "2023",
+
+                                "base_tax": "$2.43",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0",
+
+                                "prior_due": "$0",
+
+                                "prior_due_1": "$0",
+
+                                "prior_due_2": "$0",
+
+                                "subtotal_base_tax": "$2.43",
+
+                                "subtotal_due_1": "$0",
+
+                                "subtotal_due_2": "$0"
+
+                            }
+
+                        ]
+
+                    } 
+                ]
+
+            },
+
+            "collectedByData": [
+                {
+
+                    "tablename": "Junior College",
+
+                    "acct_no": "",
+
+                    "collected_by": "Victoria County Tax Assessor/Collector",
+
+                    "tax_rate_1": "Not Available",
+
+                    "tax_rate_2": "$0.1722",
+
+                    "exemption_1": "$0.00",
+
+                    "exemption_2": "$15.00",
+
+                    "exemption_name": "",
+
+                    "tax_year_1": "2022",
+
+                    "tax_year_2": "2023",
+
+                    "base_tax": "$15.69",
+
+                    "due_1": "$0",
+
+                    "due_2": "$0",
+
+                    "prior_due": "$0",
+
+                    "prior_due_1": "$0",
+
+                    "prior_due_2": "$0",
+
+                    "subtotal_base_tax": "$15.69",
+
+                    "subtotal_due_1": "$0",
+
+                    "subtotal_due_2": "$0",
+                    "bills_summary":[
+                                    {
+                                    "tax_year": "2023",
+                                    "exemption_name": "",
+                                    "base_tax": "$2.43",
+                                    "due_1": "$0",
+                                    "due_2": "$0"
+                                },
+                                {
+                                    "tax_year": "2022",
+                                    "exemption_name": "",
+                                    "base_tax": "$2.43",
+                                    "due_1": "$0",
+                                    "due_2": "$0"
+                                }
+                            ],
+
+                },
+                {
+
+                    "tablename": "Junior College",
+
+                    "acct_no": "",
+
+                    "collected_by": "Victoria County Tax Assessor/Collector",
+
+                    "tax_rate_1": "Not Available",
+
+                    "tax_rate_2": "$0.1722",
+
+                    "exemption_1": "$0.00",
+
+                    "exemption_2": "$15.00",
+
+                    "exemption_name": "",
+
+                    "tax_year_1": "2022",
+
+                    "tax_year_2": "2023",
+
+                    "base_tax": "$15.69",
+
+                    "due_1": "$0",
+
+                    "due_2": "$0",
+
+                    "prior_due": "$0",
+
+                    "prior_due_1": "$0",
+
+                    "prior_due_2": "$0",
+
+                    "subtotal_base_tax": "$15.69",
+
+                    "subtotal_due_1": "$0",
+
+                    "subtotal_due_2": "$0",
+                    "bills_summary":[
+                                    {
+                                    "tax_year": "2023",
+                                    "exemption_name": "",
+                                    "base_tax": "$2.43",
+                                    "due_1": "$0",
+                                    "due_2": "$0"
+                                },
+                                {
+                                    "tax_year": "2022",
+                                    "exemption_name": "",
+                                    "base_tax": "$2.43",
+                                    "due_1": "$0",
+                                    "due_2": "$0"
+                                }
+                            ],
+
+                }
+            ],
+
+            "exemption_information": [
+
+                {
+
+                    "entity": "Junior College",
+
+                    "hom": "0",
+
+                    "ov65": "$20000",
+
+                    "dp": "0",
+
+                    "ten": "Not Available",
+
+                    "thirtyOne": "Not Available",
+
+                    "fiftyOne": "Not Available",
+
+                    "seventyOne": "Not Available"
+
+                },
+
+                {
+
+                    "entity": "Navigation District",
+
+                    "hom": "",
+
+                    "ov65": "",
+
+                    "dp": "",
+
+                    "thirtyOne": "Not Available",
+
+                    "fiftyOne": "Not Available",
+
+                    "seventyOne": "Not Available"
+
+                }
+
+            ],
+
+            "document": [
+
+                {
+
+                    "name": "test_pdf.pdf",
+
+                    "type": "DATA_PDF",
+
+                    "created_date": "",
+
+                    "base64": ""
+
+                }
+
+            ]
+
+        },
+        {
+
+            "property_info": {
+
+                "account_id": "20373718",
+
+                "assessor_account_no": "",
+
+                "geographic_id": "20373718",
+
+                "situs": "DONALDSON RD Texas",
+
+                "owner": "VULCAN MATERIALS COMPANY PROPERTY TAX DEPARTMENT",
+
+                "mailing": "1200 URBAN CENTER DR,BIRMINGHAM,AL,35242-2545"
+
+            },
+
+            "parcel_comment": [
+
+                "<b>Improvement Only Tax Account requires the&nbsp; \ncorresponding Land Account in order to provide Complete Assessment Information of\n the Parcel.</b><br>"
+
+            ],
+
+            "legal_info": {
+
+                "description": "BUILDING @ DONALDSON RD ON P DE LA GARZA ABST 51 ACRES 154.06",
+
+                "deed": "",
+
+                "acrerage": ""
+
+            },
+
+            "AssessmentData": [
+
+                {
+
+                    "assessment": "Assessment",
+
+                    "year_amt1": "year1",
+
+                    "year_amt2": "year2"
+
+                },
+
+                {
+
+                    "assessment": "mpr Market (+)",
+
+                    "year_amt1": "$9110",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "Land Market (+)",
+
+                    "year_amt1": "$0",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "Homestead Cap (-)",
+
+                    "year_amt1": "$0",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "Market Total (=)",
+
+                    "year_amt1": "$9110",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "Assessed Total (=)",
+
+                    "year_amt1": "$9110",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "Certified",
+
+                    "year_amt1": "Yes",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "Exemptions",
+
+                    "year_amt1": "Not Available",
+
+                    "year_amt2": "Not Available"
+
+                },
+
+                {
+
+                    "assessment": "2023 W/O Exemptions Estimate:",
+
+                    "year_amt1": "$127"
+
+                }
+
+            ],
+
+            "parcel_all_summary": {
+
+                "total_summary": {
+
+                    "base_tax": "$15",
+
+                    "due_1": "$0",
+
+                    "due_2": "$0"
+
+                },
+
+                "summary_list": [
+
+                    {
+
+                        "sub_total": {
+
+                            "base_tax": "$15",
+
+                            "due_1": "$0",
+
+                            "due_2": "$0"
+
+                        },
+
+                        "jurisdiction_list": [
+
+                            {
+
+                                "enity": "Junior College",
+
+                                "year": "2023",
+
+                                "base_tax": "$15",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0"
+
+                            },
+
+                            {
+
+                                "enity": "Navigation District",
+
+                                "year": "2023",
+
+                                "base_tax": "$2",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0"
+
+                            }
+
+                        ]
+
+                    },
+
+                    {
+
+                        "sub_total": {
+
+                            "base_tax": "$15",
+
+                            "due_1": "$0",
+
+                            "due_2": "$0"
+
+                        },
+
+                        "jurisdiction_list": [
+
+                            {
+
+                                "enity": "Junior College",
+
+                                "year": "2022",
+
+                                "base_tax": "$15",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0"
+
+                            },
+
+                            {
+
+                                "enity": "Navigation District",
+
+                                "year": "2022",
+
+                                "base_tax": "$2",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0"
+
+                            }
+
+                        ]
+
+                    }
+
+                ]
+
+            },
+
+            "CheckDueTableData": {
+
+                "check_due_total": {
+
+                    "tax_rate": "$1.39969",
+
+                    "base_tax": "$127.52",
+
+                    "due_1": "$0",
+
+                    "due_2": "$0"
+
+                },
+                 "due_date_1":"2/2023",
+                 "due_date_2":"3/2024",
+                 "dueData": [
+                    {
+
+                        "tax_collectors": {
+
+                            "name": "Victoria County Tax Assessor/Collector",
+
+                            "phone": "+13615763671",
+
+                            "acctno": "",
+
+                            "payable_to": "",
+
+                            "address": "205 N Bridge Street, Suite 101,Victoria,Texas,77901",
+
+                            "entity_total": {
+
+                                "tax_rate": "$1.399690",
+
+                                "base_tax": "$127.52",
+
+                                "due_1": "$0.00",
+
+                                "due_2": "$0.00"
+
+                            }
+
+                        },
+
+                        "entity_values": [
+
+
+                            {
+
+                                "year": "Prior",
+
+                                "tax_rate": "",
+
+                                "base_tax": "$127.52",
+
+                                "due_1": "$0.00",
+
+                                "due_2": "$0.00",
+
+                                "status": "Paid"
+
+                            }
+
+                        ],
+
+                        "jurisdictions": [
+
+                            {
+
+                                "tablename": "Junior College",
+
+                                "acct_no": "",
+
+                                "collected_by": "Victoria County Tax Assessor/Collector",
+
+                                "tax_rate_1": "Not Available",
+
+                                "tax_rate_2": "$0.1722",
+
+                                "exemption_1": "$0.00",
+
+                                "exemption_2": "$15.00",
+
+                                "exemption_name": "",
+
+                                "tax_year_1": "2022",
+
+                                "tax_year_2": "2023",
+
+                                "base_tax": "$15.69",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0",
+
+                                "prior_due": "$0",
+
+                                "prior_due_1": "$0",
+
+                                "prior_due_2": "$0",
+
+                                "subtotal_base_tax": "$15.69",
+
+                                "subtotal_due_1": "$0",
+
+                                "subtotal_due_2": "$0"
+
+                            },
+
+                            {
+
+                                "tablename": "Navigation District",
+
+                                "acct_no": "",
+
+                                "collected_by": "Victoria County Tax Assessor/Collector",
+
+                                "tax_rate_1": "Not Available",
+
+                                "tax_rate_2": "$0.0267",
+
+                                "exemption_1": "$0.00",
+
+                                "exemption_2": "$2.00",
+
+                                "exemption_name": "",
+
+                                "tax_year_1": "2022",
+
+                                "tax_year_2": "2023",
+
+                                "base_tax": "$2.43",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0",
+
+                                "prior_due": "$0",
+
+                                "prior_due_1": "$0",
+
+                                "prior_due_2": "$0",
+
+                                "subtotal_base_tax": "$2.43",
+
+                                "subtotal_due_1": "$0",
+
+                                "subtotal_due_2": "$0"
+
+                            }
+
+                        ]
+
+                    },
+                    {
+
+                        "tax_collectors": {
+
+                            "name": "Victoria County Tax Assessor/Collector",
+
+                            "phone": "+13615763671",
+
+                            "acctno": "",
+
+                            "payable_to": "",
+
+                            "address": "205 N Bridge Street, Suite 101,Victoria,Texas,77901",
+
+                            "entity_total": {
+
+                                "tax_rate": "$1.399690",
+
+                                "base_tax": "$127.52",
+
+                                "due_1": "$0.00",
+
+                                "due_2": "$0.00"
+
+                            }
+
+                        },
+
+                        "entity_values": [
+
+                            {
+
+                                "year": "2023",
+
+                                "tax_rate": "$1.399690",
+
+                                "base_tax": "$127.52",
+
+                                "due_1": "$0.00",
+
+                                "due_2": "$0.00",
+
+                                "status": "Paid"
+
+                            },
+
+                            {
+
+                                "year": "Prior",
+
+                                "tax_rate": "",
+
+                                "base_tax": "$127.52",
+
+                                "due_1": "$0.00",
+
+                                "due_2": "$0.00",
+
+                                "status": "Paid"
+
+                            }
+
+                        ],
+
+                        "jurisdictions": [
+
+                            {
+
+                                "tablename": "Junior College",
+
+                                "acct_no": "",
+
+                                "collected_by": "Victoria County Tax Assessor/Collector",
+
+                                "tax_rate_1": "Not Available",
+
+                                "tax_rate_2": "$0.1722",
+
+                                "exemption_1": "$0.00",
+
+                                "exemption_2": "$15.00",
+
+                                "exemption_name": "",
+
+                                "tax_year_1": "2022",
+
+                                "tax_year_2": "2023",
+
+                                "base_tax": "$15.69",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0",
+
+                                "prior_due": "$0",
+
+                                "prior_due_1": "$0",
+
+                                "prior_due_2": "$0",
+
+                                "subtotal_base_tax": "$15.69",
+
+                                "subtotal_due_1": "$0",
+
+                                "subtotal_due_2": "$0"
+
+                            },
+
+                            {
+
+                                "tablename": "Navigation District",
+
+                                "acct_no": "",
+
+                                "collected_by": "Victoria County Tax Assessor/Collector",
+
+                                "tax_rate_1": "Not Available",
+
+                                "tax_rate_2": "$0.0267",
+
+                                "exemption_1": "$0.00",
+
+                                "exemption_2": "$2.00",
+
+                                "exemption_name": "",
+
+                                "tax_year_1": "2022",
+
+                                "tax_year_2": "2023",
+
+                                "base_tax": "$2.43",
+
+                                "due_1": "$0",
+
+                                "due_2": "$0",
+
+                                "prior_due": "$0",
+
+                                "prior_due_1": "$0",
+
+                                "prior_due_2": "$0",
+
+                                "subtotal_base_tax": "$2.43",
+
+                                "subtotal_due_1": "$0",
+
+                                "subtotal_due_2": "$0"
+
+                            }
+
+                        ]
+
+                    } 
+                ]
+
+            },
+
+            "collectedByData": [
+                {
+
+                    "tablename": "Junior College",
+
+                    "acct_no": "",
+
+                    "collected_by": "Victoria County Tax Assessor/Collector",
+
+                    "tax_rate_1": "Not Available",
+
+                    "tax_rate_2": "$0.1722",
+
+                    "exemption_1": "$0.00",
+
+                    "exemption_2": "$15.00",
+
+                    "exemption_name": "",
+
+                    "tax_year_1": "2022",
+
+                    "tax_year_2": "2023",
+
+                    "base_tax": "$15.69",
+
+                    "due_1": "$0",
+
+                    "due_2": "$0",
+
+                    "prior_due": "$0",
+
+                    "prior_due_1": "$0",
+
+                    "prior_due_2": "$0",
+
+                    "subtotal_base_tax": "$15.69",
+
+                    "subtotal_due_1": "$0",
+
+                    "subtotal_due_2": "$0",
+                    "bills_summary":[
+                                    {
+                                    "tax_year": "2023",
+                                    "exemption_name": "",
+                                    "base_tax": "$2.43",
+                                    "due_1": "$0",
+                                    "due_2": "$0"
+                                }
+                            ],
+
+                },
+                {
+
+                    "tablename": "Junior College",
+
+                    "acct_no": "",
+
+                    "collected_by": "Victoria County Tax Assessor/Collector",
+
+                    "tax_rate_1": "Not Available",
+
+                    "tax_rate_2": "$0.1722",
+
+                    "exemption_1": "$0.00",
+
+                    "exemption_2": "$15.00",
+
+                    "exemption_name": "",
+
+                    "tax_year_1": "2022",
+
+                    "tax_year_2": "2023",
+
+                    "base_tax": "$15.69",
+
+                    "due_1": "$0",
+
+                    "due_2": "$0",
+
+                    "prior_due": "$0",
+
+                    "prior_due_1": "$0",
+
+                    "prior_due_2": "$0",
+
+                    "subtotal_base_tax": "$15.69",
+
+                    "subtotal_due_1": "$0",
+
+                    "subtotal_due_2": "$0",
+                    "bills_summary":[
+                                    {
+                                    "tax_year": "2023",
+                                    "exemption_name": "",
+                                    "base_tax": "$2.43",
+                                    "due_1": "$0",
+                                    "due_2": "$0"
+                                },
+                                {
+                                    "tax_year": "2022",
+                                    "exemption_name": "",
+                                    "base_tax": "$2.43",
+                                    "due_1": "$0",
+                                    "due_2": "$0"
+                                }
+                            ],
+
+                }
+            ],
+
+            "exemption_information": [
+
+                {
+
+                    "entity": "Junior College",
+
+                    "hom": "0",
+
+                    "ov65": "$20000",
+
+                    "dp": "0",
+
+                    "ten": "Not Available",
+
+                    "thirtyOne": "Not Available",
+
+                    "fiftyOne": "Not Available",
+
+                    "seventyOne": "Not Available"
+
+                },
+
+                {
+
+                    "entity": "Navigation District",
+
+                    "hom": "",
+
+                    "ov65": "",
+
+                    "dp": "",
+
+                    "thirtyOne": "Not Available",
+
+                    "fiftyOne": "Not Available",
+
+                    "seventyOne": "Not Available"
+
+                }
+
+            ],
+
+            "document": [
+
+                {
+
+                    "name": "test_pdf.pdf",
+
+                    "type": "DATA_PDF",
+
+                    "created_date": "",
+
+                    "base64": ""
+
+                }
+
+            ]
+
+        }
+
+    ]
+
+}
+
+module.exports = { data, laretaJosn, newLaretaJson }

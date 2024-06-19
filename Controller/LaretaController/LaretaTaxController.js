@@ -4,7 +4,7 @@ const ejs = require('ejs');
 const fs = require('fs');
 const puppeteer = require("puppeteer")
 const path = require("path")
-const { laretaJosn } = require("../../data");
+const { newLaretaJson } = require("../../data");
 const {renderTemplate} = require("../../lib/utils")
 
 router.set('views', path.join(__dirname, '../../views/laretaView'));
@@ -14,6 +14,7 @@ router.set('view engine', 'ejs');
 async function LeratTaxController(req, res, next){
   try{
     const data = req.body
+    // const data = newLaretaJson; localhost testing data
     const browser = await puppeteer.launch(process.env.SERVER === "DEV" ? { headless: true } : { args: ['--no-sandbox', '--disable-setuid-sandbox'] })
     // console.log(process.env)
     const page = await browser.newPage();

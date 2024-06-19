@@ -66,38 +66,94 @@ function formatPhoneNumber(phoneNumber) {
     <div class="name-certificate-info text-8">
       <div class="flex items-center pb-1">
         <p>CAD Account #'s(1):</p>
-        <p class="py-2 ms-5 bg-gray-200 ps-5 flex-grow a_helvetica_bold"><%= input_order.account_id %></p>
+        <p class="py-2 ms-5 bg-gray-200 ps-5 flex-grow a_helvetica_bold"><%= input_order?.account_id %></p>
       </div>
     </div>
 
-    <!-- Order notes table -->
-    <% if(order_comment.length>0){%>
-    <div class="name-order-notes">
-      <table class="border-none mt-4 text-7 pdf-text-black">
-        <thead class="bg-gray-500 border table-border text-8">
-          <tr>
-            <th class="text-white">Order Notes</th>
+     <!-- Order notes table -->
+     <% if(order_comment.length>0){%>
+      <div class="name-order-notes">
+        <table class="border-none mt-4 text-7 pdf-text-black">
+          <thead class="bg-gray-500 border table-border text-8">
+            <tr>
+              <th class="text-white">Order Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="py-3">
+                <ul class="font-bold list-style-disc ms-5">
+                  <% order_comment.forEach(function (order){ %>
+                  <li class="pt-2 ">
+                    <p><%- order %></p>
+                  </li>
+                  <% })%>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+     <%}%>
+
+    <!--Summary of All Accounts-->
+    <div class="name-summary-of-all-account">
+      <h1 class="text-8 font-bold">Summary of All Accounts</h1>
+      <table class="text-7 pdf-text-black">
+        <thead class="table-border text-8 text-white">
+          <tr class="text-center bg-gray-500">
+            <th class="text-center border-end border-dark" style="width: 35%;">Entity</th>
+            <th class="text-center border-end border-dark" style="width: 17%;">Year</th>
+            <th class="text-center border-end border-dark" style="width: 17%;">Base Tax</th>
+            <th class="text-center border-end border-dark" style="width: 17%;">Due 3/2024</th>
+            <th class="text-center " style="width: 17%;">Due 4/2024</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="py-3">
-              <ul class="font-bold list-style-disc ms-5">
-                <% order_comment.forEach(function (order){ %>
-                <li class="pt-2">
-                  <% order %>
-                </li>
-                <% })%>
-              </ul>
-            </td>
-          </tr>
+     
+        <% parcel_all_summary?.summary_list?.forEach(function({sub_total, jurisdiction_list}, index){%>
+          <% jurisdiction_list?.forEach(function({enity, year, base_tax, due_1, due_2}, index){%>
+            <% if(index%2===0){%>
+              <tr >
+            <%} else {%>
+              <tr class="bg-gray-200">
+            <%}%>  
+              <td class="text-start"><%=enity%></td>
+              <td class="text-end"><%=year%></td>
+              <td class="text-end"><%=formatPrice(base_tax)%></td>
+              <td class="text-end"><%=formatPrice(due_1)%></td>
+              <td class="text-end"><%=formatPrice(due_2)%></td>
+             </tr>
+             <%})%>
+             <tr >
+              <td colspan="2" class="font-bold text-end">Subtotals</td>
+              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.base_tax) %></td>
+              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.due_1) %></td>
+              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.due_2) %></td>
+             </tr>
+             <%})%>
         </tbody>
+        <tfoot>
+          <tr >
+            <td colspan="2" class="font-bold text-end">Totals</td>
+            <td class="bg-blue-400 font-bold text-end"><%=formatPrice(parcel_all_summary?.total_summary?.base_tax) %></td>
+            <td class="bg-blue-400 font-bold text-end"><%=formatPrice(parcel_all_summary?.total_summary?.due_1) %></td>
+            <td class="bg-blue-400 font-bold text-end"><%=formatPrice(parcel_all_summary?.total_summary?.due_2) %></td>
+           </tr>
+        </tfoot>
       </table>
     </div>
-   <%}%>
 
-   <% parcels?.property_info?.forEach(function({account_id, situs, owner, mailing, legal_info, AssessmentData, SummaryAcctTale, CheckDueTableData, collectedByData, ExemptionInfromatonData}){ %>
+    <div class="page-break"></div>
+
+   <% parcels?.forEach(function({property_info, legal_info, AssessmentData, SummaryAcctTale,parcel_all_summary, CheckDueTableData, collectedByData, exemption_information}, index){ %>
     
+    <!-- Page break if data will be more than 1 -->
+    <%if(index>0){%>
+      <div class="page-break"></div>
+    <%}%>
+
+
     <!-- Property Information table -->
     <div class="name-property-information">
       <table class="text-7 pdf-text-black border-none mt-5">
@@ -109,7 +165,7 @@ function formatPhoneNumber(phoneNumber) {
         </thead>
         <tbody>
           <tr>
-            <td class="py-3 font-semibold">Property ID/CAD #: <%= account_id %></td class="py-3">
+            <td class="py-3 font-semibold">Property ID/CAD #: <%= property_info?.account_id %></td class="py-3">
             <td class="py-3">Assessor Account #: 1204860010022</td>
           </tr>
           <tr>
@@ -117,14 +173,14 @@ function formatPhoneNumber(phoneNumber) {
             <td aria-colspan="2" colspan="2" class="pe-0">
               <div class="flex w-full items-center">
                 <p class="me-5">Situs Address:</p>
-                <p class="bg-gray-200 flex-grow ms-5 py-2 ps-5 font-bold" style="margin-left: 21px;">  <%= situs %></p>
+                <p class="bg-gray-200 flex-grow ms-5 py-2 ps-5 font-bold" style="margin-left: 21px;">  <%= property_info?.situs %></p>
               </div>
             </td>
           </tr>
           <td aria-colspan="2" colspan="2" class="pe-0">
             <div class="flex w-full items-center">
               <p class="me-5">Owner(s):</p>
-              <p class="flex-grow ms-5 py-2 ps-5 font-bold" style="margin-left: 36px;">  <%= owner %></p>
+              <p class="flex-grow ms-5 py-2 ps-5 font-bold" style="margin-left: 36px;">  <%= property_info?.owner %></p>
             </div>
           </td>
           </tr>
@@ -132,7 +188,7 @@ function formatPhoneNumber(phoneNumber) {
             <td aria-colspan="2" colspan="2" class="pe-0">
               <div class="flex w-full items-center">
                 <p class="me-5">Mailing Address:</p>
-                <p class="bg-gray-200 flex-grow ms-5 py-2 ps-5"> <%= mailing %></p>
+                <p class="bg-gray-200 flex-grow ms-5 py-2 ps-5"> <%= property_info?.mailing %></p>
               </div>
             </td>
           </tr>
@@ -266,7 +322,7 @@ function formatPhoneNumber(phoneNumber) {
             <th colspan="5">
               <div class="flex items-center">
                 <p class="font-bold">Summary for Account #:</p>
-                <p class="bg-blue-400 flex-grow ms-3 ps-3 py-2"> <%=account_id%></p>
+                <p class="bg-blue-400 flex-grow ms-3 ps-3 py-2"> <%=property_info?.account_id%></p>
               </div>
             </th>
           </tr>
@@ -281,34 +337,37 @@ function formatPhoneNumber(phoneNumber) {
           </tr>
         </thead>
         <tbody>
-          <% SummaryAcctTale?.summaryData?.forEach(function({entity, year, base_tax, due_1, due_2}, index){%>
-            <%if(index%2===0){%>
-          <tr>
-            <td><%=entity%></td>
-            <td class="text-end"><%= year %></td>
-            <td class="text-end"><%=formatPrice(base_tax) %></td>
-            <td class="text-end"><%=formatPrice(due_1) %></td>
-            <td class="text-end"><%=formatPrice(due_2) %></td>
-          </tr>
-          <%} else{%>
-            <tr class="bg-gray-200">
-              <td><%=entity%></td>
-              <td class="text-end"><%= year %></td>
-              <td class="text-end"><%=formatPrice(base_tax) %></td>
-              <td class="text-end"><%=formatPrice(due_1) %></td>
-              <td class="text-end"><%=formatPrice(due_2) %></td>
-            </tr>
-          <%}%>
-          <%})%>
-        <tfoot class="font-bold">
-          <tr>
-            <td colspan="2" class="text-end">Totals</td>
-            <td class="text-end bg-blue-400"><%= formatPrice(SummaryAcctTale?.summary_total?.base_tax) %></td>
-            <td class="text-end bg-blue-400"><%= formatPrice(SummaryAcctTale?.summary_total?.due_1) %></td>
-            <td class="text-end bg-blue-400"><%= formatPrice(SummaryAcctTale?.summary_total?.due_2) %></td>
-          </tr>
-        </tfoot>
-        </tbody>
+     
+          <% parcel_all_summary?.summary_list?.forEach(function({sub_total, jurisdiction_list}, index){%>
+            <% jurisdiction_list?.forEach(function({enity, year, base_tax, due_1, due_2}, index){%>
+              <% if(index%2===0){%>
+                <tr >
+              <%} else {%>
+                <tr class="bg-gray-200">
+              <%}%>  
+                <td class="text-start"><%=enity%></td>
+                <td class="text-end"><%=year%></td>
+                <td class="text-end"><%=formatPrice(base_tax)%></td>
+                <td class="text-end"><%=formatPrice(due_1)%></td>
+                <td class="text-end"><%=formatPrice(due_2)%></td>
+               </tr>
+               <%})%>
+               <tr >
+                <td colspan="2" class="font-bold text-end">Subtotals</td>
+                <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.base_tax) %></td>
+                <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.due_1) %></td>
+                <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.due_2) %></td>
+               </tr>
+               <%})%>
+          </tbody>
+          <tfoot>
+            <tr >
+              <td colspan="2" class="font-bold text-end">Totals</td>
+              <td class="bg-blue-400 font-bold text-end"><%=formatPrice(parcel_all_summary?.total_summary?.base_tax) %></td>
+              <td class="bg-blue-400 font-bold text-end"><%=formatPrice(parcel_all_summary?.total_summary?.due_1) %></td>
+              <td class="bg-blue-400 font-bold text-end"><%=formatPrice(parcel_all_summary?.total_summary?.due_2) %></td>
+             </tr>
+          </tfoot>
       </table>
     </div>
 
@@ -328,46 +387,59 @@ function formatPhoneNumber(phoneNumber) {
                 <th class="border-end border-dark text-center">Year</th>
                 <th class="border-end border-dark text-center">Tax Rate</th>
                 <th class="border-end border-dark text-center">Base Tax</th>
-                <th class="border-end border-dark text-center">Due 2/2024 </th>
-                <th class="border-end border-dark text-center">Due 3/2024 </th>
+                <th class="border-end border-dark text-center">Due <%= CheckDueTableData?.due_date_1 %></th>
+                <th class="border-end border-dark text-center">Due <%= CheckDueTableData?.due_date_2 %></th>
                 <th class="text-center">Status</th>
               </tr>
             </thead>
             <tbody class="border-light">
-              <% CheckDueTableData?.dueData?.forEach(function({entity, year, tax_rate, base_tax, due_1, due_2, status}, index){%> 
+              <% CheckDueTableData?.dueData?.forEach(function({tax_collectors, entity_values}, index){%> 
                 <% if(index%2==0){%> 
-                <tr>
-                  <td class="p-0 border-end border-light">
-                    <p class="font-bold px-2 py-1"><%= entity?.name %></p>
-                    <p class="px-2 py-1">Phone: +<%= formatPhoneNumber(entity?.phone) %></p>
-                    <p class="px-2 py-1 bg-blue-400 border-light">Account #: <span class="font-bold"><%= entity?.acctno %></span></p>
-                    <p class="px-2 py-1">Payable To: <span class="font-bold"><%= entity?.payable_to %></span></p>
-                    <p class="px-2 py-1"><%= entity?.address %></p>
+                <% entity_values?.forEach(function({year, tax_rate, base_tax, due_1, due_2, status}, index){%>
+                <tr >
+            
+                  <% if(index<1){%>
+                    <% if(entity_values.length>1){%>
+                        <td rowspan="2" class="p-0 border-end border-light">
+                    <%}else{%>
+                      <td rowspan="1" class="p-0 border-end border-light">
+                      <%}%>
+                    <p class="font-bold px-2 py-1"><%= tax_collectors?.name %></p>
+                    <p class="px-2 py-1">Phone: <%= formatPhoneNumber(tax_collectors?.phone) %></p>
+                    <p class="px-2 py-1 bg-blue-400 border-light border-end-none border-start-none">Account #: <span class="font-bold"><%= tax_collectors?.acctno %></span></p>
+                    <p class="px-2 py-1">Payable To: <span class="font-bold"><%= tax_collectors?.payable_to %></span></p>
+                    <p class="px-2 py-1"><%= tax_collectors?.address %></p>
                   </td>
+                  <%}%>
+
                   <td class="text-center border-end border-light"><%= year %></td>
                   <td class="text-center border-end border-light"><%= tax_rate %></td>
-                  <td class="text-center border-end border-light"><%= formatPrice (base_tax) %></td>
-                  <td class="text-center border-end border-light"><%= formatPrice (due_1) %></td>
-                  <td class="text-center border-end border-light"><%= formatPrice (due_2) %></td>
+                  <td class="text-center border-end border-light"><%= formatPrice(base_tax) %></td>
+                  <td class="text-center border-end border-light"><%= formatPrice(due_1) %></td>
+                  <td class="text-center border-end border-light"><%= formatPrice(due_2) %></td>
                   <td class="text-center font-bold border-light"><%= (status) %></td>
                 </tr>
+                <%})%>
                 <tr class="border-light">
                   <td colspan="2" class="text-end font-bold border-end border-light">Entity Total</td>
-                  <td class="text-center font-bold border-end border-light"> <%= entity?.entity_total?.tax_rate %></td>
-                  <td class="text-center font-bold border-end border-light"><%= formatPrice( entity?.entity_total?.base_tax) %></td>
-                  <td class="text-center font-bold border-end border-light"><%= formatPrice( entity?.entity_total?.due_1) %></td>
-                  <td class="text-center font-bold border-end border-light"><%= formatPrice( entity?.entity_total?.due_2) %></td>
+                  <td class="text-center font-bold border-end border-light"> <%= tax_collectors?.entity_total?.tax_rate %></td>
+                  <td class="text-center font-bold border-end border-light"><%= formatPrice( tax_collectors?.entity_total?.base_tax) %></td>
+                  <td class="text-center font-bold border-end border-light"><%= formatPrice( tax_collectors?.entity_total?.due_1) %></td>
+                  <td class="text-center font-bold border-end border-light"><%= formatPrice( tax_collectors?.entity_total?.due_2) %></td>
                   <td class="text-center font-bold border-end border-light"></td>
                 </tr>
                 <%} else {%>
+                  <% entity_values?.forEach(function({year, tax_rate, base_tax, due_1, due_2, status}, index){%>
                   <tr class="bg-gray-200">
-                    <td class="p-0 border-end border-light">
-                      <p class="font-bold px-2 py-1"><%= entity?.name %></p>
-                      <p class="px-2 py-1">Phone: <%= entity?.phone %></p>
-                      <p class="px-2 py-1 bg-blue-400 table-border">Account #: <span class="font-bold"><%= entity?.acctno %></span></p>
-                      <p class="px-2 py-1">Payable To: <span class="font-bold"><%= entity?.payable_to %></span></p>
-                      <p class="px-2 py-1"><%= entity?.address %></p>
+                    <% if(index<1){%>
+                    <td rowspan="2" class="p-0 border-end border-light">
+                      <p class="font-bold px-2 py-1"><%= tax_collectors?.name %></p>
+                      <p class="px-2 py-1">Phone: <%= formatPhoneNumber(tax_collectors?.phone) %></p>
+                      <p class="px-2 py-1 bg-blue-400 border-light border-end-none border-start-none">Account #: <span class="font-bold"><%= tax_collectors?.acctno %></span></p>
+                      <p class="px-2 py-1">Payable To: <span class="font-bold"><%= tax_collectors?.payable_to %></span></p>
+                      <p class="px-2 py-1"><%= tax_collectors?.address %></p>
                     </td>
+                    <%}%>
                     <td class="text-center border-end border-light"><%= year %></td>
                     <td class="text-center border-end border-light"><%= tax_rate %></td>
                     <td class="text-center border-end border-light"><%= formatPrice (base_tax) %></td>
@@ -375,15 +447,16 @@ function formatPhoneNumber(phoneNumber) {
                     <td class="text-center border-end border-light"><%= formatPrice (due_2) %></td>
                     <td class="text-center font-bold border-light"><%=  (status) %></td>
                   </tr>
+                  <%})%>  
                     <tr class="table-border bg-gray-200">
                     <td colspan="2" class="text-end font-bold border-end border-light">Entity Total</td>
-                    <td class="text-center font-bold border-end border-light"> <%= entity?.entity_total?.tax_rate %></td>
-                    <td class="text-center font-bold border-end border-light"><%= formatPrice( entity?.entity_total?.base_tax) %></td>
-                    <td class="text-center font-bold border-end border-light"><%= formatPrice( entity?.entity_total?.due_1) %></td>
-                    <td class="text-center font-bold border-end border-light"><%= formatPrice( entity?.entity_total?.due_2) %></td>
+                    <td class="text-center font-bold border-end border-light"> <%= tax_collectors?.entity_total?.tax_rate %></td>
+                    <td class="text-center font-bold border-end border-light"><%= formatPrice( tax_collectors?.entity_total?.base_tax) %></td>
+                    <td class="text-center font-bold border-end border-light"><%= formatPrice( tax_collectors?.entity_total?.due_1) %></td>
+                    <td class="text-center font-bold border-end border-light"><%= formatPrice( tax_collectors?.entity_total?.due_2) %></td>
                     <td class="text-center font-bold border-end border-light"></td>
                   </tr>
-                <%}%>  
+                  <%}%>
               <%}) %>
               
              
@@ -406,7 +479,7 @@ function formatPhoneNumber(phoneNumber) {
 
     <!-- Counties Section table -->
     <div class="name-county">
-      <% collectedByData?.forEach(function({tablename, acct_no, collected_by, tax_rate_1, tax_rate_2, exemption_1, exemption_2, exemption_name, tax_year, base_tax, due_1, due_2, subtotal_base_tax, subtotal_due_1, subtotal_due_2}){ %>
+      <% collectedByData?.forEach(function({tablename, acct_no, collected_by, tax_rate_1, tax_rate_2, exemption_1, exemption_2, exemption_name, tax_year, base_tax, due_1, due_2, subtotal_base_tax, subtotal_due_1, subtotal_due_2, tax_year_1, tax_year_2, bills_summary}){ %>
       <table class="text-7 no-border pdf-text-black">
         <thead class="text-8">
           <tr>
@@ -414,7 +487,7 @@ function formatPhoneNumber(phoneNumber) {
             <th>
               <div class="flex items-center">
                 <p>Account #:</p>
-                <p class="flex-grow text-start bg-blue-400 ms-3 font-normal p-2"> <%= account_id %></p>
+                <p class="flex-grow text-start bg-blue-400 ms-3 font-normal p-2"> <%=property_info?.account_id %></p>
               </div>
             </th>
           </tr>
@@ -455,13 +528,25 @@ function formatPhoneNumber(phoneNumber) {
               </tr>
             </thead>
             <tbody>
-              <tr class="text-center">
+              <% bills_summary?.forEach(function({tax_year, exemption_name, base_tax, due_1, due_2}, index){%>
+              <% if(index%2===0){%>
+                <tr class="text-center">
+              <%}else{%>
+                <tr class="text-center bg-gray-200">
+              <%}%>
+                
+               <% if(bills_summary.length === index+1){%>
                 <td class="text-center border-start border-bottom-dark border-dark"><%= tax_year %></td>
                 <td class="border-end border-dark border-bottom-dark border-dark"><%= exemption_name %></td>
+                <%}else{%>
+                  <td class="text-center border-start border-dark"><%= tax_year %></td>
+                  <td class="border-end border-dark"><%= exemption_name %></td>
+                 <%}%> 
                 <td class="text-center"><%= formatPrice(base_tax) %></td>
                 <td class="text-center"><%= formatPrice(due_1) %></td>
                 <td class="text-center border-end border-dark"><%= formatPrice(due_2) %></td>
               </tr>
+              <%})%>
             </tbody>
             <tfoot>
               <tr>
@@ -505,13 +590,13 @@ function formatPhoneNumber(phoneNumber) {
           </tr>
         </thead>
         <tbody class="table-border">
-          <% ExemptionInfromatonData?.forEach(function({entity, hom, ov65, dp, thirtyOne, fiftyOne, seventyOne}, index){ %>
+          <% exemption_information?.forEach(function({entity, hom, ov65, dp, thirtyOne, fiftyOne, seventyOne}, index){ %>
           <%if(index%2===0){%>
             <tr >
-            <td class="border-end border-dark"><%= entity %></td>
-            <td class="border-end border-dark text-center"><%= hom %></td>
-            <td class="border-end border-dark text-center"><%= ov65 %></td>
-            <td class="border-end border-dark text-center"><%= dp %></td>
+            <td class="border-end border-light-only"><%= entity %></td>
+            <td class="border-end border-light-only text-center"><%= hom %></td>
+            <td class="border-end border-light-only text-center"><%= ov65 %></td>
+            <td class="border-end border-light-only text-center"><%= dp %></td>
             <td class="text-center"> </td>
             <td class="text-center"><%= thirtyOne %></td>
             <td class="text-center"><%= fiftyOne %></td>
@@ -519,10 +604,10 @@ function formatPhoneNumber(phoneNumber) {
           </tr>
           <%} else{%>
             <tr class="bg-gray-200">
-              <td class="border-end border-dark"><%= entity %></td>
-              <td class="border-end border-dark text-center"><%= hom %></td>
-              <td class="border-end border-dark text-center"><%= ov65 %></td>
-              <td class="border-end border-dark text-center"><%= dp %></td>
+              <td class="border-end border-light-only"><%= entity %></td>
+              <td class="border-end border-light-only text-center"><%= hom %></td>
+              <td class="border-end border-light-only text-center"><%= ov65 %></td>
+              <td class="border-end border-light-only text-center"><%= dp %></td>
               <td class="text-center"> </td>
               <td class="text-center"><%= thirtyOne %></td>
               <td class="text-center"><%= fiftyOne %></td>

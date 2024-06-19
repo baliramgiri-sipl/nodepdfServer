@@ -104,6 +104,15 @@ table{
  .border-light{
   border: 2px solid #d0d0d0;
  }
+ .border-light-only{
+  border-color: #d0d0d0 !important;
+ }
+ .border-end-none{
+  border-left: 0px solid  !important;
+ }
+ .border-start-none{
+  border-right: 0px solid  !important;
+ }
   .table-border{
     border: 1px solid #000000;
   }
