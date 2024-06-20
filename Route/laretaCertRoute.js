@@ -2,6 +2,6 @@ const Router = require('express').Router();
 const {LeratTaxController}  = require("../Controller/LaretaController/LaretaTaxController");
 const {addPageNumbersToPDF} = require("../Controller/addPageNumController");
 
-Router.get("/lareta/certificate/pdf", LeratTaxController,  addPageNumbersToPDF);
+Router.post("/lareta/certificate/pdf", LeratTaxController,  addPageNumbersToPDF);
 
 module.exports = Router;

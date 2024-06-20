@@ -13,9 +13,9 @@ router.set('view engine', 'ejs');
 
 async function LeratTaxController(req, res, next){
   try{
-    // const data = req.body;
+    const data = req.body;
     // localhost testing data
-    const data = newLaretaJson; 
+    // const data = newLaretaJson; 
     const browser = await puppeteer.launch(process.env.SERVER === "DEV" ? { headless: true } : { args: ['--no-sandbox', '--disable-setuid-sandbox'] })
     // console.log(process.env)
     const page = await browser.newPage();
