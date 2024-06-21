@@ -1,5 +1,15 @@
 <header style="font-weight: 600">
 
+  <% 
+  function dateFormat(date){
+    if(!date){
+      return
+    }
+    formattedDate = date.slice(0,10);
+    return formattedDate;
+  }
+  %>
+
   <!-- //Independence title  -->
    <div style="
    width: 1150px;
@@ -26,7 +36,7 @@
              ">
               <%= headerType?.order_no %></p>
               <% if(headerType?.cert_date !="") {%>
-               <p style="margin-bottom: 0; margin-right:0px; padding-left:10px"> <%= headerType?.cert_date %></p>
+               <p style="margin-bottom: 0; margin-right:0px; padding-left:10px"> <%= dateFormat(headerType?.cert_date) %></p>
                <%}else{%>
                 <p style="margin-bottom: 0;"></p>
                <%}%> 
