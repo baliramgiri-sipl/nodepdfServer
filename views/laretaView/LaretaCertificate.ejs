@@ -127,9 +127,9 @@ function formatPhoneNumber(phoneNumber) {
              <%})%>
              <tr >
               <td colspan="2" class="font-bold text-end">Subtotals</td>
-              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.base_tax_total) %></td>
-              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.due_1_total) %></td>
-              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.due_2_total) %></td>
+              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.base_tax) %></td>
+              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.due_1) %></td>
+              <td class="bg-blue-400 font-bold text-end"><%= formatPrice(sub_total?.due_2) %></td>
              </tr>
              <%})%>
         </tbody>
