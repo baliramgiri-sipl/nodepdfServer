@@ -239,6 +239,7 @@ function formatPhoneNumber(phoneNumber) {
         </thead>
         <tbody>
          <% AssessmentData?.forEach(function(object, index){%>
+          <%if(object.assessment !== "Exemption Amount W/O"){%>
         <% if(index>0 && index<4){ %>   
         <% if(index%2!==0){ %>
           <tr class="bg-gray-200">
@@ -289,6 +290,7 @@ function formatPhoneNumber(phoneNumber) {
                   <td colspan="2" class="text-center bg-gray-200"><%= formatPrice(object.year_amt1) %></td>
                 </tr>
                 <%}%>
+              <%}%>
           <% }) %>  
         </tbody>
       </table>

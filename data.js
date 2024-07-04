@@ -1176,835 +1176,1297 @@ const laretaJosn = {
     }
 }
 
-const newLaretaJson = {
-
-    "input_order": {
-
-        "cert_fees": "$10",
-
-        "order_no": "Test208",
-
-        "cert_date": "",
-
-        "created_date": "06/18/2024",
-
-        "account_id": "2808116",
-
-        "property_address": "1523 River Crossing Drive Anna TX 75409",
-
-        "legal_description": "AVERY POINTE PHASE 5 (CAN), BLK C, LOT 36",
-
-        "buyer": "",
-
-        "seller": "RODRIGUEZ DELFIN &",
-
-        "product_name": "TEXAS TAX & HOA"
-
-    },
-
-    "order_comment": [
-
-        ""
-
-    ],
-
-    "parcel_all_summary": {
-
-        "total_summary": {
-
-            "base_tax": "$4,155.25",
-
-            "due_1": "$0.00",
-
-            "due_2": "$0.00"
-
-        },
-
-        "summary_list": [
-
-            {
-
-                "sub_total": {
-
-                    "base_tax_total": "$4153",
-
-                    "due_1_total": "$0",
-
-                    "due_2_total": "$0"
-
+const newLaretaJson ={
+        "input_order": {
+              "cert_fees": "$50",
+              "order_no": "CRUDOperationsTest-2",
+              "cert_date": "2024-07-01T10:25:09.000Z",
+              "created_date": "2024-07-01T10:27:59.000Z",
+              "account_id": "5250",
+              "property_address": "43 BEAVER ISLAND GRANITE SHOALS Texas 78654",
+              "legal_description": "S3160 BEAVER ISLAND LOT 43",
+              "buyer": "",
+              "seller": "COPELAND KENNETH L CHILDS LIFETIME TRUST",
+              "closer_name": "System Integrations",
+              "client_name": "SimpliTax Searches, LLC",
+              "client_mailing_adress1": "",
+              "client_mailing_adress2": "",
+              "client_mailing_adress3": "",
+              "client_mailing_city": "",
+              "client_mailing_state": "Texas",
+              "client_mailing_zip": "",
+              "disclaimer": "NOTE - All conditions as defined in Provider Agreement apply to this order.",
+              "product_name": "TAXCERTIFICATE"
+    
+        },
+    
+        "order_comment": [],
+    
+        "parcel_all_summary": {
+              "total_summary": {
+               "base_tax": "$26,211.71",
+               "due_1": "$150.00",
+               "due_2": "$162.00"
+              },
+              "summary_list": [
+            {
+    
+              "sub_total": {
+                "base_tax": "$26209",
+                "due_1": "$0.00",
+                "due_2": "$0.00"
+    
+              },
+    
+              "jurisdiction_list": [
+    
+                {
+    
+                  "enity": "Burnet County",
+    
+                  "year": "2023",
+    
+                  "base_tax": "$5265",
+    
+                  "due_1": "$0",
+    
+                  "due_2": "$0"
+    
+                },
+    
+                {
+    
+                  "enity": "City of Granite Shoals",
+    
+                  "year": "2023",
+    
+                  "base_tax": "$8728",
+    
+                  "due_1": "$0",
+    
+                  "due_2": "$0"
+    
+                },
+    
+                {
+    
+                  "enity": "City of Lewisville",
+    
+                  "year": "2023",
+    
+                  "base_tax": "$633",
+    
+                  "due_1": "$0",
+    
+                  "due_2": "$0"
+    
+                },
+    
+                {
+    
+                  "enity": "Marble Falls ISD",
+    
+                  "year": "2023",
+    
+                  "base_tax": "$11489",
+    
+                  "due_1": "$0",
+    
+                  "due_2": "$0"
+    
+                },
+    
+                {
+    
+                  "enity": "Central Texas Water Conservation Dist",
+    
+                  "year": "2023",
+    
+                  "base_tax": "$94",
+    
+                  "due_1": "$0",
+    
+                  "due_2": "$0"
+    
+                }
+    
+              ]
+    
+            },
+    
+            {
+    
+              "sub_total": {
+    
+                "base_tax": "$0.00",
+    
+                "due_1": "$150.00",
+    
+                "due_2": "$162.00"
+    
+              },
+    
+              "jurisdiction_list": [
+    
+                {
+    
+                  "enity": "City of Lewisville",
+    
+                  "year": "2020",
+    
+                  "base_tax": null,
+    
+                  "due_1": "$150",
+    
+                  "due_2": "$162"
+    
+                }
+    
+              ]
+    
+            }
+              ]
+    
+        },
+    
+        "parcels": [
+              {
+    
+            "property_info": {
+    
+              "account_id": "5250",
+    
+              "situs": "43 BEAVER ISLAND GRANITE SHOALS Texas 78654",
+    
+              "owner": "COPELAND KENNETH L CHILDS LIFETIME TRUST",
+    
+              "mailing": "43 BEAVER ISLAND,GRANITE SHOALS,TX,78654",
+    
+              "mailing_address1": "43 BEAVER ISLAND",
+    
+              "mailing_city": "GRANITE SHOALS",
+    
+              "mailing_state": "TX",
+    
+              "mailing_zip": "78654",
+    
+              "geographic_id": "03160-0000-00043-000",
+    
+              "assessor_account_no": "5250"
+    
+            },
+    
+            "parcel_comment": [],
+    
+            "legal_info": {
+    
+              "description": "S3160 BEAVER ISLAND LOT 43",
+    
+              "deed": "201302235///12242012",
+    
+              "acrerage": ""
+    
+            },
+    
+            "feedbacks": [
+    
+              "PRIOR_YEARS_FOUND"
+    
+            ],
+    
+            "AssessmentData": [
+    
+              {
+    
+                "assessment": "Assessment",
+    
+                "year_amt2": 2024,
+    
+                "year_amt1": 2023
+    
+              },
+    
+              {
+    
+                "assessment": "mpr Market (+)",
+    
+                "year_amt2": "$1209953",
+    
+                "year_amt1": "$1209953"
+    
+              },
+    
+              {
+    
+                "assessment": "Land Market (+)",
+    
+                "year_amt2": "$1042838",
+    
+                "year_amt1": "$1042838"
+    
+              },
+    
+              {
+    
+                "assessment": "Homestead Cap (-)",
+    
+                "year_amt2": "$357213",
+    
+                "year_amt1": "$529538"
+    
+              },
+    
+              {
+    
+                "assessment": "Market Total (=)",
+    
+                "year_amt2": "$2252791",
+    
+                "year_amt1": "$2252791"
+    
+              },
+    
+              {
+    
+                "assessment": "Assessed Total (=)",
+    
+                "year_amt2": "$1895578",
+    
+                "year_amt1": "$1723253"
+    
+              },
+    
+              {
+    
+                "assessment": "Certified",
+    
+                "year_amt2": "Yes",
+    
+                "year_amt1": "No"
+    
+              },
+    
+              {
+    
+                "assessment": "Exemptions",
+    
+                "year_amt2": "Hms, Over65, Cap",
+    
+                "year_amt1": "Hms, Over65, Cap"
+    
+              },
+    
+              {
+    
+                "assessment": "AG Assessed Value",
+    
+                "year_amt2": "$0.00",
+    
+                "year_amt1": "$0.00"
+    
+              },
+    
+              {
+    
+                "assessment": "AG Market Value"
+    
+              },
+    
+              {
+    
+                "assessment": "Exemption Amount W/O",
+    
+                "year_amt1": "$39649",
+    
+                "year_amt2": ""
+    
+              },
+    
+              {
+    
+                "assessment": "2024 W/O Exemptions Estimate:",
+    
+                "year_amt1": "$39649"
+    
+              }
+    
+            ],
+    
+            "documents": [
+    
+              {
+    
+                "reference": "",
+    
+                "name": "",
+    
+                "documentType": "DATA_PDF",
+    
+                "createdDate": "",
+    
+                "hash": "773b30f2b18848030115318bf15ebcdb",
+    
+                "size": 1
+    
+              }
+    
+            ],
+    
+            "parcel_all_summary": {
+              "total_summary":{
+              "base_tax": "$26211.71",
+    
+              "due_1": "$150",
+    
+              "due_2": "$162",
                 },
 
-                "jurisdiction_list": [
-
-                    {
-
-                        "enity": "City of Anna",
-
-                        "year": "2023",
-
-                        "base_tax": "$1364",
-
-                        "due_1": "$0",
-
-                        "due_2": "$0"
-
-                    },
-
-                    {
-
-                        "enity": "Anna ISD",
-
-                        "year": "2023",
-
-                        "base_tax": "$2230",
-
-                        "due_1": "$0",
-
-                        "due_2": "$0"
-
-                    },
-
-                    {
-
-                        "enity": "Collin County Community College",
-
-                        "year": "2023",
-
-                        "base_tax": "$170",
-
-                        "due_1": "$0",
-
-                        "due_2": "$0"
-
-                    },
-
-                    {
-
-                        "enity": "Collin County",
-
-                        "year": "2023",
-
-                        "base_tax": "$389",
-
-                        "due_1": "$0",
-
-                        "due_2": "$0"
-
-                    }
-
-                ]
-
-            }
-
-        ]
-
-    },
-
-    "parcels": [
-
-        {
-
-            "property_info": {
-
-                "account_id": "2808116",
-
-                "situs": "1523 River Crossing Dr Anna, TX  75409",
-
-                "owner": "Rodriguez Delfin & Jennifer Rodriguez",
-
-                "mailing": "1523 RIVER CROSSING DR,ANNA,TX,75409-4730",
-
-                "geographic_id": "R-11996-00C-0360-1",
-
-                "assessor_account_no": "2808116"
-
-            },
-
-            "parcel_comment": [
-
-                " "
-
-            ],
-
-            "legal_info": {
-
-                "description": "AVERY POINTE PHASE 5 (CAN), BLK C, LOT 36",
-
-                "deed": "20211217002550190 /// 12/15/2021",
-
-                "acrerage": "0.133"
-
-            },
-
-            "AssessmentData": [
-
-                {
-
-                    "assessment": "Assessement",
-
-                    "year_amt2": 2024,
-
-                    "year_amt1": 2023
-
-                },
-
-                {
-
-                    "assessment": "mpr Market (+)",
-
-                    "year_amt2": "$239544",
-
-                    "year_amt1": "$257554"
-
-                },
-
-                {
-
-                    "assessment": "Land Market (+)",
-
-                    "year_amt2": "$80000",
-
-                    "year_amt1": "$80000"
-
-                },
-
-                {
-
-                    "assessment": "Homestead Cap (-)",
-
-                    "year_amt2": "$14,409",
-
-                    "year_amt1": "$60,159"
-
-                },
-
-                {
-
-                    "assessment": "Market Total (=)",
-
-                    "year_amt2": "$319544",
-
-                    "year_amt1": "$337554"
-
-                },
-
-                {
-
-                    "assessment": "Assessed Total (=)",
-
-                    "year_amt2": "$305135",
-
-                    "year_amt1": "$277395"
-
-                },
-
-                {
-
-                    "assessment": "Certified",
-
-                    "year_amt2": "Yes",
-
-                    "year_amt1": "No"
-
-                },
-
-                {
-
-                    "assessment": "Exemptions",
-
-                    "year_amt2": "Hms,Cap",
-
-                    "year_amt1": "Hms,Cap"
-
-                },
-
-                {
-
-                    "assessment": "AG Asessed Value",
-
-                    "year_amt2": "$0",
-
-                    "year_amt1": "$0"
-
-                },
-
-                {
-
-                    "assessment": "2024 W/O Exemptions Estimate:",
-
-                    "year_amt1": "$6386"
-
-                }
-
-            ],
-
-            "SummaryAcctTale": {
-
-                "summaryData": [
-
-                    {
-
-                        "entity": "Collin County Tax Assessor",
-
-                        "year": "2023",
-
-                        "base_tax": "$4155.25",
-
-                        "due_1": "$0.00",
-
-                        "due_2": "$0.00"
-
-                    }
-
-                ],
-
-                "summary_total": {
-
-                    "base_tax": "$4155.25",
-
-                    "due_1": "$0",
-
-                    "due_2": "$0"
-
-                }
-
-            },
-
-            "CheckDueTableData": {
-
-                "check_due_total": {
-
-                    "tax_rate": "$1.99878",
-
-                    "base_tax": "$4155.25",
-
-                    "due_1": "$0",
-
-                    "due_2": "$0"
-
-                },
-
-                "dueData": [
-
-                    {
-
-                        "tax_collectors": {
-
-                            "name": "Collin County Tax Assessor",
-
-                            "phone": "+19725475020",
-
-                            "acctno": "2808116",
-
-                            "payable_to": "",
-
-                            "address": "2300 Bloomdale Rd Suite 2324,McKinney,Texas,75071",
-
-                            "entity_total": {
-
-                                "tax_rate": "$1.998780",
-
-                                "base_tax": "$4155.25",
-
-                                "due_1": "$0.00",
-
-                                "due_2": "$0.00"
-
-                            }
-
-                        },
-
-                        "entity_values": [
-
-                            {
-
-                                "year": "2023",
-
-                                "tax_rate": "$1.998780",
-
-                                "base_tax": "$4155.25",
-
-                                "due_1": "$0.00",
-
-                                "due_2": "$0.00",
-
-                                "status": "Paid"
-
-                            }
-
-                        ],
-
-                        "jurisdictions": [
-
-                            {
-
-                                "tablename": "City of Anna",
-
-                                "tax_address": "2300 Bloomdale Rd Suite 2324,McKinney,Texas,75071",
-
-                                "acct_no": "2808116",
-
-                                "collected_by": "Collin County Tax Assessor",
-
-                                "tax_rate_1": "$0.53975",
-
-                                "tax_rate_2": "$0.510717",
-
-                                "exemption_1": "$1821.95",
-
-                                "exemption_2": "$1631.97",
-
-                                "exemption_name": "Hms,Cap",
-
-                                "tax_year": "2023",
-
-                                "base_tax": "$1,364.98",
-
-                                "due_1": "$0",
-
-                                "due_2": "$0",
-
-                                "subtotal_base_tax": "$1,364.98",
-
-                                "subtotal_due_1": "$0",
-
-                                "subtotal_due_2": "$0"
-
-                            },
-
-                            {
-
-                                "tablename": "Anna ISD",
-
-                                "tax_address": "2300 Bloomdale Rd Suite 2324,McKinney,Texas,75071",
-
-                                "acct_no": "2808116",
-
-                                "collected_by": "Collin County Tax Assessor",
-
-                                "tax_rate_1": "$1.4429",
-
-                                "tax_rate_2": "$1.2575",
-
-                                "exemption_1": "$4870.57",
-
-                                "exemption_2": "$4018.27",
-
-                                "exemption_name": "Hms,Cap",
-
-                                "tax_year": "2023",
-
-                                "base_tax": "$2,230.74",
-
-                                "due_1": "$0",
-
-                                "due_2": "$0",
-
-                                "subtotal_base_tax": "$2,230.74",
-
-                                "subtotal_due_1": "$0",
-
-                                "subtotal_due_2": "$0"
-
-                            },
-
-                            {
-
-                                "tablename": "Collin County Community College",
-
-                                "tax_address": "2300 Bloomdale Rd Suite 2324,McKinney,Texas,75071",
-
-                                "acct_no": "2808116",
-
-                                "collected_by": "Collin County Tax Assessor",
-
-                                "tax_rate_1": "$0.08122",
-
-                                "tax_rate_2": "$0.08122",
-
-                                "exemption_1": "$274.16",
-
-                                "exemption_2": "$259.53",
-
-                                "exemption_name": "Hms,Cap",
-
-                                "tax_year": "2023",
-
-                                "base_tax": "$170.47",
-
-                                "due_1": "$0",
-
-                                "due_2": "$0",
-
-                                "subtotal_base_tax": "$170.47",
-
-                                "subtotal_due_1": "$0",
-
-                                "subtotal_due_2": "$0"
-
-                            },
-
-                            {
-
-                                "tablename": "Collin County",
-
-                                "tax_address": "2300 Bloomdale Rd Suite 2324,McKinney,Texas,75071",
-
-                                "acct_no": "2808116",
-
-                                "collected_by": "Collin County Tax Assessor",
-
-                                "tax_rate_1": "$0.152443",
-
-                                "tax_rate_2": "$0.149343",
-
-                                "exemption_1": "$514.58",
-
-                                "exemption_2": "$477.22",
-
-                                "exemption_name": "Hms,Cap",
-
-                                "tax_year": "2023",
-
-                                "base_tax": "$389.06",
-
-                                "due_1": "$0",
-
-                                "due_2": "$0",
-
-                                "subtotal_base_tax": "$389.06",
-
-                                "subtotal_due_1": "$0",
-
-                                "subtotal_due_2": "$0"
-
-                            }
-
-                        ]
-
-                    }
-
-                ]
-
-            },
-
-            "collectedByData": [
-
-                {
-
-                    "tax_id": 170254,
-
-                    "tablename": "City of Anna",
-
-                    "tax_address": "2300 Bloomdale Rd Suite 2324,McKinney,Texas,75071",
-
-                    "acct_no": "2808116",
-
-                    "collected_by": "Collin County Tax Assessor",
-
-                    "tax_rate_1": "$0.53975",
-
-                    "tax_rate_2": "$0.510717",
-
-                    "exemption_1": "$1821.95",
-
-                    "exemption_2": "$1631.97",
-
-                    "exemption_name": "Hms,Cap",
-
-                    "tax_year": "2023",
-
-                    "base_tax": "$1,364.98",
-
-                    "due_1": "$0",
-
-                    "due_2": "$0",
-
-                    "subtotal_base_tax": "$1,364.98",
-
-                    "subtotal_due_1": "$0",
-
-                    "subtotal_due_2": "$0",
-
-                    "bills_summary": [
-
-                        {
-
-                            "tax_year": "2023",
-
-                            "exemption_name": "",
-
-                            "base_tax": "$1,364.98",
-
-                            "due_1": "$0",
-
-                            "due_2": "$0"
-
-                        }
-
-                    ]
-
-                },
-
-                {
-
-                    "tax_id": 170254,
-
-                    "tablename": "Anna ISD",
-
-                    "tax_address": "2300 Bloomdale Rd Suite 2324,McKinney,Texas,75071",
-
-                    "acct_no": "2808116",
-
-                    "collected_by": "Collin County Tax Assessor",
-
-                    "tax_rate_1": "$1.4429",
-
-                    "tax_rate_2": "$1.2575",
-
-                    "exemption_1": "$4870.57",
-
-                    "exemption_2": "$4018.27",
-
-                    "exemption_name": "Hms,Cap",
-
-                    "tax_year": "2023",
-
-                    "base_tax": "$2,230.74",
-
-                    "due_1": "$0",
-
-                    "due_2": "$0",
-
-                    "subtotal_base_tax": "$2,230.74",
-
-                    "subtotal_due_1": "$0",
-
-                    "subtotal_due_2": "$0",
-
-                    "bills_summary": [
-
-                        {
-
-                            "tax_year": "2023",
-
-                            "exemption_name": "",
-
-                            "base_tax": "$2,230.74",
-
-                            "due_1": "$0",
-
-                            "due_2": "$0"
-
-                        }
-
-                    ]
-
-                },
-
-                {
-
-                    "tax_id": 170254,
-
-                    "tablename": "Collin County Community College",
-
-                    "tax_address": "2300 Bloomdale Rd Suite 2324,McKinney,Texas,75071",
-
-                    "acct_no": "2808116",
-
-                    "collected_by": "Collin County Tax Assessor",
-
-                    "tax_rate_1": "$0.08122",
-
-                    "tax_rate_2": "$0.08122",
-
-                    "exemption_1": "$274.16",
-
-                    "exemption_2": "$259.53",
-
-                    "exemption_name": "Hms,Cap",
-
-                    "tax_year": "2023",
-
-                    "base_tax": "$170.47",
-
-                    "due_1": "$0",
-
-                    "due_2": "$0",
-
-                    "subtotal_base_tax": "$170.47",
-
-                    "subtotal_due_1": "$0",
-
-                    "subtotal_due_2": "$0",
-
-                    "bills_summary": [
-
-                        {
-
-                            "tax_year": "2023",
-
-                            "exemption_name": "",
-
-                            "base_tax": "$170.47",
-
-                            "due_1": "$0",
-
-                            "due_2": "$0"
-
-                        }
-
-                    ]
-
-                },
-
-                {
-
-                    "tax_id": 170254,
-
-                    "tablename": "Collin County",
-
-                    "tax_address": "2300 Bloomdale Rd Suite 2324,McKinney,Texas,75071",
-
-                    "acct_no": "2808116",
-
-                    "collected_by": "Collin County Tax Assessor",
-
-                    "tax_rate_1": "$0.152443",
-
-                    "tax_rate_2": "$0.149343",
-
-                    "exemption_1": "$514.58",
-
-                    "exemption_2": "$477.22",
-
-                    "exemption_name": "Hms,Cap",
-
-                    "tax_year": "2023",
-
-                    "base_tax": "$389.06",
-
-                    "due_1": "$0",
-
-                    "due_2": "$0",
-
-                    "subtotal_base_tax": "$389.06",
-
-                    "subtotal_due_1": "$0",
-
-                    "subtotal_due_2": "$0",
-
-                    "bills_summary": [
-
-                        {
-
-                            "tax_year": "2023",
-
-                            "exemption_name": "",
-
-                            "base_tax": "$389.06",
-
-                            "due_1": "$0",
-
-                            "due_2": "$0"
-
-                        }
-
-                    ]
-
-                }
-
-            ],
-
-            "ExemptionInfromatonData": [
-
-                {
-
-                    "entity": "City of Anna",
-
-                    "hom": "",
-
-                    "ov65": "30K",
-
-                    "dp": "",
-
-                    "ten": "5K",
-
-                    "thirtyOne": "7.5K",
-
-                    "fiftyOne": "10K",
-
-                    "seventyOne": "12K"
-
-                },
-
-                {
-
-                    "entity": "Anna ISD",
-
-                    "hom": "100K",
-
-                    "ov65": "10K",
-
-                    "dp": "10K",
-
-                    "ten": "5K",
-
-                    "thirtyOne": "7.5K",
-
-                    "fiftyOne": "10K",
-
-                    "seventyOne": "12K"
-
-                },
-
-                {
-
-                    "entity": "Collin County Community College",
-
-                    "hom": "5K",
-
-                    "ov65": "30K",
-
-                    "dp": "20K",
-
-                    "ten": "5K",
-
-                    "thirtyOne": "7.5K",
-
-                    "fiftyOne": "10K",
-
-                    "seventyOne": "12K"
-
-                },
-
-                {
-
-                    "entity": "Collin County",
-
-                    "hom": "5",
-
-                    "ov65": "30K",
-
-                    "dp": "20K",
-
-                    "ten": "5K",
-
-                    "thirtyOne": "7.5K",
-
-                    "fiftyOne": "10K",
-
-                    "seventyOne": "12K"
-
-                }
-
-            ]
-
-        }
-
-    ]
-
-}
+              "summary_list": [
+                {
+                  "sub_total": {
+    
+                    "base_tax": "$26209",
+    
+                    "due_1": "$0.00",
+    
+                    "due_2": "$0.00",
+                  },
+                 "jurisdiction_list": [
+    
+                      {
+    
+                        "enity": "Burnet County",
+    
+                        "year": "2023",
+    
+                        "base_tax": "$5265",
+    
+                        "due_1": "$0",
+    
+                        "due_2": "$0"
+    
+                      },
+    
+                      {
+    
+                        "enity": "City of Granite Shoals",
+    
+                        "year": "2023",
+    
+                        "base_tax": "$8728",
+    
+                        "due_1": "$0",
+    
+                        "due_2": "$0"
+    
+                      },
+    
+                      {
+    
+                        "enity": "City of Lewisville",
+    
+                        "year": "2023",
+    
+                        "base_tax": "$633",
+    
+                        "due_1": "$0",
+    
+                        "due_2": "$0"
+    
+                      },
+    
+                      {
+    
+                        "enity": "Marble Falls ISD",
+    
+                        "year": "2023",
+    
+                        "base_tax": "$11489",
+    
+                        "due_1": "$0",
+    
+                        "due_2": "$0"
+    
+                      },
+    
+                      {
+    
+                        "enity": "Central Texas Water Conservation Dist",
+    
+                        "year": "2023",
+    
+                        "base_tax": "$94",
+    
+                        "due_1": "$0",
+    
+                        "due_2": "$0"
+    
+                      }
+    
+                    ]
+                },
+                {
+                  "sub_total": {
+    
+                    "base_tax": "$0.00",
+    
+                    "due_1": "$150.00",
+    
+                    "due_2": "$162.00"
+    
+                  },
+                  "jurisdiction_list": [
+    
+                    {
+    
+                      "enity": "City of Lewisville",
+    
+                      "year": "2020",
+    
+                      "base_tax": null,
+    
+                      "due_1": "$150",
+    
+                      "due_2": "$162"
+    
+                    }
+    
+                  ]
+                }
+    
+              ]
+            },
+    
+            "SummaryAcctTale": {
+    
+              "summaryData": [
+    
+                {
+    
+                  "entity": "Burnet County Central Appraisal District",
+    
+                  "year": "2023",
+    
+                  "base_tax": "$26211.71",
+    
+                  "due_1": "$150.00",
+    
+                  "due_2": "$162.00"
+    
+                }
+    
+              ],
+    
+              "summary_total": {
+    
+                "base_tax": "$26211.71",
+    
+                "due_1": "$150",
+    
+                "due_2": "$162"
+    
+              }
+    
+            },
+    
+            "CheckDueTableData": {
+    
+              "check_due_total": {
+    
+                "tax_rate": "$1.76",
+    
+                "base_tax": "$26211.71",
+    
+                "due_1": "$150",
+    
+                "due_2": "$162"
+    
+              },
+    
+              "dueData": [
+    
+                {
+    
+                  "tax_collectors": {
+    
+                    "name": "Burnet County Central Appraisal District",
+    
+                    "phone": "+15127568291",
+    
+                    "acctno": "5250",
+    
+                    "payable_to": "Burnet County Central Appraisal District",
+    
+                    "address": "223 South Pierce Street,Burnet,Texas,78611",
+    
+                    "mailing_address1": "223 South Pierce Street",
+    
+                    "mailing_city": "Burnet",
+    
+                    "mailing_state": "Texas",
+    
+                    "mailing_zip": "78611",
+    
+                    "entity_total": {
+    
+                      "tax_rate": "$1.76",
+    
+                      "base_tax": "$26211.71",
+    
+                      "due_1": "$150.00",
+    
+                      "due_2": "$162.00"
+    
+                    }
+    
+                  },
+    
+                  "entity_values": [
+    
+                    {
+    
+                      "year": "2023",
+    
+                      "tax_rate": "$1.76",
+    
+                      "base_tax": "$26211.71",
+    
+                      "due_1": "$0.00",
+    
+                      "due_2": "$0.00",
+    
+                      "status": "Paid"
+    
+                    },
+    
+                    {
+    
+                      "year": "Prior",
+    
+                      "tax_rate": "$0.00",
+    
+                      "base_tax": "$0.00",
+    
+                      "due_1": "$150.00",
+    
+                      "due_2": "$162.00",
+    
+                      "status": "Due",
+    
+                      "total_due_98": "$150.00"
+    
+                    }
+    
+                  ],
+    
+                  "feedbacks": [
+    
+                    "PRIOR_YEARS_FOUND"
+    
+                  ],
+    
+                  "jurisdictions": [
+    
+                    {
+    
+                      "tablename": "Burnet County",
+    
+                      "tax_address": "223 South Pierce Street,Burnet,Texas,78611",
+    
+                      "acct_no": "5250",
+    
+                      "collected_by": "Burnet County Central Appraisal District",
+    
+                      "tax_rate_1": "$0.3361",
+    
+                      "tax_rate_2": "$0.3111",
+    
+                      "tax_rate_year1": "2022",
+    
+                      "tax_rate_year2": "2023",
+    
+                      "exemption_1": "$7571.63",
+    
+                      "exemption_2": "$7008.43",
+    
+                      "exemption_name": "'Hms','Over65','Cap'",
+    
+                      "tax_year": "2023",
+    
+                      "base_tax": "$5265.32",
+    
+                      "due_1": "$0",
+    
+                      "due_2": "$0",
+    
+                      "subtotal_base_tax": "$5265.32",
+    
+                      "subtotal_due_1": "$0",
+    
+                      "subtotal_due_2": "$0",
+    
+                      "lereta_tax_id": "528658bc572a83e3340002de",
+    
+                      "prior_due": "$150.00",
+    
+                      "prior_due_1": "$150.00",
+    
+                      "prior_due_2": "$162.00",
+    
+                      "assessor_account_no": "5250"
+    
+                    },
+    
+                    {
+    
+                      "tablename": "City of Granite Shoals",
+    
+                      "tax_address": "223 South Pierce Street,Burnet,Texas,78611",
+    
+                      "acct_no": "5250",
+    
+                      "collected_by": "Burnet County Central Appraisal District",
+    
+                      "tax_rate_1": "$0.568",
+    
+                      "tax_rate_2": "$0.508",
+    
+                      "tax_rate_year1": "2022",
+    
+                      "tax_rate_year2": "2023",
+    
+                      "exemption_1": "$12795.85",
+    
+                      "exemption_2": "$11444.18",
+    
+                      "exemption_name": "'Hms','Over65','Cap'",
+    
+                      "tax_year": "2023",
+    
+                      "base_tax": "$8728.72",
+    
+                      "due_1": "$0",
+    
+                      "due_2": "$0",
+    
+                      "subtotal_base_tax": "$8728.72",
+    
+                      "subtotal_due_1": "$0",
+    
+                      "subtotal_due_2": "$0",
+    
+                      "lereta_tax_id": "528a35ff572a83e3340003a1",
+    
+                      "prior_due": "$150.00",
+    
+                      "prior_due_1": "$150.00",
+    
+                      "prior_due_2": "$162.00",
+    
+                      "assessor_account_no": "5250"
+    
+                    },
+    
+                    {
+    
+                      "tablename": "City of Lewisville",
+    
+                      "tax_address": "223 South Pierce Street,Burnet,Texas,78611",
+    
+                      "acct_no": "5250",
+    
+                      "collected_by": "Burnet County Central Appraisal District",
+    
+                      "tax_rate_1": "$0.0405",
+    
+                      "tax_rate_2": "$0.043",
+    
+                      "tax_rate_year1": "2022",
+    
+                      "tax_rate_year2": "2023",
+    
+                      "exemption_1": "$912.38",
+    
+                      "exemption_2": "$968.70",
+    
+                      "exemption_name": "'Hms','Over65','Cap'",
+    
+                      "tax_year": "2023",
+    
+                      "base_tax": "$633.26",
+    
+                      "due_1": "$0",
+    
+                      "due_2": "$0",
+    
+                      "subtotal_base_tax": "$633.26",
+    
+                      "subtotal_due_1": "$0",
+    
+                      "subtotal_due_2": "$0",
+    
+                      "lereta_tax_id": "528658f7572a83e3340002df",
+    
+                      "prior_due": "$150.00",
+    
+                      "prior_due_1": "$150.00",
+    
+                      "prior_due_2": "$162.00",
+    
+                      "assessor_account_no": "5250"
+    
+                    },
+    
+                    {
+    
+                      "tablename": "Marble Falls ISD",
+    
+                      "tax_address": "223 South Pierce Street,Burnet,Texas,78611",
+    
+                      "acct_no": "5250",
+    
+                      "collected_by": "Burnet County Central Appraisal District",
+    
+                      "tax_rate_1": "$1.0732",
+    
+                      "tax_rate_2": "$0.8878",
+    
+                      "tax_rate_year1": "2022",
+    
+                      "tax_rate_year2": "2023",
+    
+                      "exemption_1": "$24176.95",
+    
+                      "exemption_2": "$20000.28",
+    
+                      "exemption_name": "'Hms','Over65','Cap'",
+    
+                      "tax_year": "2023",
+    
+                      "base_tax": "$11489.63",
+    
+                      "due_1": "$0",
+    
+                      "due_2": "$0",
+    
+                      "subtotal_base_tax": "$11489.63",
+    
+                      "subtotal_due_1": "$0",
+    
+                      "subtotal_due_2": "$0",
+    
+                      "lereta_tax_id": "52865acb572a83e3340002e2",
+    
+                      "prior_due": "$150.00",
+    
+                      "prior_due_1": "$150.00",
+    
+                      "prior_due_2": "$162.00",
+    
+                      "assessor_account_no": "5250"
+    
+                    },
+    
+                    {
+    
+                      "tablename": "Central Texas Water Conservation Dist",
+    
+                      "tax_address": "223 South Pierce Street,Burnet,Texas,78611",
+    
+                      "acct_no": "5250",
+    
+                      "collected_by": "Burnet County Central Appraisal District",
+    
+                      "tax_rate_1": "$0.0057",
+    
+                      "tax_rate_2": "$0.0055",
+    
+                      "tax_rate_year1": "2022",
+    
+                      "tax_rate_year2": "2023",
+    
+                      "exemption_1": "$128.41",
+    
+                      "exemption_2": "$123.90",
+    
+                      "exemption_name": "'Hms','Over65','Cap'",
+    
+                      "tax_year": "2023",
+    
+                      "base_tax": "$94.78",
+    
+                      "due_1": "$0",
+    
+                      "due_2": "$0",
+    
+                      "subtotal_base_tax": "$94.78",
+    
+                      "subtotal_due_1": "$0",
+    
+                      "subtotal_due_2": "$0",
+    
+                      "lereta_tax_id": "528a38fa572a83e3340003a7",
+    
+                      "prior_due": "$150.00",
+    
+                      "prior_due_1": "$150.00",
+    
+                      "prior_due_2": "$162.00",
+    
+                      "assessor_account_no": "5250"
+    
+                    }
+    
+                  ]
+    
+                }
+    
+              ]
+    
+            },
+    
+            "collectedByData": [
+    
+              {
+    
+                "tax_id": 170368,
+    
+                "lereta_tax_id": "528658bc572a83e3340002de",
+    
+                "tablename": "Burnet County",
+    
+                "tax_address": "223 South Pierce Street,Burnet,Texas,78611",
+    
+                "acct_no": "5250",
+    
+                "collected_by": "Burnet County Central Appraisal District",
+    
+                "tax_rate_1": "$0.3361",
+    
+                "tax_rate_2": "$0.3111",
+    
+                "tax_rate_year2": "2023",
+    
+                "tax_rate_year1": "2022",
+    
+                "exemption_1": "$7571.63",
+    
+                "exemption_2": "$7008.43",
+    
+                "exemption_name": "'Hms','Over65','Cap'",
+    
+                "tax_year": "2023",
+    
+                "base_tax": "$5265.32",
+    
+                "due_1": "$0",
+    
+                "due_2": "$0",
+    
+                "subtotal_base_tax": "$5265.32",
+    
+                "subtotal_due_1": "$0",
+    
+                "subtotal_due_2": "$0",
+    
+                "bills_summary": [
+    
+                  {
+    
+                    "tax_year": "",
+    
+                    "exemption_name": "Hms, Over65, Cap",
+    
+                    "base_tax": "$5265.32",
+    
+                    "due_1": "$0",
+    
+                    "due_2": "$0"
+    
+                  }
+    
+                ]
+    
+              },
+    
+              {
+    
+                "tax_id": 170368,
+    
+                "lereta_tax_id": "528a35ff572a83e3340003a1",
+    
+                "tablename": "City of Granite Shoals",
+    
+                "tax_address": "223 South Pierce Street,Burnet,Texas,78611",
+    
+                "acct_no": "5250",
+    
+                "collected_by": "Burnet County Central Appraisal District",
+    
+                "tax_rate_1": "$0.568",
+    
+                "tax_rate_2": "$0.508",
+    
+                "tax_rate_year2": "2023",
+    
+                "tax_rate_year1": "2022",
+    
+                "exemption_1": "$12795.85",
+    
+                "exemption_2": "$11444.18",
+    
+                "exemption_name": "'Hms','Over65','Cap'",
+    
+                "tax_year": "2023",
+    
+                "base_tax": "$8728.72",
+    
+                "due_1": "$0",
+    
+                "due_2": "$0",
+    
+                "subtotal_base_tax": "$8728.72",
+    
+                "subtotal_due_1": "$0",
+    
+                "subtotal_due_2": "$0",
+    
+                "bills_summary": [
+    
+                  {
+    
+                    "tax_year": "",
+    
+                    "exemption_name": "Hms, Over65, Cap",
+    
+                    "base_tax": "$8728.72",
+    
+                    "due_1": "$0",
+    
+                    "due_2": "$0"
+    
+                  }
+    
+                ]
+    
+              },
+    
+              {
+    
+                "tax_id": 170368,
+    
+                "lereta_tax_id": "528658f7572a83e3340002df",
+    
+                "tablename": "City of Lewisville",
+    
+                "tax_address": "223 South Pierce Street,Burnet,Texas,78611",
+    
+                "acct_no": "5250",
+    
+                "collected_by": "Burnet County Central Appraisal District",
+    
+                "tax_rate_1": "$0.0405",
+    
+                "tax_rate_2": "$0.043",
+    
+                "tax_rate_year2": "2023",
+    
+                "tax_rate_year1": "2022",
+    
+                "exemption_1": "$912.38",
+    
+                "exemption_2": "$968.70",
+    
+                "exemption_name": "'Hms','Over65','Cap'",
+    
+                "tax_year": "2023",
+    
+                "base_tax": "$633.26",
+    
+                "due_1": "$0",
+    
+                "due_2": "$0",
+    
+                "subtotal_base_tax": "$633.26",
+    
+                "subtotal_due_1": "$0",
+    
+                "subtotal_due_2": "$0",
+    
+                "bills_summary": [
+    
+                  {
+    
+                    "tax_year": "",
+    
+                    "exemption_name": "Hms, Over65, Cap",
+    
+                    "base_tax": "$633.26",
+    
+                    "due_1": "$0",
+    
+                    "due_2": "$0"
+    
+                  },
+    
+                  {
+    
+                    "tax_year": "2023",
+    
+                    "exemption_name": "Hms, Over65, Cap",
+    
+                    "base_tax": "$0.00",
+    
+                    "due_1": "$150",
+    
+                    "due_2": "$162"
+    
+                  }
+    
+                ]
+    
+              },
+    
+              {
+    
+                "tax_id": 170368,
+    
+                "lereta_tax_id": "52865acb572a83e3340002e2",
+    
+                "tablename": "Marble Falls ISD",
+    
+                "tax_address": "223 South Pierce Street,Burnet,Texas,78611",
+    
+                "acct_no": "5250",
+    
+                "collected_by": "Burnet County Central Appraisal District",
+    
+                "tax_rate_1": "$1.0732",
+    
+                "tax_rate_2": "$0.8878",
+    
+                "tax_rate_year2": "2023",
+    
+                "tax_rate_year1": "2022",
+    
+                "exemption_1": "$24176.95",
+    
+                "exemption_2": "$20000.28",
+    
+                "exemption_name": "'Hms','Over65','Cap'",
+    
+                "tax_year": "2023",
+    
+                "base_tax": "$11489.63",
+    
+                "due_1": "$0",
+    
+                "due_2": "$0",
+    
+                "subtotal_base_tax": "$11489.63",
+    
+                "subtotal_due_1": "$0",
+    
+                "subtotal_due_2": "$0",
+    
+                "bills_summary": [
+    
+                  {
+    
+                    "tax_year": "",
+    
+                    "exemption_name": "Hms, Over65, Cap",
+    
+                    "base_tax": "$11489.63",
+    
+                    "due_1": "$0",
+    
+                    "due_2": "$0"
+    
+                  }
+    
+                ]
+    
+              },
+    
+              {
+    
+                "tax_id": 170368,
+    
+                "lereta_tax_id": "528a38fa572a83e3340003a7",
+    
+                "tablename": "Central Texas Water Conservation Dist",
+    
+                "tax_address": "223 South Pierce Street,Burnet,Texas,78611",
+    
+                "acct_no": "5250",
+    
+                "collected_by": "Burnet County Central Appraisal District",
+    
+                "tax_rate_1": "$0.0057",
+    
+                "tax_rate_2": "$0.0055",
+    
+                "tax_rate_year2": "2023",
+    
+                "tax_rate_year1": "2022",
+    
+                "exemption_1": "$128.41",
+    
+                "exemption_2": "$123.90",
+    
+                "exemption_name": "'Hms','Over65','Cap'",
+    
+                "tax_year": "2023",
+    
+                "base_tax": "$94.78",
+    
+                "due_1": "$0",
+    
+                "due_2": "$0",
+    
+                "subtotal_base_tax": "$94.78",
+    
+                "subtotal_due_1": "$0",
+    
+                "subtotal_due_2": "$0",
+    
+                "bills_summary": [
+    
+                  {
+    
+                    "tax_year": "",
+    
+                    "exemption_name": "Hms, Over65, Cap",
+    
+                    "base_tax": "$94.78",
+    
+                    "due_1": "$0",
+    
+                    "due_2": "$0"
+    
+                  }
+    
+                ]
+    
+              }
+    
+            ],
+    
+            "exemption_information": [
+    
+              {
+    
+                "entity": "Burnet County",
+    
+                "hom": "",
+    
+                "ov65": "",
+    
+                "dp": "",
+    
+                "ten": "5K",
+    
+                "thirtyOne": "7.5K",
+    
+                "fiftyOne": "10K",
+    
+                "seventyOne": "12K"
+    
+              },
+    
+              {
+    
+                "entity": "City of Granite Shoals",
+    
+                "hom": "5K",
+    
+                "ov65": "",
+    
+                "dp": "",
+    
+                "ten": "5K",
+    
+                "thirtyOne": "7.5K",
+    
+                "fiftyOne": "10K",
+    
+                "seventyOne": "12K"
+    
+              },
+    
+              {
+    
+                "entity": "City of Lewisville",
+    
+                "hom": "3K",
+    
+                "ov65": "",
+    
+                "dp": "",
+    
+                "ten": "5K",
+    
+                "thirtyOne": "7.5K",
+    
+                "fiftyOne": "10K",
+    
+                "seventyOne": "12K"
+    
+              },
+    
+              {
+    
+                "entity": "Marble Falls ISD",
+    
+                "hom": "100K",
+    
+                "ov65": "13K",
+    
+                "dp": "10K",
+    
+                "ten": "5K",
+    
+                "thirtyOne": "7.5K",
+    
+                "fiftyOne": "10K",
+    
+                "seventyOne": "12K"
+    
+              },
+    
+              {
+    
+                "entity": "Central Texas Water Conservation Dist",
+    
+                "hom": "",
+    
+                "ov65": "",
+    
+                "dp": "",
+    
+                "ten": "5K",
+    
+                "thirtyOne": "7.5K",
+    
+                "fiftyOne": "10K",
+    
+                "seventyOne": "12K"
+    
+              }
+    
+            ]
+              }
+    
+        ],
+    
+        "isOrderCompleted": true,
+    
+        "isHoaCompleted": true,
+    
+        "document_name": "CRUDOperationsTest-2 Tax Preliminary"
+    
+      }
 
 // const newLaretaJson={
 
