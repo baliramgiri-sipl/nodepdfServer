@@ -193,12 +193,22 @@ function formatPhoneNumber(phoneNumber) {
        </div>
        <%} else ""%>
 
-       <%if(item?.hoa_mgmt_fees?.length>0) {%>
+
+      <% if (item?.comments) { %>
+  <div class="Hoa bg-outline my-2">
+    <div class="info d-flex hoa-key-names gap-1">
+      <h5 style="width: 150px;">Comments:</h5>
+      <h5 style="width: 450px;"><%- item?.comments %></h5>
+    </div>
+  </div>
+  <% } %>
+
+       <%if(item?.hoa_order_fees_list?.length>0) {%>
        <div class="hoa-mgmt border mt-4 p-4">
         <table class="text-7 border-none">
           <thead class="show-on-first-page">
             <tr>
-              <th colspan="4" class=" text-7">Statement Fees</th>
+              <th colspan="4" class=" text-7" style="margin-bottom: 2px;">Statement Fees</th>
             </tr>
             <tr class="text-8 bg-color-gray-2">
               <th>Bill Period</th>
@@ -209,8 +219,8 @@ function formatPhoneNumber(phoneNumber) {
           </thead>
           <tbody >
           
-           <% item?.hoa_mgmt_fees.map(function(fee, index){ %>
-            <%if(index<item.hoa_mgmt_fees?.length-1){%>
+           <% item?.hoa_order_fees_list.map(function(fee, index){ %>
+            <%if(index<item.hoa_order_fees_list?.length-1){%>
             <tr class="text-7 ">
               <td><%= fee.hoa_fees_type %></td>
               <td><%=fee.fees_description %></td>
@@ -219,7 +229,7 @@ function formatPhoneNumber(phoneNumber) {
             </tr>
             <%}%>
           </tbody>
-          <% if(index+1 === item.hoa_mgmt_fees?.length){%>
+          <% if(index+1 === item.hoa_order_fees_list?.length){%>
             <tfoot>
             <tr class="bg-color-gray-1">
               <th colspan="2"><%= fee.hoa_fees_type %></th>
