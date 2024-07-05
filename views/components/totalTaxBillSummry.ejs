@@ -19,6 +19,18 @@ function formatPrice(amount) {
   
   return formattedAmount;
 }
+function baseDueStyle(value){
+  if(Number(
+   value?.replace(
+     /[|&;$%@"<>()+,]/g,
+     ""
+   )
+ ) > 0){
+   return "text-danger"
+ }else{
+   return "text-dark"
+ }
+}
 %>
 
     <table class="<%= total_tax_summary_bill_information?.parcel_total_tax_summary?.length > 0 ? "" :"d-none" %> border border-secondary table text-7 mb-0 table-borderless mt-3 table-td-top">
