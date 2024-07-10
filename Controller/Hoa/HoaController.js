@@ -54,8 +54,9 @@ const hoacertificate = async (req, res, next) => {
             const headerPath = path.join(__dirname, '../../views/Hoa/Header/hoaHeader.ejs');
             const headerTemplate = fs.readFileSync(headerPath, 'utf8');
             // Render the EJS template with data
+            const customer = data?.input_Order?.customer_is_private_label ? data?.input_Order?.private_label_display_name : data?.input_Order.client_Name
             // console.log(data?.input_Order?.private_label_logo)
-            const renderedHeader = ejs.render(headerTemplate, { headerType: data?.input_Order.customer_is_private_label, isWaterMark: data?.isHoaCompleted, logo: data?.input_Order?.private_label_logo, customer: data?.input_Order.client_Name })
+            const renderedHeader = ejs.render(headerTemplate, { headerType: data?.input_Order.customer_is_private_label, isWaterMark: data?.isHoaCompleted, logo: data?.input_Order?.private_label_logo, customer })
 
             const pdf = await page.pdf({
                 format: 'A4',

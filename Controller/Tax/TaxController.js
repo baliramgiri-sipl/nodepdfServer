@@ -46,8 +46,9 @@ const taxCertificate = async (req, res, next) => {
         const headerPath = path.join(__dirname, '../../views/components/Header/CertsimpleHeader.ejs');
         const headerTemplate = fs.readFileSync(headerPath, 'utf8');
         // Render the EJS template with data
+        const customer = data?.input_Order?.customer_is_private_label ? data?.input_Order?.private_label_display_name : data?.input_Order.client_Name
         // console.log(data?.input_Order?.private_label_logo)
-        const renderedHeader = ejs.render(headerTemplate, { headerType: data?.input_Order.customer_is_private_label, isWaterMark: data?.isOrderCompleted, logo: data?.input_Order?.private_label_logo, customer: data?.input_Order.client_Name })
+        const renderedHeader = ejs.render(headerTemplate, { headerType: data?.input_Order.customer_is_private_label, isWaterMark: data?.isOrderCompleted, logo: data?.input_Order?.private_label_logo, customer })
 
         const pdf = await page.pdf({
             format: 'A4',
@@ -61,7 +62,7 @@ const taxCertificate = async (req, res, next) => {
             </style>
             ${renderedHeader}
         `,
-            margin: { top: (data?.isOrderCompleted || (getCustomerName(data?.input_Order.client_Name) === 5)) ? 70 : ((getCustomerName(data?.input_Order.client_Name) === 1 || getCustomerName(data?.input_Order.client_Name) === 2 || getCustomerName(data?.input_Order.client_Name) === 3 ||getCustomerName(data?.input_Order.client_Name) === 4 ) && !data?.isOrderCompleted) ? 55 : 90, bottom: 10, left: 15, right: 15 },
+            margin: { top: (data?.isOrderCompleted || (getCustomerName(data?.input_Order.client_Name) === 5)) ? 70 : ((getCustomerName(data?.input_Order.client_Name) === 1 || getCustomerName(data?.input_Order.client_Name) === 2 || getCustomerName(data?.input_Order.client_Name) === 3 || getCustomerName(data?.input_Order.client_Name) === 4) && !data?.isOrderCompleted) ? 55 : 90, bottom: 10, left: 15, right: 15 },
         });
         await browser.close();
 
