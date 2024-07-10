@@ -36,7 +36,7 @@ const data = {
 
         "disclaimer": "",
 
-        "customer_is_private_label": false,
+        "customer_is_private_label": true,
 
         "private_label_display_name": "Veritas Tax Services, LLC",
 
